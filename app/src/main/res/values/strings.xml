@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">朝暮</string>
+    <string name="error_occurred">啊哈，好像崩溃了。\n错误日志已经复制到剪贴板了。\n嘛～如果你想的话，把错误日志发我吧。</string>
+
+    <string name="conf_version_text">配置清单版本号:</string>
+    <string name="conf_version_status">未更新</string>
+    <string name="login_hint">使用学号登陆</string>
+    <string name="account_hint">教务系统学号</string>
+    <string name="password_hint">教务系统密码</string>
+    <string name="login_button_text">登入</string>
+    <string name="login_agreement_text">我同意用户许可条例</string>
+
+    <string name="prepare_database_text">正在准备数据库…\n请保持网络畅通\n稍等一下咯</string>
+
+    <string name="privacyPolicy">111</string>
+    <string name="userAgreement">111</string>
+    <string name="mounth">月</string>
+    <string name="day">日</string>
+</resources>
