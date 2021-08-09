@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">朝暮</string>
+
     <string name="error_occurred">啊哈，好像崩溃了。\n错误日志已经复制到剪贴板了。\n嘛～如果你想的话，把错误日志发我吧。</string>
 
     <string name="conf_version_text">配置清单版本号:</string>
@@ -16,4 +17,24 @@
     <string name="userAgreement">111</string>
     <string name="mounth">月</string>
     <string name="day">日</string>
+
+    <string name="configure">确定</string>
+    <string name="add_course">添加课程</string>
+    <string name="description_add_course">在本页面可以手动添加课程</string>
+    <string name="delete">删除</string>
+    <string name="save">保存</string>
+    <string name="requirement">必须</string>
+    <string name="optional">可选</string>
+    <string name="course_name">课程名</string>
+    <string name="teacher_name">教师名字</string>
+    <string name="course_campus">校区</string>
+    <string name="course_position">上课地点</string>
+    <string name="hours_composition">学时组成</string>
+    <string name="course_score">学分</string>
+    <string name="schedule_block_color">格子颜色</string>
+    <string name="time_plan">时间计划</string>
+    <string name="choose_time">选择时间段</string>
+    <string name="which_day">星期几</string>
+    <string name="which_session">时间段</string>
+    <string name="color_picker">颜色选择器</string>
 </resources>

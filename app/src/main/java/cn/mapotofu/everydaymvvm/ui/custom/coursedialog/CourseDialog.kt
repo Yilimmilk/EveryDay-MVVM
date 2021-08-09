@@ -1,7 +1,6 @@
 package cn.mapotofu.everydaymvvm.ui.custom.coursedialog
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -11,8 +10,8 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
 import cn.mapotofu.everydaymvvm.R
-import cn.mapotofu.everydaymvvm.app.base.BaseFragment
 import cn.mapotofu.everydaymvvm.app.util.DateUtil
 import cn.mapotofu.everydaymvvm.app.util.UisUtil
 import cn.mapotofu.everydaymvvm.data.model.entity.Course
@@ -26,14 +25,14 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
  * @date 2021/8/3
  */
 object CourseDialog {
-    const val COURSE_ID = "course_id"
+    const val COURSE_UID = "course_uid"
 
     /**
      * 获取一个底部弹窗的基础UI
      *
      * @return
      */
-    fun getBaseConfig(context: Context, view: View, block: (view: View, bt: BottomSheetDialog) -> Unit) = BottomSheetDialog(context, R.style.CourseDialogTheme).apply {
+    fun getBaseConfig(context: Context, view: View, block: (view: View, bt: BottomSheetDialog) -> Unit) = BottomSheetDialog(context, R.style.BottomSheetDialogTheme).apply {
         setContentView(view)
         window!!.findViewById<View>(R.id.design_bottom_sheet).setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dismissWithAnimation = true
@@ -50,11 +49,11 @@ object CourseDialog {
      * @param course             课程
      * @param alphaForCourseItem
      */
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "Range")
     fun showCourseInfoDialog(fragment: Fragment, course: Course, alphaForCourseItem: Int) {
-        val bt = BottomSheetDialog(fragment.requireActivity(), R.style.CourseDialogTheme)
+        val bt = BottomSheetDialog(fragment.requireActivity(), R.style.BottomSheetDialogTheme)
         var view: View
-        bt.setContentView(UisUtil.inflate(fragment.requireActivity(), R.layout.view_course_info).also { view = it })
+        bt.setContentView(UisUtil.inflate(fragment.requireActivity(), R.layout.view_btm_course_info).also { view = it })
         bt.window!!.findViewById<View>(R.id.design_bottom_sheet).setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         bt.dismissWithAnimation = true
         bt.show()
@@ -76,7 +75,7 @@ object CourseDialog {
         courseClassDay.text = "周${DateUtil.getWeekInChi(course.day)}"
         courseSession.text = "${course.start}-${course.start+course.length-1}节"
         courseTeacher.text = if (TextUtils.isEmpty(course.teachersName)) "未知" else course.teachersName
-        courseHours.text = course.hoursComposition
+        courseHours.text = if (TextUtils.isEmpty(course.hoursComposition)) "未知" else course.hoursComposition
         courseScore.text = if (TextUtils.isEmpty(course.credit)) "未知" else course.credit + "学分"
         courseWeekInfo.text = "${course.weeks}周"
         if (alphaForCourseItem > 0) {
@@ -86,13 +85,11 @@ object CourseDialog {
             courseSession.setTextColor(Color.BLACK)
         }
         courseClassDay.background = Drawables.getDrawable(Color.BLUE, 15, 0, 0)
-//        val bundle = Bundle()
-//        bundle.putString(COURSE_ID, course.id)
-//        edit.setOnClickListener {
-//            open(baseFragment, R.id.action_scheduleFragment_to_addCourseFragment, bundle)
-//            bt.dismiss()
-//        }
+        val bundle = Bundle()
+        bundle.putInt(COURSE_UID, course.uid)
+        edit.setOnClickListener {
+            NavHostFragment.findNavController(fragment).navigate(R.id.action_scheduleFragment_to_addCourseFragment, bundle)
+            bt.dismiss()
+        }
     }
-
-
 }

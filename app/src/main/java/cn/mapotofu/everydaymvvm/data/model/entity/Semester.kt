@@ -10,11 +10,9 @@ import androidx.room.PrimaryKey
  */
 data class Semester(
     //学年起始(2020)
-    var year: String,
+    var year: String = "",
     //学期(1/2)
-    var term: String,
+    var term: String = "",
     //显示字符串
-    var str: String,
-    @PrimaryKey(autoGenerate = true)
-    var uid: Int = 0
+    var str: String = ""
 )

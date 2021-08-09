@@ -10,29 +10,29 @@ import com.squareup.moshi.Json
 @TypeConverters(ListCoverter::class)
 data class Course(
     //课程ID
-    var courseId: String,
+    var courseId: String = "",
     //课程名
-    var courseName: String,
+    var courseName: String = "",
     //教师名
-    var teachersName: String,
+    var teachersName: String = "",
     //校区
-    var campus: String,
+    var campus: String = "",
     //教室位置
-    var location: String,
+    var location: String = "",
     //包含周次列表
-    var weeks: List<Int>,
+    var weeks: List<Int> = listOf(),
     //星期几
-    var day: Int,
+    var day: Int = 0,
     //课程开始节次，1为起始位
-    var start: Int,
+    var start: Int = 0,
     //课程持续节次
-    var length: Int,
+    var length: Int = 0,
     //学时组成
-    var hoursComposition: String,
+    var hoursComposition: String = "",
     //学分
-    var credit: String,
+    var credit: String = "",
     //课程颜色
-    var color: String,
+    var color: String = "",
     @PrimaryKey(autoGenerate = true)
     var uid: Int = 0
 )

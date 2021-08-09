@@ -28,7 +28,17 @@
     <color name="c6">#CC4DB6AC</color>
     <color name="c7">#CCFFA726</color>
 
-    <integer-array name="customizedColors">
+    <array name="colors">
+        <item>#F44336</item>
+        <item>#E91E63</item>
+        <item>#3F51B5</item>
+        <item>#1E88E5</item>
+        <item>#F4511E</item>
+        <item>#546E7A</item>
+        <item>#43A047</item>
+    </array>
+
+    <array name="customizedColors">
         <item>@color/c1</item>
         <item>@color/c2</item>
         <item>@color/c3</item>
@@ -36,11 +46,19 @@
         <item>@color/c5</item>
         <item>@color/c6</item>
         <item>@color/c7</item>
-    </integer-array>
+    </array>
+
+    <color name="colorPrimary">#0091FF</color>
+    <color name="colorPrimaryDark">#0091FF</color>
+    <color name="colorPrimaryLight">#59536DFE</color>
+    <color name="colorAccent">#448AFF</color>
 
     <color name="colorCirclebg">#100000ff</color>
     <color name="colorEnd">#F212C6</color>
     <color name="colorStart">#1212F6</color>
 
     <color name="choose_tag">#4A536DFE</color>
+
+    <color name="white_transparent">#D6FFFFFF</color>
+    <color name="background_gray">#DFF5F2F2</color>
 </resources>

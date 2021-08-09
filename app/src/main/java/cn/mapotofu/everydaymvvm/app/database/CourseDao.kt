@@ -12,17 +12,26 @@ abstract class CourseDao {
     @Query("SELECT * from course_table")
     abstract fun getCourse(): MutableList<Course>
 
+    @Query("SELECT * from course_table where uid = :uid")
+    abstract fun getCourse(uid: Int): Course
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     abstract suspend fun insert(course: Course)
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     abstract suspend fun insert(courseList: MutableList<Course>)
 
+    @Update
+    abstract fun update(courses: Course)
+
     @Query("DELETE FROM course_table")
     abstract suspend fun deleteAll()
 
     @Delete
     abstract suspend fun delete(course: Course)
+
+    @Query("delete from course_table where uid = :uid")
+    abstract fun delete(uid: Int)
 
     @Query("select count(*) from course_table")
     abstract suspend fun courseCount(): Int

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_top_radius_white"
+    android:paddingBottom="@dimen/dp50">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.93430656" />
+
+    <TextView
+        android:id="@+id/courseName"
+        style="@style/textview_title_style"
+        android:layout_width="@dimen/dp280"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="48dp"
+        android:text="课程名称"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/courseCampus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="校区"
+        android:textSize="@dimen/t17"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/courseName"
+        app:layout_constraintTop_toBottomOf="@+id/courseName" />
+
+    <TextView
+        android:id="@+id/coursePosition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="10dp"
+        android:text="教室位置"
+        android:textSize="@dimen/t17"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/courseCampus"
+        app:layout_constraintTop_toBottomOf="@+id/courseName" />
+
+    <ImageButton
+        android:id="@+id/courseEdit"
+        android:layout_width="@dimen/dp25"
+        android:layout_height="@dimen/dp25"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_edit_24dp"
+        android:tooltipText="修改课程"
+        app:layout_constraintBottom_toBottomOf="@+id/courseName"
+        app:layout_constraintEnd_toStartOf="@+id/guideline1"
+        app:layout_constraintTop_toTopOf="@+id/courseName"
+        app:tint="@android:color/holo_purple" />
+
+    <TextView
+        android:id="@+id/courseClassDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@color/colorPrimary"
+        android:padding="@dimen/dp5"
+        android:text="周几"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="@+id/courseCampus"
+        app:layout_constraintTop_toBottomOf="@+id/courseCampus" />
+
+    <TextView
+        android:id="@+id/courseSession"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:background="@color/colorAccent"
+        android:padding="@dimen/dp5"
+        android:text="第几节-第几节"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/courseClassDay"
+        app:layout_constraintStart_toEndOf="@+id/courseClassDay"
+        app:layout_constraintTop_toTopOf="@+id/courseClassDay"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <LinearLayout
+        android:id="@+id/linearlayout1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp50"
+        android:orientation="horizontal"
+        android:tooltipText="教师"
+        app:layout_constraintStart_toStartOf="@+id/courseClassDay"
+        app:layout_constraintTop_toBottomOf="@+id/courseClassDay"
+        app:layout_constraintEnd_toStartOf="@+id/guideline1"
+        app:layout_constraintVertical_bias="0.555">
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="@dimen/dp25"
+            android:layout_height="@dimen/dp25"
+            android:src="@drawable/ic_teacher_24dp"
+            app:tint="@android:color/holo_orange_dark" />
+
+        <TextView
+            android:id="@+id/courseTeacher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="教师"
+            android:textSize="@dimen/t17"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayout2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp40"
+        android:orientation="horizontal"
+        android:tooltipText="学时"
+        app:layout_constraintStart_toStartOf="@+id/linearlayout1"
+        app:layout_constraintTop_toBottomOf="@+id/linearlayout1"
+        app:layout_constraintEnd_toStartOf="@+id/guideline1"
+        app:layout_constraintVertical_bias="0.555">
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="@dimen/dp25"
+            android:layout_height="@dimen/dp25"
+            android:src="@drawable/ic_time_24dp"
+            app:tint="@android:color/holo_green_dark" />
+
+        <TextView
+            android:id="@+id/courseHours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="学时"
+            android:textSize="@dimen/t17"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayout3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp40"
+        android:orientation="horizontal"
+        android:tooltipText="学分"
+        app:layout_constraintStart_toStartOf="@+id/linearlayout2"
+        app:layout_constraintTop_toBottomOf="@+id/linearlayout2"
+        app:layout_constraintEnd_toStartOf="@+id/guideline1"
+        app:layout_constraintVertical_bias="0.555">
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="@dimen/dp25"
+            android:layout_height="@dimen/dp25"
+            android:src="@drawable/ic_score_24dp"
+            app:tint="@android:color/holo_blue_dark" />
+
+        <TextView
+            android:id="@+id/courseScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="学分"
+            android:textSize="@dimen/t17"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayout4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp40"
+        android:orientation="horizontal"
+        android:tooltipText="周次"
+        app:layout_constraintStart_toStartOf="@+id/linearlayout3"
+        app:layout_constraintTop_toBottomOf="@+id/linearlayout3"
+        app:layout_constraintEnd_toStartOf="@+id/guideline1"
+        app:layout_constraintVertical_bias="0.555">
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="@dimen/dp25"
+            android:layout_height="@dimen/dp25"
+            android:src="@drawable/ic_week_24dp"
+            app:tint="@android:color/holo_red_dark" />
+
+        <TextView
+            android:id="@+id/courseWeeks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="周次信息"
+            android:textSize="@dimen/t17"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

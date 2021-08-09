@@ -11,6 +11,9 @@ object Constants {
     const val URL_LOCAL_API_SERVER = "http://192.168.50.173:8000/"
     const val CLIENT_TYPE = 1
     const val MAX_WEEK = 24
+    const val MAX_SESSION = 12
+
+    const val NEXT_DAY_STATUS = "NEXT_DAY_STATUS_"
     val COLOR_1 = arrayOf(
         "#A992FE",
         "#FDDF4E",

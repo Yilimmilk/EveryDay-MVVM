@@ -52,7 +52,7 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
                 CacheUtil.setStuInfo(stuInfo)
                 CacheUtil.setIsLogin(true)
                 appViewModel.studentInfo.value = stuInfo
-                nav().navigateAction(R.id.action_loginFragment_to_loadFragment)
+                nav().navigateAction(R.id.action_loginFragment_to_loadScheduleFragment)
             }, {
                 mViewModel.requestInProgress.postValue(false)
                 CacheUtil.setIsLogin(false)

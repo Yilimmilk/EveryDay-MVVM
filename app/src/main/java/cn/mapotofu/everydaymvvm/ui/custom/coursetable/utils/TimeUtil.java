@@ -19,8 +19,8 @@ public class TimeUtil {
      * 当前周几？
      */
     public static int getWeekDay() {
-        int w = Calendar.getInstance().get(Calendar.DAY_OF_WEEK) - 1;
-        return w <= 0 ? 7 : w;
+        int w = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
+        return w;
     }
 
     /**

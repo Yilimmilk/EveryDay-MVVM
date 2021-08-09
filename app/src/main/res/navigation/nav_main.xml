@@ -30,14 +30,21 @@
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login">
         <action
-            android:id="@+id/action_loginFragment_to_loadFragment"
-            app:destination="@id/loadFragment" />
+            android:id="@+id/action_loginFragment_to_loadScheduleFragment"
+            app:destination="@id/loadScheduleFragment" />
     </fragment>
     <fragment
         android:id="@+id/scheduleFragment"
         android:name="cn.mapotofu.everydaymvvm.ui.fragment.schedule.ScheduleFragment"
         android:label="CourseTableFragment"
-        tools:layout="@layout/fragment_schedule" />
+        tools:layout="@layout/fragment_schedule" >
+        <action
+            android:id="@+id/action_scheduleFragment_to_loadScheduleFragment"
+            app:destination="@id/loadScheduleFragment" />
+        <action
+            android:id="@+id/action_scheduleFragment_to_addCourseFragment"
+            app:destination="@id/addCourseFragment" />
+    </fragment>
 
     <action
         android:id="@+id/action_to_loginFragment"
@@ -48,16 +55,22 @@
         app:popExitAnim="@anim/pop_exit_anim" />
 
     <fragment
-        android:id="@+id/loadFragment"
-        android:name="cn.mapotofu.everydaymvvm.ui.fragment.load.LoadFragment"
-        android:label="LoadFragment"
-        tools:layout="@layout/fragment_load" >
+        android:id="@+id/loadScheduleFragment"
+        android:name="cn.mapotofu.everydaymvvm.ui.fragment.load_schedule.LoadScheduleFragment"
+        android:label="LoadScheduleFragment"
+        tools:layout="@layout/fragment_load_schedule" >
         <action
-            android:id="@+id/action_loadFragment_to_scheduleFragment"
+            android:id="@+id/action_loadScheduleFragment_to_scheduleFragment"
             app:destination="@id/scheduleFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/pop_enter_anim"
             app:popExitAnim="@anim/pop_exit_anim" />
     </fragment>
+
+    <fragment
+        android:id="@+id/addCourseFragment"
+        android:name="cn.mapotofu.everydaymvvm.ui.fragment.add_course.AddCourseFragment"
+        android:label="AddCourseFragment"
+        tools:layout="@layout/fragment_add_course" />
 </navigation>

@@ -12,13 +12,13 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "timetable")
 data class TimeTable(
-    val campus: String,
+    val campus: String = "",
     //第几节
-    val sessionNum: Int,
+    val sessionNum: Int = 0,
     //起始时间
-    val startTime: String,
+    val startTime: String = "",
     //结束时间
-    val endTime: String,
+    val endTime: String = "",
     @PrimaryKey(autoGenerate = true)
     val uid: Int = 0
 )

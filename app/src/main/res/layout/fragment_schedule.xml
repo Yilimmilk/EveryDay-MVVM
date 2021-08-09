@@ -20,7 +20,7 @@
             android:layout_height="43dp"
             android:background="?android:attr/selectableItemBackgroundBorderless"
             android:paddingEnd="20dp"
-            android:src="@drawable/ic_menu"
+            android:src="@drawable/ic_menu_32dp"
             app:layout_constraintBottom_toBottomOf="@+id/textviewCurrentDate"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textviewCurrentDate" />
@@ -46,36 +46,38 @@
             app:layout_constraintStart_toEndOf="@+id/drawerButton"
             app:layout_constraintTop_toBottomOf="@+id/textviewCurrentDate" />
 
-        <ImageButton
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/addCourseButton"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginEnd="12dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_add_24dp"
+            android:tooltipText="添加课程"
+            app:layout_constraintEnd_toStartOf="@+id/refreshButton"
+            app:layout_constraintTop_toTopOf="@+id/textviewCurrentDate" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/refreshButton"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_marginEnd="12dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_reload"
+            android:src="@drawable/ic_reload_24dp"
             android:tooltipText="刷新课程"
-            app:layout_constraintEnd_toStartOf="@+id/semesterSpinner"
+            app:layout_constraintEnd_toStartOf="@+id/semesterButton"
             app:layout_constraintTop_toTopOf="@+id/textviewCurrentDate" />
 
-        <Spinner
-            android:id="@+id/semesterSpinner"
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/semesterButton"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_marginEnd="12dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:spinnerMode="dialog"
+            android:src="@drawable/ic_semester_24dp"
+            android:tooltipText="选择学期"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/refreshButton" />
-
-        <!--        <ImageButton-->
-        <!--            android:id="@+id/imageView14"-->
-        <!--            android:layout_width="28dp"-->
-        <!--            android:layout_height="28dp"-->
-        <!--            android:layout_marginEnd="16dp"-->
-        <!--            android:background="?attr/selectableItemBackgroundBorderless"-->
-        <!--            android:src="@drawable/ic_settings"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintTop_toTopOf="@+id/textView8" />-->
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline1"

@@ -19,11 +19,14 @@ import cn.mapotofu.everydaymvvm.app.base.BaseActivity
 import cn.mapotofu.everydaymvvm.app.util.StatusBarUtil
 import cn.mapotofu.everydaymvvm.databinding.ActivityMainBinding
 import cn.mapotofu.everydaymvvm.viewmodel.state.MainViewModel
+import com.blankj.utilcode.util.SnackbarUtils
 import com.blankj.utilcode.util.ToastUtils
+import kotlinx.android.synthetic.main.activity_main.*
 import me.hgj.jetpackmvvm.network.manager.NetState
 
 class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
 
+    var exitTime = 0L
     override fun layoutId() = R.layout.activity_main
 
     override fun initView(savedInstanceState: Bundle?) {
@@ -31,7 +34,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
         val navController = Navigation.findNavController(this@MainActivity, R.id.nav_frag)
         //控制侧滑抽屉是否显示
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.splashFragment ||destination.id == R.id.loginFragment) {
+            if (destination.id == R.id.splashFragment || destination.id == R.id.loginFragment) {
                 mDatabind.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
             } else {
                 mDatabind.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
@@ -44,6 +47,26 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
         setStatusBarTrans()
         //设置侧滑抽屉图标彩色
         mDatabind.navView.itemIconTintList = null
+        //返回键监听
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (navController.currentDestination!!.id == R.id.splashFragment ||
+                    navController.currentDestination!!.id == R.id.loginFragment ||
+                    navController.currentDestination!!.id == R.id.loadScheduleFragment ||
+                    navController.currentDestination!!.id == R.id.scheduleFragment) {
+                    //是根页面
+                    if (System.currentTimeMillis() - exitTime > 2000) {
+                        SnackbarUtils.with(rootView).setMessage("再按一次以退出程序～").show()
+                        exitTime = System.currentTimeMillis()
+                    } else {
+                        finish()
+                    }
+                } else {
+                    //不是根页面
+                    navController.navigateUp()
+                }
+            }
+        })
     }
 
     override fun createObserver() {
