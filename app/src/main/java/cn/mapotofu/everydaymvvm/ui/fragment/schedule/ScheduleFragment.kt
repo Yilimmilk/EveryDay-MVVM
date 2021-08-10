@@ -1,11 +1,14 @@
 package cn.mapotofu.everydaymvvm.ui.fragment.schedule
 
 import android.annotation.SuppressLint
+import android.content.res.Configuration
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
+import android.util.TypedValue
 import android.view.*
 import android.widget.*
+import androidx.annotation.AttrRes
+import androidx.annotation.ColorInt
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.viewModels
@@ -27,11 +30,11 @@ import cn.mapotofu.everydaymvvm.ui.custom.coursetable.utils.Drawables
 import cn.mapotofu.everydaymvvm.ui.custom.helper.ZoomOutPageTransformer
 import cn.mapotofu.everydaymvvm.viewmodel.request.RequestScheduleViewModel
 import cn.mapotofu.everydaymvvm.viewmodel.state.ScheduleViewModel
-import com.tencent.bugly.crashreport.CrashReport
 import kotlinx.android.synthetic.main.fragment_schedule.*
 import me.hgj.jetpackmvvm.ext.nav
 import me.hgj.jetpackmvvm.ext.navigateAction
 import me.hgj.jetpackmvvm.ext.parseState
+
 
 /**
  * @description
@@ -50,12 +53,16 @@ class ScheduleFragment : BaseFragment<ScheduleViewModel, FragmentScheduleBinding
     private lateinit var bTimeTable: BTimeTable
     private lateinit var termStartDate: String
     private var currentWeek: Int = 0
+    private var isDarkMode: Int = 0
 
     override fun layoutId(): Int = R.layout.fragment_schedule
 
     override fun initView(savedInstanceState: Bundle?) {
         addLoadingObserve(requestScheduleViewModel)
         mDatabind.viewmodel = mViewModel
+
+        //获取当前UI模式
+        isDarkMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
 
         //初始化数据
         courseList = mViewModel.getCourseFromRoom()
@@ -71,7 +78,12 @@ class ScheduleFragment : BaseFragment<ScheduleViewModel, FragmentScheduleBinding
             this,
             bTimeTable,
             termStartDate,
-            currentWeek
+            currentWeek,
+            when (isDarkMode) {
+                Configuration.UI_MODE_NIGHT_NO, Configuration.UI_MODE_NIGHT_UNDEFINED -> false
+                Configuration.UI_MODE_NIGHT_YES -> true
+                else -> false
+            }
         )
         mDatabind.viewpagerSchedule.adapter = scheduleViewPagerAdapter
         mDatabind.viewpagerSchedule.offscreenPageLimit = 1
@@ -202,6 +214,16 @@ class ScheduleFragment : BaseFragment<ScheduleViewModel, FragmentScheduleBinding
         requestScheduleViewModel.semesterReq(stuId)
         showLoading("正在请求学期表，等一下咯...")
     }
+
+//    @ColorInt
+//    fun getColorFromAttr(
+//        @AttrRes attrColor: Int,
+//        typedValue: TypedValue = TypedValue(),
+//        resolveRefs: Boolean = true
+//    ): Int {
+//        requireContext().theme.resolveAttribute(attrColor, typedValue, resolveRefs)
+//        return typedValue.data
+//    }
 
     override fun onResume() {
         super.onResume()

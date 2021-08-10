@@ -3,6 +3,5 @@
     android:id="@+id/view_base_btm_dialog_ui"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/shape_top_radius_white"
     android:orientation="vertical"
     android:paddingBottom="@dimen/dp16" />

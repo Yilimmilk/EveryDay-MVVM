@@ -1,25 +1,24 @@
 package cn.mapotofu.everydaymvvm.ui.adapter
 
-import android.app.Activity
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.RecyclerView
 import cn.mapotofu.everydaymvvm.R
 import cn.mapotofu.everydaymvvm.app.App
-import cn.mapotofu.everydaymvvm.app.base.BaseFragment
-import cn.mapotofu.everydaymvvm.app.util.DataMapsUtil
 import cn.mapotofu.everydaymvvm.app.util.UisUtil
 import cn.mapotofu.everydaymvvm.data.model.entity.Course
-import cn.mapotofu.everydaymvvm.ui.custom.coursedialog.CourseDialog
+import cn.mapotofu.everydaymvvm.ui.custom.courseinfo.COURSE_UID
+import cn.mapotofu.everydaymvvm.ui.custom.courseinfo.CourseInfoPanel
 import cn.mapotofu.everydaymvvm.ui.custom.coursetable.entity.BCourse
 import cn.mapotofu.everydaymvvm.ui.custom.coursetable.entity.BTimeTable
 import cn.mapotofu.everydaymvvm.ui.custom.coursetable.interfaces.OnClickCourseItemListener
 import cn.mapotofu.everydaymvvm.ui.custom.coursetable.view.CourseTableView
 import cn.mapotofu.everydaymvvm.ui.custom.coursetable.view.DataConfig
 import cn.mapotofu.everydaymvvm.ui.custom.coursetable.view.UIConfig
-import me.hgj.jetpackmvvm.base.appContext
 
 /**
  * @description
@@ -40,6 +39,8 @@ class ScheduleViewPagerAdapter(
     private val termStartDate: String,
     //当前周
     week: Int,
+    //是否暗黑模式
+    private val isDarkMode: Boolean,
 ) : RecyclerView.Adapter<ViewPagerViewHolder>() {
     private var currentWeek = week
     private val uiConfig = UIConfig()
@@ -55,7 +56,7 @@ class ScheduleViewPagerAdapter(
         uiConfig.isShowNotCurWeekCourse = false
         uiConfig.sectionHeight = UisUtil.dip2px(App.context, 60F)
         uiConfig.chooseWeekColor = App.context.resources.getColor(R.color.colorPrimary)
-        uiConfig.colorUI = UIConfig.DARK
+        if (isDarkMode) uiConfig.colorUI = UIConfig.LIGHT else uiConfig.colorUI = UIConfig.DARK
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewPagerViewHolder {
@@ -74,11 +75,14 @@ class ScheduleViewPagerAdapter(
         holder.courseTableView.update(uiConfig, dataConfig)
         holder.courseTableView.setmClickCourseItemListener { view: View?, list: List<BCourse?>?, itemPosition: Int, isThisWeek: Boolean ->
             val course: Course = courseList[itemPosition]
-            CourseDialog.showCourseInfoDialog(
-                fragment,
-                course,
-                10
-            )
+            val bundle = Bundle()
+            bundle.putInt(COURSE_UID, course.uid)
+            CourseInfoPanel().courseInfo(
+                course = course,
+                listener = { v ->
+                    NavHostFragment.findNavController(fragment).navigate(R.id.action_scheduleFragment_to_addCourseFragment, bundle)
+                })
+                .show(fragment.parentFragmentManager)
         }
         holder.courseTableView.longClickCourseItemListener = OnClickCourseItemListener { view: View, list: List<BCourse>, itemPosition: Int, isThisWeek: Boolean ->
 

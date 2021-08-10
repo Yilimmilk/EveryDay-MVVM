@@ -15,29 +15,14 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.view_btm_color_picker.*
 
 /**
- * 原作者:Sasikanth Miriyampalli
- * 原项目地址：https://github.com/msasikanth/ColorSheet
- * 原开源协议：Apache-2.0 License
- * 修改：Yili
+ * 参考项目地址：https://github.com/msasikanth/ColorSheet
  */
 
-/**
- * Listener for color picker
- *
- * returns color selected from the sheet. If noColorOption is enabled and user selects the option,
- * it will return [ColorSheet.NO_COLOR]
- */
 typealias ColorPickerListener = ((color: Int) -> Unit)?
 
-@Suppress("unused")
 class ColorPicker : BottomSheetDialogFragment() {
 
-    companion object {
-        private const val TAG = "ColorSheet"
-        const val NO_COLOR = -1
-    }
-
-    private var sheetCorners: Float = 4F
+    private var viewCorners: Float = 4F
     private var colorAdapter: ColorAdapter? = null
 
     override fun onCreateView(
@@ -73,13 +58,12 @@ class ColorPicker : BottomSheetDialogFragment() {
         })
 
         val gradientDrawable = GradientDrawable().apply {
-            cornerRadii =
-                floatArrayOf(sheetCorners, sheetCorners, sheetCorners, sheetCorners, 0f, 0f, 0f, 0f)
+            cornerRadii = floatArrayOf(viewCorners, viewCorners, viewCorners, viewCorners, 0f, 0f, 0f, 0f)
         }
         view.background = gradientDrawable
 
         if (colorAdapter != null) {
-            colorSheetList.adapter = colorAdapter
+            colorPickerList.adapter = colorAdapter
         }
     }
 
@@ -88,48 +72,16 @@ class ColorPicker : BottomSheetDialogFragment() {
         colorAdapter = null
     }
 
-    /**
-     * Set corner radius of sheet top left and right corners.
-     *
-     * @param radius: Takes a float value
-     */
-    fun cornerRadius(radius: Float): ColorPicker {
-        this.sheetCorners = radius
-        return this
-    }
-
-    /**
-     * Set corner radius of sheet top left and right corners.
-     *
-     * @param radius: Takes a float value
-     */
-    fun cornerRadius(radius: Int): ColorPicker {
-        return cornerRadius(radius.toFloat())
-    }
-
-    /**
-     * Config color picker
-     *
-     * @param colors: Array of colors to show in color picker
-     * @param selectedColor: Pass in the selected color from colors list, default value is null. You can pass [ColorSheet.NO_COLOR]
-     * to select noColorOption in the sheet.
-     * @param noColorOption: Gives a option to set the [selectedColor] to [NO_COLOR]
-     * @param listener: [ColorPickerListener]
-     */
     fun colorPicker(
         colors: IntArray,
         @ColorInt selectedColor: Int? = null,
-        noColorOption: Boolean = false,
         listener: ColorPickerListener
     ): ColorPicker {
-        colorAdapter = ColorAdapter(this, colors, selectedColor, noColorOption, listener)
+        colorAdapter = ColorAdapter(this, colors, selectedColor, listener)
         return this
     }
 
-    /**
-     * Shows color sheet
-     */
     fun show(fragmentManager: FragmentManager) {
-        this.show(fragmentManager, TAG)
+        this.show(fragmentManager, "ColorPicker")
     }
 }

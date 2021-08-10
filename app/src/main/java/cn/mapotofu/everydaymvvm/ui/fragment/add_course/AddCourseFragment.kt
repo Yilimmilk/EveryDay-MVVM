@@ -13,8 +13,8 @@ import cn.mapotofu.everydaymvvm.app.ext.showMessage
 import cn.mapotofu.everydaymvvm.data.model.entity.Course
 import cn.mapotofu.everydaymvvm.databinding.FragmentAddCourseBinding
 import cn.mapotofu.everydaymvvm.ui.custom.colorpicker.ColorPicker
-import cn.mapotofu.everydaymvvm.ui.custom.coursedialog.CourseDialog
-import cn.mapotofu.everydaymvvm.ui.custom.timeplandialog.TimePlanDialog
+import cn.mapotofu.everydaymvvm.ui.custom.courseinfo.COURSE_UID
+import cn.mapotofu.everydaymvvm.ui.custom.timeplan.TimePlanPanel
 import cn.mapotofu.everydaymvvm.viewmodel.state.AddCourseViewModel
 import com.blankj.utilcode.util.SnackbarUtils
 import kotlinx.android.synthetic.main.activity_main.*
@@ -33,13 +33,6 @@ class AddCourseFragment : BaseFragment<AddCourseViewModel, FragmentAddCourseBind
     private var isNewCourse: Boolean = true
     private val totalWeek: Int = Constants.MAX_WEEK
     private val totalSession: Int = Constants.MAX_SESSION
-    //回调函数，用于接收TimePlanDialog中设置的值
-    private var timePlanCallBack = object : TimePlanCallBack{
-        override fun callBack(result: Course){
-            this@AddCourseFragment.course = result
-            mViewModel.timePlanText.postValue("*周次：${course.weeks}\n*星期几：${course.day}\n*节次：${course.start}-${course.start + course.length - 1}")
-        }
-    }
 
     override fun layoutId() = R.layout.fragment_add_course
 
@@ -49,7 +42,7 @@ class AddCourseFragment : BaseFragment<AddCourseViewModel, FragmentAddCourseBind
         if (arguments != null) {
             //如果有附加数据
             isNewCourse = false
-            courseUid = requireArguments().getInt(CourseDialog.COURSE_UID, 0)
+            courseUid = requireArguments().getInt(COURSE_UID, 0)
             course = mViewModel.getCourse(courseUid)
             initCourseUi(course, courseUid)
         } else {
@@ -64,21 +57,30 @@ class AddCourseFragment : BaseFragment<AddCourseViewModel, FragmentAddCourseBind
         mViewModel.courseIdText.postValue(course.courseId)
         mViewModel.colorText.postValue(course.color)
         mDatabind.contentBlockColor.setBackgroundColor(parseColor(course.color))
-        //按钮监听部分
+        //颜色选择器
         mDatabind.buttonColorSelector.setOnClickListener {
             ColorPicker().colorPicker(
-                colors = resources.getIntArray(R.array.colors),
+                resources.getIntArray(R.array.colorPickerPanelColors),
                 listener = { color ->
                     val hexColorStr = String.format("#%06X", 0xFFFFFF and color)
                     course.color = hexColorStr
                     mViewModel.colorText.postValue(hexColorStr)
                     mDatabind.contentBlockColor.setBackgroundColor(color)
-                })
-                .show(requireActivity().supportFragmentManager)
+                }).show(requireActivity().supportFragmentManager)
         }
+        //时间计划选择器
         mDatabind.buttonTimePlan.setOnClickListener {
-            TimePlanDialog.showTimePlanDialog(requireContext(),course,totalWeek,totalSession,isNewCourse,timePlanCallBack)
+            TimePlanPanel().timePlan(
+                course,
+                totalWeek,
+                totalSession,
+                isNewCourse,
+                listener = {course ->
+                    this@AddCourseFragment.course = course
+                    mViewModel.timePlanText.postValue("*周次：${course.weeks}\n*星期几：${course.day}\n*节次：${course.start}-${course.start + course.length - 1}")
+                }).show(requireActivity().supportFragmentManager)
         }
+        //保存课程
         mDatabind.saveCourse.setOnClickListener {
             hideSoftKeyboard(activity)
             //清除课程名错误提示

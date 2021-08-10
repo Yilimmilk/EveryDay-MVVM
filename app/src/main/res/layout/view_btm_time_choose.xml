@@ -45,10 +45,11 @@
 
     <TextView
         android:id="@+id/dialog_title"
-        style="@style/textview_title_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/choose_time"
+        android:textSize="@dimen/t22"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline37"
         app:layout_constraintStart_toStartOf="@+id/guideline18"
         app:layout_constraintTop_toTopOf="@+id/guideline20" />

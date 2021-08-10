@@ -1,8 +1,12 @@
 package cn.mapotofu.everydaymvvm.app.ext
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.text.TextUtils
+import android.util.TypedValue
+import androidx.annotation.AttrRes
+import androidx.annotation.ColorInt
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
@@ -172,4 +176,3 @@ inline fun <reified T> List<T>?.getChild(position: Int): T? {
         }
     }
 }
-

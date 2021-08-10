@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
         android:text="伊利牛奶"
-        android:textColor="@color/black"
+        android:textColor="?android:attr/textColorPrimary"
         android:textSize="22sp"
         android:textStyle="bold" />
 
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
         android:text="你能看到这行字说明我代码出错了，不过没啥影响，所以我也懒得改～"
-        android:textColor="@color/black"
+        android:textColor="?android:attr/textColorPrimary"
         android:textSize="14sp" />
 
 </LinearLayout>

@@ -21,6 +21,7 @@
             android:background="?android:attr/selectableItemBackgroundBorderless"
             android:paddingEnd="20dp"
             android:src="@drawable/ic_menu_32dp"
+            android:tint="?attr/colorControlNormal"
             app:layout_constraintBottom_toBottomOf="@+id/textviewCurrentDate"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textviewCurrentDate" />
@@ -33,6 +34,7 @@
             android:text="@{viewmodel.nowDate}"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:textColor="?android:attr/textColorPrimary"
             app:layout_constraintStart_toEndOf="@+id/drawerButton"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="2月20日" />
@@ -42,6 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{viewmodel.teachingWeekText}"
+            android:textColor="?android:attr/textColorPrimary"
             tools:text="第1教学周"
             app:layout_constraintStart_toEndOf="@+id/drawerButton"
             app:layout_constraintTop_toBottomOf="@+id/textviewCurrentDate" />
@@ -54,6 +57,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_add_24dp"
             android:tooltipText="添加课程"
+            android:tint="?attr/colorControlNormal"
             app:layout_constraintEnd_toStartOf="@+id/refreshButton"
             app:layout_constraintTop_toTopOf="@+id/textviewCurrentDate" />
 
@@ -65,6 +69,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_reload_24dp"
             android:tooltipText="刷新课程"
+            android:tint="?attr/colorControlNormal"
             app:layout_constraintEnd_toStartOf="@+id/semesterButton"
             app:layout_constraintTop_toTopOf="@+id/textviewCurrentDate" />
 
@@ -76,6 +81,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_semester_24dp"
             android:tooltipText="选择学期"
+            android:tint="?attr/colorControlNormal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/refreshButton" />
 

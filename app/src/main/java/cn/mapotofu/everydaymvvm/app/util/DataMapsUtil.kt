@@ -37,7 +37,7 @@ object DataMapsUtil {
                 it.includeSection.last() - it.includeSection.first() + 1,
                 it.hoursComposition,
                 it.credit,
-                Constants.COLOR_1[Random().nextInt(Constants.COLOR_1.size)]
+                Constants.COLOR_1[Random().nextInt(Constants.COLOR_1.size)],
             )
             courseList.add(course)
         }

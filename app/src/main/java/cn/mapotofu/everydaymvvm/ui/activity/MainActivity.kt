@@ -43,7 +43,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
         //设置侧滑抽屉导航控制
         mDatabind.navView.setupWithNavController(navController)
         //设置无ActionBar，设置状态栏透明
-        supportActionBar?.hide()
+        //supportActionBar?.hide()
         setStatusBarTrans()
         //设置侧滑抽屉图标彩色
         mDatabind.navView.itemIconTintList = null

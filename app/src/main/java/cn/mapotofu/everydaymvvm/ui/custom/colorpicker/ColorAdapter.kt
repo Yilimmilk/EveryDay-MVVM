@@ -14,7 +14,6 @@ internal class ColorAdapter(
     private val dialog: ColorPicker?,
     private var colors: IntArray,
     private val selectedColor: Int?,
-    private val noColorOption: Boolean,
     private val listener: ColorPickerListener
 ) : RecyclerView.Adapter<ColorAdapter.ColorItemViewHolder>() {
 
@@ -25,11 +24,7 @@ internal class ColorAdapter(
     }
 
     override fun getItemCount(): Int {
-        return if (noColorOption) {
-            colors.size + 1
-        } else {
-            colors.size
-        }
+        return  colors.size
     }
 
     override fun onBindViewHolder(holder: ColorItemViewHolder, position: Int) {
@@ -54,15 +49,7 @@ internal class ColorAdapter(
         }
 
         override fun onClick(v: View?) {
-            if (noColorOption) {
-                if (adapterPosition == 0) {
-                    listener?.invoke(ColorPicker.NO_COLOR)
-                } else {
-                    listener?.invoke(colors[adapterPosition - 1])
-                }
-            } else {
-                listener?.invoke(colors[adapterPosition])
-            }
+            listener?.invoke(colors[adapterPosition])
             dialog?.dismiss()
         }
     }

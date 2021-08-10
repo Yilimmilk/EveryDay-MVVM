@@ -24,8 +24,7 @@
         <activity
             android:name=".ui.activity.ErrorActivity"
             android:label="错误界面"
-            android:launchMode="singleTask"
-            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="cat.ereza.customactivityoncrash.RESTART" />
             </intent-filter>
