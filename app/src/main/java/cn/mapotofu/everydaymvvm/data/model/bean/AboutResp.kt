@@ -1,5 +1,6 @@
 package cn.mapotofu.everydaymvvm.data.model.bean
 
+import androidx.annotation.Keep
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 

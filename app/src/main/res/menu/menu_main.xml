@@ -3,18 +3,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
+    <!--有选中效果的菜单组-->
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/scheduleFragment"
             android:icon="@drawable/ic_schedule_32dp"
             android:title="课程表" />
-        <item
-            android:id="@+id/gradeFragment"
-            android:icon="@drawable/ic_grade_32dp"
-            android:title="课程成绩(还没做)" />
-        <item
-            android:id="@+id/pinfoFragment"
-            android:icon="@drawable/ic_person_info_32dp"
-            android:title="个人信息(也没做)" />
+<!--        <item-->
+<!--            android:id="@+id/gradeFragment"-->
+<!--            android:icon="@drawable/ic_grade_32dp"-->
+<!--            android:title="课程成绩(还没做)" />-->
+<!--        <item-->
+<!--            android:id="@+id/pinfoFragment"-->
+<!--            android:icon="@drawable/ic_personal_info_32dp"-->
+<!--            android:title="个人信息(也没做)" />-->
     </group>
+
+    <!--普通菜单组-->
+    <item android:title="其他">
+        <menu>
+            <item
+                android:id="@+id/settingsActivity"
+                android:icon="@drawable/ic_settings_32dp"
+                android:title="设置" />
+            <item
+                android:id="@+id/aboutActivity"
+                android:icon="@drawable/ic_about_32dp"
+                android:title="关于" />
+        </menu>
+    </item>
 </menu>

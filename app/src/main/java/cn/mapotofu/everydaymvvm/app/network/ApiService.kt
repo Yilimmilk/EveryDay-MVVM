@@ -62,4 +62,13 @@ interface ApiService {
     @GET("conf/get-timetable")
     suspend fun getTimeTable(): BaseResponse<TimeTableResp>
 
+    //客户端信息上报
+    @FormUrlEncoded
+    @POST("/client/client-report/")
+    suspend fun doClientReport(
+        @Field("stu_num") stuNumber: String,
+        @Field("cli_token") stuPassword: String,
+        @Field("client_type") clientType: Int,
+        @Field("client_version") clientVersion: String
+    ): BaseResponse<ClientReportResp>
 }

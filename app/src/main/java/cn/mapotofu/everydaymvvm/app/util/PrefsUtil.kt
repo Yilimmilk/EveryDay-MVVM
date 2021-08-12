@@ -1,38 +1,13 @@
 package cn.mapotofu.everydaymvvm.app.util
 
 import android.content.Context
+import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
-import cn.mapotofu.everydaymvvm.app.App
 
-object PrefsUtil {
-    val sharedPreferences: SharedPreferences = App.context.getSharedPreferences("everyday_data", Context.MODE_PRIVATE)
+fun Context.getPrefer(name: String = "config"): SharedPreferences = getSharedPreferences(name, MODE_PRIVATE)
 
-    /**
-     * 保存
-     * @param key 键
-     * @param value 值
-     * */
-    @JvmStatic
-    fun save(key: String, value: Any?) {
-        value ?: return
-        sharedPreferences.edit().apply {
-            when (value) {
-                is String -> putString(key, value)
-                is Int -> putInt(key, value)
-                is Boolean -> putBoolean(key, value)
-                is Float -> putFloat(key, value)
-                is Long -> putLong(key, value)
-            }
-            apply()
-        }
-    }
-
-    @JvmStatic
-    fun getString(key:String,defV:String = "") = sharedPreferences.getString(key,defV)
-    @JvmStatic
-    fun getInt(key: String,defV: Int) = sharedPreferences.getInt(key,defV)
-    @JvmStatic
-    fun getBoolean(key: String,defV: Boolean) = sharedPreferences.getBoolean(key,defV)
-    @JvmStatic
-    fun getLong(key: String,defV: Long) = sharedPreferences.getLong(key,defV)
+object Const {
+    const val KEY_CAMPUS = "campus"
+    const val KEY_USER_AGREEMENT = "user-agreement"
+    const val KEY_PRIVACY_POLICY = "privacy-policy"
 }

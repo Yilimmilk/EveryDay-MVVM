@@ -1,27 +1,24 @@
 package cn.mapotofu.everydaymvvm.ui.activity
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
+import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
+import android.util.Log
 import android.view.View
-import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import cn.mapotofu.everydaymvvm.R
 import cn.mapotofu.everydaymvvm.app.base.BaseActivity
-import cn.mapotofu.everydaymvvm.app.util.StatusBarUtil
 import cn.mapotofu.everydaymvvm.databinding.ActivityMainBinding
+import cn.mapotofu.everydaymvvm.ui.activity.settings.SettingsActivity
 import cn.mapotofu.everydaymvvm.viewmodel.state.MainViewModel
 import com.blankj.utilcode.util.SnackbarUtils
-import com.blankj.utilcode.util.ToastUtils
+import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.nav_drawer_title.view.*
 import me.hgj.jetpackmvvm.network.manager.NetState
 
 class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
@@ -34,17 +31,30 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
         val navController = Navigation.findNavController(this@MainActivity, R.id.nav_frag)
         //控制侧滑抽屉是否显示
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.splashFragment || destination.id == R.id.loginFragment) {
-                mDatabind.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-            } else {
-                mDatabind.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+            when (destination.id) {
+                R.id.splashFragment -> mDatabind.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+                R.id.loginFragment -> mDatabind.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+                else -> mDatabind.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
             }
         }
         //设置侧滑抽屉导航控制
         mDatabind.navView.setupWithNavController(navController)
-        //设置无ActionBar，设置状态栏透明
-        //supportActionBar?.hide()
-        setStatusBarTrans()
+        //自定义选项监听
+        mDatabind.navView.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.settingsActivity -> {
+                    mDatabind.drawerLayout.closeDrawer(GravityCompat.START)
+                    startActivity(Intent(this, SettingsActivity::class.java))
+                    true
+                }
+                R.id.aboutActivity -> {
+                    mDatabind.drawerLayout.closeDrawer(GravityCompat.START)
+                    startActivity(Intent(this, AboutActivity::class.java))
+                    true
+                }
+                else -> false
+            }
+        }
         //设置侧滑抽屉图标彩色
         mDatabind.navView.itemIconTintList = null
         //返回键监听
@@ -53,8 +63,10 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
                 if (navController.currentDestination!!.id == R.id.splashFragment ||
                     navController.currentDestination!!.id == R.id.loginFragment ||
                     navController.currentDestination!!.id == R.id.loadScheduleFragment ||
-                    navController.currentDestination!!.id == R.id.scheduleFragment) {
+                    navController.currentDestination!!.id == R.id.scheduleFragment
+                ) {
                     //是根页面
+                    Log.d("返回键监听", "是根页面")
                     if (System.currentTimeMillis() - exitTime > 2000) {
                         SnackbarUtils.with(rootView).setMessage("再按一次以退出程序～").show()
                         exitTime = System.currentTimeMillis()
@@ -63,6 +75,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
                     }
                 } else {
                     //不是根页面
+                    Log.d("返回键监听", "不是根页面")
                     navController.navigateUp()
                 }
             }
@@ -74,23 +87,14 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
     }
 
     /**
-     * 示例，在Activity/Fragment中如果想监听网络变化，可重写onNetworkStateChanged该方法
+     * 在Activity/Fragment中如果想监听网络变化，可重写onNetworkStateChanged该方法
      */
     override fun onNetworkStateChanged(netState: NetState) {
         super.onNetworkStateChanged(netState)
         if (netState.isSuccess) {
-            Toast.makeText(applicationContext, "我特么终于有网了啊!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "俺有网了！", Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(applicationContext, "我特么怎么断网了!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "断网了兄弟", Toast.LENGTH_SHORT).show()
         }
-    }
-
-    private fun setStatusBarTrans() {
-        //状态栏透明
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        window.statusBarColor = Color.TRANSPARENT
-        window.decorView.systemUiVisibility =
-            View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
     }
 }

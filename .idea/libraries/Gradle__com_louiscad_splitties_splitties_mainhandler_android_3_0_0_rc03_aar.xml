@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.louiscad.splitties:splitties-mainhandler-android:3.0.0-rc03@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/aee49ede3e656946bbd74abafcd44170/transformed/jetified-splitties-mainhandler-debug/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/aee49ede3e656946bbd74abafcd44170/transformed/jetified-splitties-mainhandler-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/aee49ede3e656946bbd74abafcd44170/transformed/jetified-splitties-mainhandler-debug/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-mainhandler-android/3.0.0-rc03/fa333a5b3f098af7ee9b2d30a7f7caaa280ed6af/splitties-mainhandler-android-3.0.0-rc03-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-mainhandler-android/3.0.0-rc03/bd67778b9b3b0927081f9fbc7996d7c214604b8b/splitties-mainhandler-android-3.0.0-rc03-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

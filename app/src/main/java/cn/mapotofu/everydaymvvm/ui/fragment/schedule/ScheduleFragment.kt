@@ -18,9 +18,7 @@ import cn.mapotofu.everydaymvvm.app.App
 import cn.mapotofu.everydaymvvm.app.Constants
 import cn.mapotofu.everydaymvvm.app.base.BaseFragment
 import cn.mapotofu.everydaymvvm.app.ext.showMessage
-import cn.mapotofu.everydaymvvm.app.util.CacheUtil
-import cn.mapotofu.everydaymvvm.app.util.DataMapsUtil
-import cn.mapotofu.everydaymvvm.app.util.UisUtil
+import cn.mapotofu.everydaymvvm.app.util.*
 import cn.mapotofu.everydaymvvm.data.model.entity.Course
 import cn.mapotofu.everydaymvvm.databinding.FragmentScheduleBinding
 import cn.mapotofu.everydaymvvm.ui.adapter.ScheduleViewPagerAdapter
@@ -67,8 +65,7 @@ class ScheduleFragment : BaseFragment<ScheduleViewModel, FragmentScheduleBinding
         //初始化数据
         courseList = mViewModel.getCourseFromRoom()
         bCourseList = DataMapsUtil.dataMappingCourseToBCourse(courseList)
-        bTimeTable =
-            DataMapsUtil.dataMappingTimeTableToBTimeTable(mViewModel.getTimeTableFromRoom())
+        bTimeTable = DataMapsUtil.dataMappingTimeTableToBTimeTable(mViewModel.getTimeTableFromRoom(App.context.getPrefer().getString(Const.KEY_CAMPUS,"jiayu")!!))
         termStartDate = mViewModel.termStartDate!!
         currentWeek = mViewModel.teachingWeekNum!!
 
@@ -205,7 +202,7 @@ class ScheduleFragment : BaseFragment<ScheduleViewModel, FragmentScheduleBinding
                 }
                 listPopupSemesterSelector.show()
             }, {
-                showMessage("请求失败，你要不再点一次试试？\n错误原因:$it")
+                showMessage("请求失败，你要不再点一次试试？\n状态码:${it.errCode}\n错误消息:${it.errorMsg}\n错误日志:${it.errorLog}","啊哈出错了")
             })
         })
     }

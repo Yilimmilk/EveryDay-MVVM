@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.louiscad.splitties:splitties-coroutines-jvm:3.0.0-rc03">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-coroutines-jvm/3.0.0-rc03/ce3358495b18f90400808385e2b9da2cdd78dd66/splitties-coroutines-jvm-3.0.0-rc03.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-coroutines-jvm/3.0.0-rc03/9ba6a23e6d5a2eb54f3aa43d352b7dce9bc87cf/splitties-coroutines-jvm-3.0.0-rc03-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-coroutines-jvm/3.0.0-rc03/80597471b5be29bfaac8aeba7031a3571df5a76/splitties-coroutines-jvm-3.0.0-rc03-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.louiscad.splitties:splitties-material-colors-android:3.0.0-rc03@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/52a7379e9c7c41a5fba1df29f974b00d/transformed/jetified-splitties-material-colors-debug/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/52a7379e9c7c41a5fba1df29f974b00d/transformed/jetified-splitties-material-colors-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/52a7379e9c7c41a5fba1df29f974b00d/transformed/jetified-splitties-material-colors-debug/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-material-colors-android/3.0.0-rc03/24a155ee8ba8f6a53c65e36355762a5241a3c378/splitties-material-colors-android-3.0.0-rc03-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-material-colors-android/3.0.0-rc03/24a155ee8ba8f6a53c65e36355762a5241a3c378/splitties-material-colors-android-3.0.0-rc03-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

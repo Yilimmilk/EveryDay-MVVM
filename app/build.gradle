@@ -10,8 +10,8 @@ android {
         applicationId "cn.mapotofu.everydaymvvm"
         minSdk 21
         targetSdk 30
-        versionCode 14
-        versionName "2.0.0"
+        versionCode 16
+        versionName "2.1.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         ndk.abiFilters 'armeabi-v7a','arm64-v8a','x86_64'
 
@@ -28,11 +28,12 @@ android {
 
     buildTypes {
         debug {
-            minifyEnabled false
+            minifyEnabled true
             debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         release {
-            minifyEnabled false
+            minifyEnabled true
             debuggable true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -130,6 +131,9 @@ dependencies {
     implementation 'me.jessyan:autosize:1.2.1'
     //防崩溃
     implementation 'cat.ereza:customactivityoncrash:2.3.0'
+    //Splitties基础库
+    implementation("com.louiscad.splitties:splitties-fun-pack-android-base:3.0.0-rc03")
+    implementation("com.louiscad.splitties:splitties-fun-pack-android-material-components:3.0.0-rc03")
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

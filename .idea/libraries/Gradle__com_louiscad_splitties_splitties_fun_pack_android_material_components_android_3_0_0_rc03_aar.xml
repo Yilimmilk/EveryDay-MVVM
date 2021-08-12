@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.louiscad.splitties:splitties-fun-pack-android-material-components-android:3.0.0-rc03@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/bd53d49bfa76134a3e3d62422d2f89df/transformed/jetified-splitties-fun-pack-android-material-components-debug/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/bd53d49bfa76134a3e3d62422d2f89df/transformed/jetified-splitties-fun-pack-android-material-components-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/bd53d49bfa76134a3e3d62422d2f89df/transformed/jetified-splitties-fun-pack-android-material-components-debug/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-fun-pack-android-material-components-android/3.0.0-rc03/7c29e8e7eafd5e4db447d0489e8b224f9a8c68c0/splitties-fun-pack-android-material-components-android-3.0.0-rc03-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-fun-pack-android-material-components-android/3.0.0-rc03/ee57f12e42b7268d1dff54a806541639e7efe798/splitties-fun-pack-android-material-components-android-3.0.0-rc03-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

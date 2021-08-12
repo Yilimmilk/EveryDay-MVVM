@@ -1,4 +1,4 @@
-package cn.mapotofu.everydaymvvm.ui.custom.colorpicker
+package cn.mapotofu.everydaymvvm.ui.adapter
 
 import android.content.res.ColorStateList
 import android.view.LayoutInflater
@@ -8,14 +8,16 @@ import androidx.annotation.ColorInt
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import cn.mapotofu.everydaymvvm.R
+import cn.mapotofu.everydaymvvm.ui.custom.colorpicker.ColorPicker
+import cn.mapotofu.everydaymvvm.ui.custom.colorpicker.ColorPickerListener
 import kotlinx.android.synthetic.main.item_color_picker.view.*
 
-internal class ColorAdapter(
+internal class ColorPickerAdapter(
     private val dialog: ColorPicker?,
     private var colors: IntArray,
     private val selectedColor: Int?,
     private val listener: ColorPickerListener
-) : RecyclerView.Adapter<ColorAdapter.ColorItemViewHolder>() {
+) : RecyclerView.Adapter<ColorPickerAdapter.ColorItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ColorItemViewHolder {
         val inflater = LayoutInflater.from(parent.context)

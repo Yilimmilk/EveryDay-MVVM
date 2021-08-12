@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.louiscad.splitties:splitties-views-coroutines-material-android:3.0.0-rc03@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/6d37da83aaf774b382aae687accf6893/transformed/jetified-splitties-views-coroutines-material-debug/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/6d37da83aaf774b382aae687accf6893/transformed/jetified-splitties-views-coroutines-material-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/6d37da83aaf774b382aae687accf6893/transformed/jetified-splitties-views-coroutines-material-debug/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-views-coroutines-material-android/3.0.0-rc03/d56980d1de62cbe0dd15072916c3a5f475fd801a/splitties-views-coroutines-material-android-3.0.0-rc03-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-views-coroutines-material-android/3.0.0-rc03/2483202b1e052dbc4e7d2788300139c60346c5f/splitties-views-coroutines-material-android-3.0.0-rc03-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

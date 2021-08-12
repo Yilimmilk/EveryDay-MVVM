@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.louiscad.splitties:splitties-experimental-jvm:3.0.0-rc03">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-experimental-jvm/3.0.0-rc03/84eb6750979be566f6c9738f0f19ec9b3073cec2/splitties-experimental-jvm-3.0.0-rc03.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-experimental-jvm/3.0.0-rc03/ddce3280f2b46090be4a67fca19983b4695c95eb/splitties-experimental-jvm-3.0.0-rc03-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-experimental-jvm/3.0.0-rc03/e76b43cee7bff790a6e8e9388d78f42b91a5e6b/splitties-experimental-jvm-3.0.0-rc03-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

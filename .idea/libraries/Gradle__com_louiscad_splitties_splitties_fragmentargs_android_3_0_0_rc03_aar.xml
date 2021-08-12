@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.louiscad.splitties:splitties-fragmentargs-android:3.0.0-rc03@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/d37501f00901d938ac306d2ba627964b/transformed/jetified-splitties-fragmentargs-debug/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d37501f00901d938ac306d2ba627964b/transformed/jetified-splitties-fragmentargs-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d37501f00901d938ac306d2ba627964b/transformed/jetified-splitties-fragmentargs-debug/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-fragmentargs-android/3.0.0-rc03/d8d9ee58b72525cc107857c5c3f46973558916ac/splitties-fragmentargs-android-3.0.0-rc03-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-fragmentargs-android/3.0.0-rc03/2b7c5b3306802d7035edd35f1e02694af27bc8c0/splitties-fragmentargs-android-3.0.0-rc03-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -9,6 +9,7 @@ import android.view.ViewTreeObserver
 import androidx.annotation.ColorInt
 import androidx.fragment.app.FragmentManager
 import cn.mapotofu.everydaymvvm.R
+import cn.mapotofu.everydaymvvm.ui.adapter.ColorPickerAdapter
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -23,7 +24,7 @@ typealias ColorPickerListener = ((color: Int) -> Unit)?
 class ColorPicker : BottomSheetDialogFragment() {
 
     private var viewCorners: Float = 4F
-    private var colorAdapter: ColorAdapter? = null
+    private var colorPickerAdapter: ColorPickerAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -62,14 +63,14 @@ class ColorPicker : BottomSheetDialogFragment() {
         }
         view.background = gradientDrawable
 
-        if (colorAdapter != null) {
-            colorPickerList.adapter = colorAdapter
+        if (colorPickerAdapter != null) {
+            colorPickerList.adapter = colorPickerAdapter
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        colorAdapter = null
+        colorPickerAdapter = null
     }
 
     fun colorPicker(
@@ -77,7 +78,7 @@ class ColorPicker : BottomSheetDialogFragment() {
         @ColorInt selectedColor: Int? = null,
         listener: ColorPickerListener
     ): ColorPicker {
-        colorAdapter = ColorAdapter(this, colors, selectedColor, listener)
+        colorPickerAdapter = ColorPickerAdapter(this, colors, selectedColor, listener)
         return this
     }
 

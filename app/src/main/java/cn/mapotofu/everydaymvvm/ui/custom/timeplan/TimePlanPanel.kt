@@ -200,13 +200,13 @@ class TimePlanPanel : BottomSheetDialogFragment() {
             course.day = dayPicker.value + 1
             val r1 = session[sessionStartPicker.value]
             val r2 = session[sessionEndPicker.value]
-            if (r1.toInt() < r2.toInt()) {
+            if (r1.toInt() <= r2.toInt()) {
                 course.start = r1.toInt()
                 course.length = r2.toInt()
                 listener?.invoke(course)
                 dialog?.dismiss()
             } else {
-                showMessage("[时间段1]不能大于[时间段2]，要不重新检查一下你的设置？")
+                showMessage("[时间段1]不能大于[时间段2]。\n\nso,要不重新检查一下你的设置？")
             }
         }
         return timeView

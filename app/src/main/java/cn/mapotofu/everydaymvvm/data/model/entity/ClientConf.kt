@@ -2,6 +2,7 @@ package cn.mapotofu.everydaymvvm.data.model.entity
 
 import android.annotation.SuppressLint
 import android.os.Parcelable
+import androidx.annotation.Keep
 import com.squareup.moshi.JsonClass
 import kotlinx.android.parcel.Parcelize
 

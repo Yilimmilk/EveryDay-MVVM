@@ -62,7 +62,7 @@ class ScheduleViewModel : BaseViewModel(){
         return repository.getAllCourse()
     }
 
-    fun getTimeTableFromRoom(): MutableList<TimeTable> {
-        return repository.getTimeTable("jiayu")
+    fun getTimeTableFromRoom(campus: String): MutableList<TimeTable> {
+        return repository.getTimeTable(campus)
     }
 }

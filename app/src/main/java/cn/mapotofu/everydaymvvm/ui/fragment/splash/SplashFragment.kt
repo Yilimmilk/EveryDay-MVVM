@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
 import androidx.fragment.app.viewModels
+import cn.mapotofu.everydaymvvm.BuildConfig
 import cn.mapotofu.everydaymvvm.R
+import cn.mapotofu.everydaymvvm.app.App
 import cn.mapotofu.everydaymvvm.app.Constants
 import cn.mapotofu.everydaymvvm.app.appViewModel
 import cn.mapotofu.everydaymvvm.app.base.BaseFragment
@@ -15,6 +17,8 @@ import cn.mapotofu.everydaymvvm.data.model.entity.UserInfo
 import cn.mapotofu.everydaymvvm.databinding.FragmentSplashBinding
 import cn.mapotofu.everydaymvvm.viewmodel.request.RequestSplashViewModel
 import cn.mapotofu.everydaymvvm.viewmodel.state.SplashViewModel
+import com.blankj.utilcode.util.SnackbarUtils
+import kotlinx.android.synthetic.main.activity_main.*
 import me.hgj.jetpackmvvm.ext.nav
 import me.hgj.jetpackmvvm.ext.navigateAction
 import me.hgj.jetpackmvvm.ext.parseState
@@ -27,7 +31,7 @@ import me.hgj.jetpackmvvm.ext.parseState
  */
 class SplashFragment : BaseFragment<SplashViewModel, FragmentSplashBinding>() {
     private val requestSplashViewModel: RequestSplashViewModel by viewModels()
-    private val isLogin = CacheUtil.getIsLogin()
+    private var isLogin = CacheUtil.getIsLogin()
     private val localConfData = CacheUtil.getClientConf()
     private val countdownTime: Long = 500
 
@@ -38,12 +42,14 @@ class SplashFragment : BaseFragment<SplashViewModel, FragmentSplashBinding>() {
         mDatabind.viewmodel = mViewModel
 
         mDatabind.textviewVersion.text = localConfData?.version.toString()
+        // 先请求配置文件
         requestSplashViewModel.confReq()
     }
 
     override fun createObserver() {
         requestSplashViewModel.confResult.observe(viewLifecycleOwner, { resultState ->
             parseState(resultState, {
+                //如果成功
                 val confData = ClientConf(
                     it.version,
                     it.chooseSemester,
@@ -58,19 +64,58 @@ class SplashFragment : BaseFragment<SplashViewModel, FragmentSplashBinding>() {
                 appViewModel.clientConf.value = confData
                 CacheUtil.setIsConfUpdate(true)
                 if (localConfData?.version != confData.version){
+                    // 更新配置
                     CacheUtil.setClientConf(confData)
                     mDatabind.textviewVersion.text = confData.version.toString()
                     mDatabind.textviewVersionUpdateStatus.text = "更新成功"
+                    Log.i("获取配置状态","更新成功")
                 }else {
+                    // 不更新配置
                     mDatabind.textviewVersionUpdateStatus.text = "无需更新"
+                    Log.i("获取配置状态","成功，无需更新")
                 }
+                // 若已登陆则数据上报，若未登陆则直接导航到登陆页
+                if (isLogin) {
+                    requestSplashViewModel.clientReport(
+                        CacheUtil.getStuInfo()?.studentId!!,
+                        CacheUtil.getStuInfo()?.token!!,
+                        1,
+                        BuildConfig.VERSION_NAME
+                    )
+                }else countDownNavigate(R.id.action_splashFragment_to_loginFragment)
+            }, {
+                //失败状态
+                CacheUtil.setIsConfUpdate(false)
+                mDatabind.textviewVersionUpdateStatus.text = "更新失败"
+                Log.e("获取配置状态","失败:$it")
+                //进行跳转
+                if (isLogin)
+                    countDownNavigate(R.id.action_splashFragment_to_scheduleFragment)
+                else
+                    countDownNavigate(R.id.action_splashFragment_to_loginFragment)
+            })
+        })
+        requestSplashViewModel.reportResult.observe(viewLifecycleOwner, { resultState ->
+            parseState(resultState, {
+                //如果成功
+                isLogin = if (it.tokenValid) {
+                    Log.i("上报状态","成功")
+                    true
+                }else {
+                    Log.w("上报状态","成功，Token过期")
+                    CacheUtil.setIsLogin(false)
+                    SnackbarUtils.with(requireActivity().rootView).setMessage("哦豁登陆过期了，重新登录吧").show()
+                    false
+                }
+                //进行跳转
                 if (isLogin)
                     countDownNavigate(R.id.action_splashFragment_to_scheduleFragment)
                 else
                     countDownNavigate(R.id.action_splashFragment_to_loginFragment)
             }, {
-                CacheUtil.setIsConfUpdate(false)
-                mDatabind.textviewVersionUpdateStatus.text = "更新失败"
+                //失败状态
+                Log.e("上报状态","失败:$it")
+                //进行跳转
                 if (isLogin)
                     countDownNavigate(R.id.action_splashFragment_to_scheduleFragment)
                 else
@@ -80,7 +125,7 @@ class SplashFragment : BaseFragment<SplashViewModel, FragmentSplashBinding>() {
     }
 
     private fun countDownNavigate(resId:Int){
-        object : CountDownTimer(countdownTime, 1000) {
+        object : CountDownTimer(countdownTime, 200) {
             override fun onTick(millisUntilFinished: Long) {}
             override fun onFinish() {
                 nav().navigateAction(resId)

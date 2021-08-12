@@ -1,20 +1,23 @@
-package cn.mapotofu.everydaymvvm.app.util;
+package cn.mapotofu.everydaymvvm.app.util
 
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.util.TypedValue;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.WindowManager;
+import android.content.Context
+import android.content.res.Configuration
+import android.content.res.Resources
+import android.os.Build
+import android.text.Html
+import android.text.Spanned
+import cn.mapotofu.everydaymvvm.app.util.UisUtil
+import android.view.LayoutInflater
+import cn.mapotofu.everydaymvvm.app.App
+import android.util.DisplayMetrics
+import android.view.WindowManager
+import android.util.TypedValue
+import android.view.View
+import androidx.core.text.HtmlCompat
 
-import cn.mapotofu.everydaymvvm.app.App;
-
-public class UisUtil {
-
-    public static int height = getScreenHeight();
-    public static int width = getScreenWidth();
+object UisUtil {
+    var height = screenHeight
+    var width = screenWidth
 
     /**
      * 获取反射布局
@@ -22,51 +25,46 @@ public class UisUtil {
      * @param context 上下文
      * @param id      layoutId
      */
-    public static View inflate(Context context, int id) {
-        return LayoutInflater.from(context).inflate(id, null);
+    fun inflate(context: Context?, id: Int): View {
+        return LayoutInflater.from(context).inflate(id, null)
     }
-
 
     /**
      * 是否是暗黑模式
      */
-    public static boolean getDarkModeStatus(Context context) {
-        int mode = context.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-        return mode == Configuration.UI_MODE_NIGHT_YES;
+    fun getDarkModeStatus(context: Context): Boolean {
+        val mode = context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        return mode == Configuration.UI_MODE_NIGHT_YES
     }
-
 
     /**
      * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
      */
-    public static int dip2px(Context context, float dpValue) {
-        final float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (dpValue * scale + 0.5f);
+    fun dip2px(context: Context, dpValue: Float): Int {
+        val scale = context.resources.displayMetrics.density
+        return (dpValue * scale + 0.5f).toInt()
     }
 
     /**
      * 根据手机的分辨率从 px(像素) 的单位 转成为 dp
      */
-    public static int px2dip(Context context, float pxValue) {
-        final float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (pxValue / scale + 0.5f);
+    fun px2dip(context: Context, pxValue: Float): Int {
+        val scale = context.resources.displayMetrics.density
+        return (pxValue / scale + 0.5f).toInt()
     }
 
-    public static int getScreenWidth() {
-        return getDisplayMetrics(App.context).widthPixels;
+    val screenWidth: Int
+        get() = getDisplayMetrics(App.context).widthPixels
+    val screenHeight: Int
+        get() = getDisplayMetrics(App.context).heightPixels
+
+    private fun getDisplayMetrics(context: Context): DisplayMetrics {
+        val metrics = DisplayMetrics()
+        (context.getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay.getMetrics(
+            metrics
+        )
+        return metrics
     }
-
-    public static int getScreenHeight() {
-        return getDisplayMetrics(App.context).heightPixels;
-    }
-
-
-    private static DisplayMetrics getDisplayMetrics(Context context) {
-        final DisplayMetrics metrics = new DisplayMetrics();
-        ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(metrics);
-        return metrics;
-    }
-
 
     /**
      * 给color添加透明度
@@ -75,38 +73,62 @@ public class UisUtil {
      * @param baseColor 基本颜色
      * @return
      */
-    public static int getColorWithAlpha(float alpha, int baseColor) {
-        int a = Math.min(255, Math.max(0, (int) (alpha * 255))) << 24;
-        int rgb = 0x00ffffff & baseColor;
-        return a + rgb;
+    fun getColorWithAlpha(alpha: Float, baseColor: Int): Int {
+        val a = Math.min(255, Math.max(0, (alpha * 255).toInt())) shl 24
+        val rgb = 0x00ffffff and baseColor
+        return a + rgb
     }
-
 
     /**
      * 显示元素
      */
-    public static void show(View... views) {
-        for (View view : views) {
+    fun show(vararg views: View?) {
+        for (view in views) {
             if (view != null) {
-                view.setVisibility(View.VISIBLE);
+                view.visibility = View.VISIBLE
             }
         }
     }
-
 
     /**
      * 隐藏元素
      */
-    public static void hide(View... views) {
-        for (View view : views) {
+    fun hide(vararg views: View?) {
+        for (view in views) {
             if (view != null) {
-                view.setVisibility(View.GONE);
+                view.visibility = View.GONE
             }
         }
     }
 
+    fun sp2px(sp: Float): Float {
+        return TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_SP,
+            sp,
+            Resources.getSystem().displayMetrics
+        )
+    }
 
-    public static float sp2px(float sp) {
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, Resources.getSystem().getDisplayMetrics());
+    fun getStatusBarHeight(context: Context): Int {
+        var result = 0
+        val resourceId = context.resources.getIdentifier("status_bar_height", "dimen", "android")
+        if (resourceId > 0) {
+            result = context.resources.getDimensionPixelSize(resourceId)
+        }
+        return result
+    }
+
+    fun resizeStatusBar(context: Context, view: View) {
+        val layoutParams = view.layoutParams
+        layoutParams.height = getStatusBarHeight(context.applicationContext)
+        view.layoutParams = layoutParams
+    }
+
+    fun getHtmlSpannedString(str: String): Spanned {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            Html.fromHtml(str, HtmlCompat.FROM_HTML_MODE_COMPACT)
+        } else {
+            Html.fromHtml(str)
+        }
     }
 }

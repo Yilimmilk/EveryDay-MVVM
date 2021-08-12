@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.louiscad.splitties:splitties-alertdialog-appcompat-coroutines-android:3.0.0-rc03@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/d55c665b9cff11ce12ec6aa7c3cb977c/transformed/jetified-splitties-alertdialog-appcompat-coroutines-debug/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d55c665b9cff11ce12ec6aa7c3cb977c/transformed/jetified-splitties-alertdialog-appcompat-coroutines-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d55c665b9cff11ce12ec6aa7c3cb977c/transformed/jetified-splitties-alertdialog-appcompat-coroutines-debug/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-alertdialog-appcompat-coroutines-android/3.0.0-rc03/7cab482c9624a876bd7d719dbc64ec5a0d3b4f7f/splitties-alertdialog-appcompat-coroutines-android-3.0.0-rc03-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-alertdialog-appcompat-coroutines-android/3.0.0-rc03/518952753a3a1f294a12fc6d1069c9556dcd0c96/splitties-alertdialog-appcompat-coroutines-android-3.0.0-rc03-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

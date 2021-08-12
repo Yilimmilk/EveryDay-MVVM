@@ -22,9 +22,16 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ui.activity.settings.SettingsActivity"
+            android:label="设置" />
+        <activity
+            android:name=".ui.activity.AboutActivity"
+            android:label="关于" />
+        <activity
             android:name=".ui.activity.ErrorActivity"
             android:label="错误界面"
-            android:launchMode="singleTask">
+            android:launchMode="standard"
+            android:theme="@style/Theme.MaterialComponents.DayNight">
             <intent-filter>
                 <action android:name="cat.ereza.customactivityoncrash.RESTART" />
             </intent-filter>

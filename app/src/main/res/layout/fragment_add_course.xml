@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="true"
-        tools:context=".ui.schedule_list.ScheduleListFragment">
+        tools:context=".ui.fragment.add_course.AddCourseFragment">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline21"

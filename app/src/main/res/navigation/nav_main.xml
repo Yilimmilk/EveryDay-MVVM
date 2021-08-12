@@ -36,7 +36,7 @@
     <fragment
         android:id="@+id/scheduleFragment"
         android:name="cn.mapotofu.everydaymvvm.ui.fragment.schedule.ScheduleFragment"
-        android:label="CourseTableFragment"
+        android:label="ScheduleFragment"
         tools:layout="@layout/fragment_schedule" >
         <action
             android:id="@+id/action_scheduleFragment_to_loadScheduleFragment"
@@ -73,4 +73,5 @@
         android:name="cn.mapotofu.everydaymvvm.ui.fragment.add_course.AddCourseFragment"
         android:label="AddCourseFragment"
         tools:layout="@layout/fragment_add_course" />
+
 </navigation>
