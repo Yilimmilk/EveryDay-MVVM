@@ -14,6 +14,9 @@ public class TimeUtil {
 
     public static final String yyyyMMdd = "yyyy-MM-dd";
 
+    public static long transTime(String time) {
+        return Integer.parseInt(time.split(":")[0]) * 60L + Integer.parseInt(time.split(":")[1]);
+    }
 
     /**
      * 当前周几？

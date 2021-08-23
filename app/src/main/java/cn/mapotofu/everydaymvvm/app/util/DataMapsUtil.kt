@@ -102,36 +102,39 @@ object DataMapsUtil {
     }
 
     //课表映射
-    fun dataMappingBCourseToCourse(courseList: MutableList<Course>): MutableList<BCourse> {
-        val bCourseList = mutableListOf<BCourse>()
-        courseList.forEach { it ->
-            val bCourse = BCourse()
-            bCourse.id = it.uid
-            bCourse.name = it.courseName
-            bCourse.teacher = it.teachersName
-            bCourse.position = it.campus + "-" + it.location
-            bCourse.day = it.day
-            bCourse.sectionStart = it.start
-            bCourse.sectionContinue = it.length
-            bCourse.color = it.color
-            bCourse.week = it.weeks
-            bCourseList.add(bCourse)
-        }
-        return bCourseList
+    fun dataMappingCourseToBCourse(course: Course): BCourse {
+        val bCourse = BCourse()
+        bCourse.id = course.uid
+        bCourse.name = course.courseName
+        bCourse.teacher = course.teachersName
+        bCourse.position = course.location
+        bCourse.day = course.day
+        bCourse.sectionStart = course.start
+        bCourse.sectionContinue = course.length
+        bCourse.color = course.color
+        bCourse.week = course.weeks
+        return bCourse
     }
 
     //时间表映射
-    fun dataMappingTimeTableToBTimeTable(timeTable: MutableList<TimeTable>): BTimeTable {
-        val bTimetable = BTimeTable()
-        val bTimetableTimeInfoList = mutableListOf<BTimeTable.BTimeInfo>()
-        timeTable.forEach() { it ->
-            val bTimeInfo = BTimeTable.BTimeInfo()
-            bTimeInfo.sessionNo = it.sessionNum
-            bTimeInfo.startTime = it.startTime
-            bTimeInfo.endTime = it.endTime
-            bTimetableTimeInfoList.add(bTimeInfo)
+    fun dataMappingTimeTableToBTimeTable(timeTableList: MutableList<TimeTable>): MutableList<BTimeTable> {
+        val bTimetableList = mutableListOf<BTimeTable>()
+        timeTableList.forEach() { it ->
+            val bTimeTable = BTimeTable()
+            bTimeTable.sessionNo = it.sessionNum
+            bTimeTable.startTime = it.startTime
+            bTimeTable.endTime = it.endTime
+            bTimetableList.add(bTimeTable)
         }
-        bTimetable.timeInfoList = bTimetableTimeInfoList
+        return bTimetableList
+    }
+
+    //时间表映射
+    fun dataMappingTimeTableToBTimeTable(timeTable: TimeTable): BTimeTable {
+        val bTimetable = BTimeTable()
+        bTimetable.sessionNo = timeTable.sessionNum
+        bTimetable.startTime = timeTable.startTime
+        bTimetable.endTime = timeTable.endTime
         return bTimetable
     }
 

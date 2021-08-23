@@ -15,7 +15,7 @@ import androidx.fragment.app.FragmentManager
 import cn.mapotofu.everydaymvvm.R
 import cn.mapotofu.everydaymvvm.app.util.DateUtil
 import cn.mapotofu.everydaymvvm.data.model.entity.Course
-import cn.mapotofu.everydaymvvm.ui.custom.coursetable.utils.Drawables
+import cn.mapotofu.everydaymvvm.app.util.DrawablesUtil
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -73,8 +73,8 @@ class CourseInfoPanel : BottomSheetDialogFragment() {
         courseScore.text =
             if (TextUtils.isEmpty(course.credit)) "未知" else course.credit + "学分"
         courseWeekInfo.text = "${course.weeks}周"
-        courseSession.background = Drawables.getDrawable(Color.parseColor(course.color), 15, 0, 0)
-        courseClassDay.background = Drawables.getDrawable(Color.BLUE, 15, 0, 0)
+        courseSession.background = DrawablesUtil.getDrawable(Color.parseColor(course.color), 15, 0, 0)
+        courseClassDay.background = DrawablesUtil.getDrawable(Color.BLUE, 15, 0, 0)
         val bundle = Bundle()
         bundle.putInt(COURSE_UID, course.uid)
         edit.setOnClickListener {

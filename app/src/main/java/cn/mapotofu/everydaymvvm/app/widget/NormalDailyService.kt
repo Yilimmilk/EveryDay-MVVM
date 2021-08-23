@@ -70,7 +70,7 @@ class NormalDailyService : DailyRemoteViewService() {
     override fun onBindView(
         mContext: Context,
         course: Course,
-        data: BTimeTable
+        data: MutableList<BTimeTable>
     ): RemoteViews {
         val remoteViews = RemoteViews(mContext.packageName, R.layout.item_widget_day_class)
         if (course != null) {
@@ -81,11 +81,11 @@ class NormalDailyService : DailyRemoteViewService() {
             remoteViews.setTextViewText(R.id.day_class_end, "${course.start + course.length - 1}")
             remoteViews.setTextViewText(
                 R.id.day_time_start,
-                data.timeInfoList[course.start - 1].startTime
+                data[course.start - 1].startTime
             )
             remoteViews.setTextViewText(
                 R.id.day_time_end,
-                data.timeInfoList[course.start + course.length - 1 - 1].endTime
+                data[course.start + course.length - 1 - 1].endTime
             )
         } else {
             val str = ""

@@ -15,11 +15,11 @@ import cn.mapotofu.everydaymvvm.ui.custom.coursetable.entity.BTimeTable
  * @date 2021/8/14
  */
 typealias CourseCall = ((course: MutableList<Course>) -> Unit)
-typealias TimeTableCall = ((timetable: BTimeTable) -> Unit)
+typealias TimeTableCall = ((timetable: MutableList<BTimeTable>) -> Unit)
 
 abstract class DailyRemoteViewService : RemoteViewsService() {
     private lateinit var courseList: MutableList<Course>
-    private lateinit var timeTable: BTimeTable
+    private lateinit var timeTable: MutableList<BTimeTable>
 
     inner class RemoteViewsFactory(private val mContext: Context, intent: Intent) : RemoteViewsService.RemoteViewsFactory {
         private val mAppWidgetId: Int = intent.getIntExtra(Constants.APP_WIDGET_ID, -1)
@@ -44,7 +44,7 @@ abstract class DailyRemoteViewService : RemoteViewsService() {
 
         override fun getViewAt(position: Int): RemoteViews {
             val course: Course = courseList[position]
-            val data: BTimeTable = timeTable
+            val data: MutableList<BTimeTable> = timeTable
             return onBindView(mContext, course, data)
         }
 
@@ -81,7 +81,7 @@ abstract class DailyRemoteViewService : RemoteViewsService() {
     protected abstract fun onBindView(
         mContext: Context,
         course: Course,
-        data: BTimeTable
+        data: MutableList<BTimeTable>
     ): RemoteViews
 
     override fun onGetViewFactory(intent: Intent): RemoteViewsService.RemoteViewsFactory {
