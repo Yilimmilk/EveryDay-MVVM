@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widgetRootView"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp70">
+
+    <LinearLayout
+        android:id="@+id/widgetContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/dp2"
+        android:paddingStart="@dimen/dp8"
+        android:paddingEnd="@dimen/dp8"
+        android:orientation="horizontal"
+        android:background="@drawable/shape_item_widget_day_class">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/day_class_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:text="1"/>
+
+            <TextView
+                android:id="@+id/day_class_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:text="2"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/dp4"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/day_time_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="8:00"/>
+
+            <TextView
+                android:id="@+id/day_time_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="8:45"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/widget_day_class_course_info"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/dp10"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/day_class_title"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="高等数学"
+                android:maxLines="1"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/t13"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/day_class_subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="教学楼A304" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

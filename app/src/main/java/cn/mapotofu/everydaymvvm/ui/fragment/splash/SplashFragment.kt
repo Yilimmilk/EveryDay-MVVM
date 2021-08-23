@@ -6,18 +6,14 @@ import android.util.Log
 import androidx.fragment.app.viewModels
 import cn.mapotofu.everydaymvvm.BuildConfig
 import cn.mapotofu.everydaymvvm.R
-import cn.mapotofu.everydaymvvm.app.App
-import cn.mapotofu.everydaymvvm.app.Constants
 import cn.mapotofu.everydaymvvm.app.appViewModel
 import cn.mapotofu.everydaymvvm.app.base.BaseFragment
-import cn.mapotofu.everydaymvvm.app.ext.showMessage
 import cn.mapotofu.everydaymvvm.app.util.CacheUtil
 import cn.mapotofu.everydaymvvm.data.model.entity.ClientConf
-import cn.mapotofu.everydaymvvm.data.model.entity.UserInfo
 import cn.mapotofu.everydaymvvm.databinding.FragmentSplashBinding
 import cn.mapotofu.everydaymvvm.viewmodel.request.RequestSplashViewModel
 import cn.mapotofu.everydaymvvm.viewmodel.state.SplashViewModel
-import com.blankj.utilcode.util.SnackbarUtils
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 import me.hgj.jetpackmvvm.ext.nav
 import me.hgj.jetpackmvvm.ext.navigateAction
@@ -40,6 +36,7 @@ class SplashFragment : BaseFragment<SplashViewModel, FragmentSplashBinding>() {
     override fun initView(savedInstanceState: Bundle?) {
         addLoadingObserve(requestSplashViewModel)
         mDatabind.viewmodel = mViewModel
+        mDatabind.click = ProxyClick()
 
         mDatabind.textviewVersion.text = localConfData?.version.toString()
         // 先请求配置文件
@@ -104,7 +101,7 @@ class SplashFragment : BaseFragment<SplashViewModel, FragmentSplashBinding>() {
                 }else {
                     Log.w("上报状态","成功，Token过期")
                     CacheUtil.setIsLogin(false)
-                    SnackbarUtils.with(requireActivity().rootView).setMessage("哦豁登陆过期了，重新登录吧").show()
+                    Snackbar.make(requireActivity().rootView,"哦豁登陆过期了，重新登录吧", Snackbar.LENGTH_LONG).show()
                     false
                 }
                 //进行跳转
@@ -139,5 +136,17 @@ class SplashFragment : BaseFragment<SplashViewModel, FragmentSplashBinding>() {
 //            countDownTimer.cancel();
 //            countDownTimer = null;
 //        }
+    }
+
+    inner class ProxyClick {
+        fun offlinemode() {
+            CacheUtil.setIsConfUpdate(false)
+            Snackbar.make(requireActivity().rootView,"叮，离线模式",Snackbar.LENGTH_LONG).show()
+            if (isLogin)
+                nav().navigateAction(R.id.action_splashFragment_to_scheduleFragment)
+            else
+                nav().navigateAction(R.id.action_splashFragment_to_loginFragment)
+            onDestroy()
+        }
     }
 }

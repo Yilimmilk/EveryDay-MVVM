@@ -1,11 +1,7 @@
 package cn.mapotofu.everydaymvvm.ui.activity.settings
 
-import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.core.content.edit
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,15 +11,10 @@ import cn.mapotofu.everydaymvvm.app.ext.showMessage
 import cn.mapotofu.everydaymvvm.app.util.CacheUtil
 import cn.mapotofu.everydaymvvm.app.util.Const
 import cn.mapotofu.everydaymvvm.app.util.getPrefer
-import cn.mapotofu.everydaymvvm.ui.activity.MainActivity
 import cn.mapotofu.everydaymvvm.ui.activity.settings.items.*
 import cn.mapotofu.everydaymvvm.ui.adapter.SettingItemAdapter
 import cn.mapotofu.everydaymvvm.viewmodel.state.SettingsViewModel
-import com.blankj.utilcode.util.SnackbarUtils
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import kotlinx.android.synthetic.main.activity_main.*
-import me.hgj.jetpackmvvm.ext.nav
-import me.hgj.jetpackmvvm.ext.navigateAction
 import splitties.snackbar.snack
 
 /**

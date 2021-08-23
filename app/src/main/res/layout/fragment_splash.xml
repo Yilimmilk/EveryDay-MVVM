@@ -5,6 +5,10 @@
         <variable
             name="viewmodel"
             type="cn.mapotofu.everydaymvvm.viewmodel.state.SplashViewModel" />
+
+        <variable
+            name="click"
+            type="cn.mapotofu.everydaymvvm.ui.fragment.splash.SplashFragment.ProxyClick" />
     </data>
 
     <RelativeLayout
@@ -16,9 +20,10 @@
             android:layout_width="@dimen/dp108"
             android:layout_height="@dimen/dp108"
             android:layout_centerInParent="true"
+            android:contentDescription="LOGO"
             android:padding="@dimen/dp5"
-            android:src="@mipmap/ic_launcher_round"
-            android:contentDescription="LOGO" />
+            android:onClick="@{()->click.offlinemode()}"
+            android:src="@mipmap/ic_launcher_round"/>
 
         <TextView
             android:id="@+id/textviewTitle"

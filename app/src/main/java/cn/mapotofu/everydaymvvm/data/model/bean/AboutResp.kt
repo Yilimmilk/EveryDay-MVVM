@@ -23,10 +23,10 @@ data class AboutResp(
     val donate: MutableList<String>,
 
     @Json(name = "aboutMe")
-    val aboutMe: MutableList<AboutMeBean>,
+    val aboutMe: MutableList<AboutMeList>,
 
     @Json(name = "contact")
-    val contact: MutableList<ContactBean>,
+    val contact: ContactBean,
 ) {
     @JsonClass(generateAdapter = true)
     data class QAList(
@@ -35,6 +35,9 @@ data class AboutResp(
 
         @Json(name = "answer")
         val answer: String,
+
+        @Json(name = "url")
+        val url: String,
     )
 
     @JsonClass(generateAdapter = true)
@@ -44,15 +47,21 @@ data class AboutResp(
 
         @Json(name = "content")
         val content: String,
+
+        @Json(name = "url")
+        val url: String,
     )
 
     @JsonClass(generateAdapter = true)
-    data class AboutMeBean(
+    data class AboutMeList(
         @Json(name = "title")
         val title: String,
 
         @Json(name = "content")
         val content: String,
+
+        @Json(name = "url")
+        val url: String,
     )
 
     @JsonClass(generateAdapter = true)

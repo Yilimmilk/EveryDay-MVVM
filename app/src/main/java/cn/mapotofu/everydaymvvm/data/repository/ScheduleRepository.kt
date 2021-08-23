@@ -6,6 +6,7 @@ import cn.mapotofu.everydaymvvm.app.database.CourseDao
 import cn.mapotofu.everydaymvvm.app.database.TimeTableDao
 import cn.mapotofu.everydaymvvm.data.model.entity.Course
 import cn.mapotofu.everydaymvvm.data.model.entity.TimeTable
+import java.lang.Exception
 
 /**
  * @description
@@ -24,6 +25,23 @@ class ScheduleRepository(
 
     fun getAllCourse(): MutableList<Course> {
         return courseDao.getCourse()
+    }
+
+    //day取值范围为1-7，requireWeek取值范围为1-最大周
+    fun getCourseByDay(day: Int, requireWeek: Int): MutableList<Course>{
+        //Log.d("日期","当前日${day},所需周${requireWeek}")
+        val courseList: MutableList<Course> = courseDao.getTodayCourse(day)
+        val handleList: MutableList<Course> = mutableListOf()
+        try {
+            courseList.forEach { course ->
+                if (course.weeks.contains(requireWeek)) {
+                    handleList.add(course)
+                }
+            }
+        } catch (e: Exception) {
+            handleList.clear()
+        }
+        return handleList
     }
 
     suspend fun insertCourse(course: Course) {

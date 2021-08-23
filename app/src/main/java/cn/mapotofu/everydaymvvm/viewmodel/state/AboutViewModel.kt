@@ -2,6 +2,7 @@ package cn.mapotofu.everydaymvvm.viewmodel.state
 
 import androidx.lifecycle.MutableLiveData
 import cn.mapotofu.everydaymvvm.BuildConfig
+import cn.mapotofu.everydaymvvm.app.util.OthersUtil
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 
 /**
@@ -14,6 +15,6 @@ class AboutViewModel: BaseViewModel() {
     val versionSlogan = MutableLiveData<String>("1.0.0")
 
     init {
-        versionSlogan.value = "版本号:${BuildConfig.VERSION_NAME}\nPowered By Kotlin/Java\nBuild On JetPack"
+        versionSlogan.value = "版本号:${OthersUtil.appVersion}\nPowered By Kotlin/Java\nBuild On JetPack"
     }
 }

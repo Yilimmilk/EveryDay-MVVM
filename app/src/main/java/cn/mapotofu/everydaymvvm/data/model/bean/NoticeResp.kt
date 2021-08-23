@@ -12,13 +12,16 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class NoticeResp(
     @Json(name = "notice")
-    val notice: MutableList<NoticeList>,
+    val notice: MutableList<NoticeBean>?,
 
     @Json(name = "importantNotice")
-    val importantNotice: ImportantNoticeBean
+    val importantNotice: NoticeBean?
 ) {
     @JsonClass(generateAdapter = true)
-    data class NoticeList(
+    data class NoticeBean(
+        @Json(name = "id")
+        val id: Int,
+
         @Json(name = "title")
         val title: String,
 
@@ -33,17 +36,5 @@ data class NoticeResp(
 
         @Json(name = "date")
         val date: String,
-    )
-
-    @JsonClass(generateAdapter = true)
-    data class ImportantNoticeBean(
-        @Json(name = "id")
-        val id: Int,
-
-        @Json(name = "title")
-        val title: String,
-
-        @Json(name = "content")
-        val content: String,
     )
 }

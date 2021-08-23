@@ -17,7 +17,6 @@ import cn.mapotofu.everydaymvvm.app.ext.showLoadingExt
 import cn.mapotofu.everydaymvvm.app.util.UisUtil
 import me.hgj.jetpackmvvm.base.activity.BaseVmDbActivity
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
-import me.jessyan.autosize.AutoSizeCompat
 
 /**
  * 时间　: 2019/12/21

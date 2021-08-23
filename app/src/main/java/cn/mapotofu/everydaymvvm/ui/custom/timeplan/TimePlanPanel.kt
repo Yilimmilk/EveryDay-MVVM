@@ -13,7 +13,6 @@ import cn.mapotofu.everydaymvvm.R
 import cn.mapotofu.everydaymvvm.app.ext.showMessage
 import cn.mapotofu.everydaymvvm.app.util.UisUtil
 import cn.mapotofu.everydaymvvm.data.model.entity.Course
-import com.blankj.utilcode.util.ToastUtils
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -128,10 +127,9 @@ class TimePlanPanel : BottomSheetDialogFragment() {
                 if (it % 2 == 1) (chipGroup[it] as Chip).isChecked = true
             }
         }
-        weekView.findViewById<Button>(R.id.all).setOnClickListener {
-            chipGroup.clearCheck()
+        weekView.findViewById<Button>(R.id.allReverse).setOnClickListener {
             (0 until totalWeek).forEach {
-                (chipGroup[it] as Chip).isChecked = true
+                (chipGroup[it] as Chip).isChecked = !(chipGroup[it] as Chip).isChecked
             }
         }
         weekView.findViewById<Button>(R.id.button).setOnClickListener {

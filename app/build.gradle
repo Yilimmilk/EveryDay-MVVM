@@ -4,14 +4,14 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdk 30
+    compileSdk 31
 
     defaultConfig {
         applicationId "cn.mapotofu.everydaymvvm"
         minSdk 21
-        targetSdk 30
-        versionCode 16
-        versionName "2.1.1"
+        targetSdk 31
+        versionCode 18
+        versionName "3.0.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         ndk.abiFilters 'armeabi-v7a','arm64-v8a','x86_64'
 
@@ -28,9 +28,9 @@ android {
 
     buildTypes {
         debug {
-            minifyEnabled true
+            //minifyEnabled true
             debuggable true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            //proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         release {
             minifyEnabled true
@@ -49,15 +49,6 @@ android {
         disable 'InvalidPackage'
         disable "ResourceType"
         abortOnError false
-    }
-    dexOptions {
-        javaMaxHeapSize "4g"
-        jumboMode = true
-        preDexLibraries = false
-        additionalParameters = [
-                '--multi-dex',//多分包
-                '--set-max-idx-number=60000'//每个包内方法数上限
-        ]
     }
 }
 
@@ -106,15 +97,15 @@ dependencies {
     implementation "androidx.drawerlayout:drawerlayout:1.1.1"
 
     //kotlin协程
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1-native-mt'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1-native-mt'
 
-    //其他第三方库
+    //MVVM封装
     implementation 'com.github.hegaojian:JetpackMvvm:1.2.5'
+    //Adapter封装
+    //implementation 'com.drakeet.multitype:multitype:4.3.0'
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
-    //implementation 'com.afollestad.material-dialogs:core:3.3.0'
-    //implementation 'com.afollestad.material-dialogs:lifecycle:3.3.0'
-    //implementation 'com.afollestad.material-dialogs:color:3.3.0'
+
     //implementation 'io.supercharge:shimmerlayout:2.1.0'
     //implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
@@ -126,14 +117,14 @@ dependencies {
     implementation "com.afollestad.material-dialogs:bottomsheets:3.3.0"
 
     //util
-    implementation 'com.blankj:utilcodex:1.26.0'
+    //implementation 'com.blankj:utilcodex:1.26.0'
     //屏幕适配
-    implementation 'me.jessyan:autosize:1.2.1'
+    //implementation 'me.jessyan:autosize:1.2.1'
     //防崩溃
     implementation 'cat.ereza:customactivityoncrash:2.3.0'
     //Splitties基础库
-    implementation("com.louiscad.splitties:splitties-fun-pack-android-base:3.0.0-rc03")
-    implementation("com.louiscad.splitties:splitties-fun-pack-android-material-components:3.0.0-rc03")
+    implementation("com.louiscad.splitties:splitties-fun-pack-android-base:3.0.0")
+    implementation("com.louiscad.splitties:splitties-fun-pack-android-material-components:3.0.0")
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

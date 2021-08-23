@@ -11,7 +11,7 @@
     </data>
 
     <ScrollView
-        android:id="@+id/about_fragment_view"
+        android:id="@+id/about_root_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -118,25 +118,31 @@
                         android:layout_marginBottom="@dimen/dp25">
 
                         <TextView
-                            android:id="@+id/materialTitle"
+                            android:id="@+id/aboutTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
-                            android:text="@string/materials"
+                            android:text="@string/about_me"
                             android:textColor="?android:attr/textColorPrimary"
-                            android:textSize="18sp"
+                            android:textSize="@dimen/t18"
                             android:textStyle="bold"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
-                            android:id="@+id/materialSubTitle"
-                            android:layout_width="wrap_content"
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerAbout"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:text="@string/material_subtitle"
-                            app:layout_constraintStart_toStartOf="@+id/materialTitle"
-                            app:layout_constraintTop_toBottomOf="@+id/materialTitle" />
+                            android:layout_marginEnd="@dimen/dp16"
+                            android:clipChildren="false"
+                            android:clipToPadding="false"
+                            tools:itemCount="3"
+                            tools:listitem="@layout/item_about"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@id/aboutTitle"
+                            app:layout_constraintTop_toBottomOf="@id/aboutTitle" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </LinearLayout>
@@ -161,28 +167,31 @@
                     android:layout_marginBottom="@dimen/dp25">
 
                     <TextView
-                        android:id="@+id/saySomeThingTitle"
+                        android:id="@+id/qaTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:text="@string/say_some_thing"
+                        android:text="@string/qa"
                         android:textColor="?android:attr/textColorPrimary"
                         android:textSize="@dimen/t18"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/saySomeThingSubTitle"
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerQA"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="@dimen/dp16"
-                        android:text="@string/say_some_thing_content"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
+                        tools:listitem="@layout/item_about"
+                        tools:itemCount="3"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@id/saySomeThingTitle"
-                        app:layout_constraintTop_toBottomOf="@id/saySomeThingTitle" />
+                        app:layout_constraintStart_toStartOf="@id/qaTitle"
+                        app:layout_constraintTop_toBottomOf="@id/qaTitle" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -200,36 +209,121 @@
                 app:layout_constraintStart_toStartOf="@+id/guideline21"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/dp25"
-                    android:layout_marginBottom="@dimen/dp25">
+                    android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/textView33_3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:text="@string/open_source"
-                        android:textColor="?android:attr/textColorPrimary"
-                        android:textSize="@dimen/t18"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/dp25"
+                        android:layout_marginBottom="@dimen/dp25">
 
-                    <TextView
-                        android:id="@+id/textView34_3"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="@dimen/dp16"
-                        android:text="@string/open_source_subtitle"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/textView33_3"
-                        app:layout_constraintTop_toBottomOf="@+id/textView33_3" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        <TextView
+                            android:id="@+id/materialTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:text="@string/materials"
+                            android:textColor="?android:attr/textColorPrimary"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/materialSubTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/material_subtitle"
+                            app:layout_constraintStart_toStartOf="@+id/materialTitle"
+                            app:layout_constraintTop_toBottomOf="@+id/materialTitle" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="@dimen/dp25">
+
+                        <TextView
+                            android:id="@+id/opensourceTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:text="@string/open_source"
+                            android:textColor="?android:attr/textColorPrimary"
+                            android:textSize="@dimen/t18"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/opensourceSubTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="@dimen/dp16"
+                            android:text="@string/open_source_subtitle"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/opensourceTitle"
+                            app:layout_constraintTop_toBottomOf="@+id/opensourceTitle" />
+
+                        <TextView
+                            android:id="@+id/opensourceDesRefer"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="@dimen/dp16"
+                            android:text="@string/open_source_refer"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/opensourceSubTitle"
+                            app:layout_constraintTop_toBottomOf="@+id/opensourceSubTitle" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerOpensourceRefer"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="@dimen/dp16"
+                            android:clipChildren="false"
+                            android:clipToPadding="false"
+                            tools:listitem="@layout/item_about"
+                            tools:itemCount="3"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@id/opensourceDesRefer"
+                            app:layout_constraintTop_toBottomOf="@id/opensourceDesRefer" />
+
+                        <TextView
+                            android:id="@+id/opensourceDesImpl"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="@dimen/dp16"
+                            android:text="@string/open_source_impl"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/recyclerOpensourceRefer"
+                            app:layout_constraintTop_toBottomOf="@+id/recyclerOpensourceRefer" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerOpensourceImpl"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="@dimen/dp16"
+                            android:clipChildren="false"
+                            android:clipToPadding="false"
+                            tools:listitem="@layout/item_about"
+                            tools:itemCount="3"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@id/opensourceDesImpl"
+                            app:layout_constraintTop_toBottomOf="@id/opensourceDesImpl" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
             </com.google.android.material.card.MaterialCardView>
 
 

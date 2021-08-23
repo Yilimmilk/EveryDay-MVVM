@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">朝暮</string>
 
-    <string name="error_occurred">啊哈，好像崩溃了。\n错误日志已经复制到剪贴板了。\n嘛～如果你想的话，把错误日志发我吧。</string>
+    <string name="error_occurred">啊哈，好像崩溃了。\n不过没多大事，点下面重新启动就行\n错误日志已经自动上报给服务器了～\n不会上报你的隐私的，放心</string>
 
     <string name="conf_version_text">配置清单版本号:</string>
     <string name="conf_version_status">未更新</string>
@@ -37,6 +37,7 @@
     <string name="color_picker">颜色选择器</string>
     <string name="settings">设置</string>
     <string name="timetable">时间表</string>
+    <string name="no_coolapk">你好像并没有安装酷安</string>
 
     <string-array name="campus_setting">
         <item>嘉鱼校区</item>
@@ -44,13 +45,16 @@
     </string-array>
 
     <string name="developers">开发者</string>
+    <string name="about_me">关于我&amp;项目</string>
     <string name="developer_subtitle">麻婆豆腐 @ Yili</string>
     <string name="materials">素材来源</string>
     <string name="material_subtitle">小图标来源于Iconfont\nApp图标俺自己画的~</string>
-    <string name="say_some_thing">想说的话</string>
-    <string name="say_some_thing_content">暂时没得</string>
+    <string name="qa">Question&amp;Answer</string>
+    <string name="qa_content">暂时没得</string>
     <string name="open_source">开源相关</string>
-    <string name="open_source_subtitle">感谢以下开源项目为本项目提供了支持(下次更新再写)</string>
+    <string name="open_source_subtitle">感谢以下开源项目为本项目提供了支持</string>
+    <string name="open_source_refer">以下是参考过的项目(不分先后)</string>
+    <string name="open_source_impl">以下是引用的项目(不分先后)</string>
 
     <string name="privacyPolicy">"""本软件尊重并保护所有使用服务用户的个人隐私权，并会不时更新本隐私权政策。本隐私权政策属于用户协议不可分割的一部分。
 

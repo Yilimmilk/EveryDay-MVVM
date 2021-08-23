@@ -16,7 +16,7 @@ import cn.mapotofu.everydaymvvm.ui.custom.colorpicker.ColorPicker
 import cn.mapotofu.everydaymvvm.ui.custom.courseinfo.COURSE_UID
 import cn.mapotofu.everydaymvvm.ui.custom.timeplan.TimePlanPanel
 import cn.mapotofu.everydaymvvm.viewmodel.state.AddCourseViewModel
-import com.blankj.utilcode.util.SnackbarUtils
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 import me.hgj.jetpackmvvm.ext.nav
 import java.util.*
@@ -96,9 +96,9 @@ class AddCourseFragment : BaseFragment<AddCourseViewModel, FragmentAddCourseBind
             //检查数据
             if (checkDataAndInsert(course)){
                 if (isNewCourse)
-                    SnackbarUtils.with(requireActivity().rootView).setMessage("添加成功").show()
+                    Snackbar.make(requireActivity().rootView,"添加成功",Snackbar.LENGTH_LONG).show()
                 else
-                    SnackbarUtils.with(requireActivity().rootView).setMessage("修改成功").show()
+                    Snackbar.make(requireActivity().rootView,"修改成功",Snackbar.LENGTH_LONG).show()
                 nav().navigateUp()
             }
         }
@@ -129,7 +129,7 @@ class AddCourseFragment : BaseFragment<AddCourseViewModel, FragmentAddCourseBind
             mViewModel.courseNameText.value.isNullOrEmpty() ->
                 mDatabind.textfieldCourseName.error = "必须"
             course.weeks.isEmpty() || course.day == 0 || course.start == 0 || course.length == 0 ->
-                SnackbarUtils.with(requireActivity().rootView).setMessage("时间计划不能为空").show()
+                Snackbar.make(requireActivity().rootView,"时间计划不能为空",Snackbar.LENGTH_LONG).show()
             else -> {
                 mViewModel.apply {
                     if (isNewCourse) insertCourse(course) else updateCourse(course)
@@ -147,8 +147,7 @@ class AddCourseFragment : BaseFragment<AddCourseViewModel, FragmentAddCourseBind
             "确定",
             {
                 mViewModel.deleteCourse(courseUid)
-                SnackbarUtils.with(requireActivity().rootView).setMessage("删除[$courseName]成功~")
-                    .show()
+                Snackbar.make(requireActivity().rootView,"删除[$courseName]成功~",Snackbar.LENGTH_LONG).show()
                 nav().navigateUp()
             },
             "取消",
@@ -157,7 +156,7 @@ class AddCourseFragment : BaseFragment<AddCourseViewModel, FragmentAddCourseBind
     }
 }
 
-//回调接口
-interface TimePlanCallBack{
-    fun callBack(result : Course)
-}
+////回调接口
+//interface TimePlanCallBack{
+//    fun callBack(result : Course)
+//}

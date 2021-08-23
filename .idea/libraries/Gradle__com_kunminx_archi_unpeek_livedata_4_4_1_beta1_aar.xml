@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.kunminx.archi:unpeek-livedata:4.4.1-beta1@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/3c80f85f5d1d85b121158a97b237a8a8/transformed/jetified-unpeek-livedata-4.4.1-beta1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/3c80f85f5d1d85b121158a97b237a8a8/transformed/jetified-unpeek-livedata-4.4.1-beta1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/3c80f85f5d1d85b121158a97b237a8a8/transformed/jetified-unpeek-livedata-4.4.1-beta1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/ffbc0a7f91d071cb842cb60cd1636184/transformed/jetified-unpeek-livedata-4.4.1-beta1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ffbc0a7f91d071cb842cb60cd1636184/transformed/jetified-unpeek-livedata-4.4.1-beta1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ffbc0a7f91d071cb842cb60cd1636184/transformed/jetified-unpeek-livedata-4.4.1-beta1/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.kunminx.archi/unpeek-livedata/4.4.1-beta1/888d46a860fcb4708c989055d89cd6eb94e016b8/unpeek-livedata-4.4.1-beta1-javadoc.jar!/" />

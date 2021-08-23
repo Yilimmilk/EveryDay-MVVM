@@ -15,6 +15,9 @@ abstract class CourseDao {
     @Query("SELECT * from course_table where uid = :uid")
     abstract fun getCourse(uid: Int): Course
 
+    @Query("select * from course_table where day = :day order by start")
+    abstract fun getTodayCourse(day: Int): MutableList<Course>
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     abstract suspend fun insert(course: Course)
 
@@ -35,9 +38,6 @@ abstract class CourseDao {
 
     @Query("select count(*) from course_table")
     abstract suspend fun courseCount(): Int
-
-    @Query("select * from course_table where day = :day order by start")
-    abstract suspend fun getTodayCourse(day: Int): MutableList<Course?>?
 
     @Transaction
     open suspend fun insertAfterDeleted(courseList: MutableList<Course>) {

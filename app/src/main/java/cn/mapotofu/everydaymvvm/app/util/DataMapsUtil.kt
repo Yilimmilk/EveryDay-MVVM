@@ -1,9 +1,11 @@
 package cn.mapotofu.everydaymvvm.app.util
 
 import cn.mapotofu.everydaymvvm.app.Constants
+import cn.mapotofu.everydaymvvm.data.model.bean.AboutResp
 import cn.mapotofu.everydaymvvm.data.model.bean.ScheduleResp
 import cn.mapotofu.everydaymvvm.data.model.bean.SemesterResp
 import cn.mapotofu.everydaymvvm.data.model.bean.TimeTableResp
+import cn.mapotofu.everydaymvvm.data.model.entity.AboutItem
 import cn.mapotofu.everydaymvvm.data.model.entity.Course
 import cn.mapotofu.everydaymvvm.data.model.entity.Semester
 import cn.mapotofu.everydaymvvm.data.model.entity.TimeTable
@@ -142,5 +144,31 @@ object DataMapsUtil {
             semesterList.add(semester)
         }
         return semesterList
+    }
+
+    fun dataMappingAboutRespAboutMeToAboutItem(aboutmeList: MutableList<AboutResp.AboutMeList>): MutableList<AboutItem> {
+        val aboutmeItemList = mutableListOf<AboutItem>()
+        aboutmeList.forEach { it ->
+            val aboutItem = AboutItem(
+                it.title,
+                it.content,
+                it.url
+            )
+            aboutmeItemList.add(aboutItem)
+        }
+        return aboutmeItemList
+    }
+
+    fun dataMappingAboutRespQAToAboutItem(qaList: MutableList<AboutResp.QAList>): MutableList<AboutItem> {
+        val qaItemList = mutableListOf<AboutItem>()
+        qaList.forEach { it ->
+            val qaItem = AboutItem(
+                it.question,
+                it.answer,
+                it.url
+            )
+            qaItemList.add(qaItem)
+        }
+        return qaItemList
     }
 }

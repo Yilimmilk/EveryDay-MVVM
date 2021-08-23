@@ -3,30 +3,40 @@ package cn.mapotofu.everydaymvvm.ui.activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.viewModels
+import androidx.core.content.edit
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import cn.mapotofu.everydaymvvm.R
 import cn.mapotofu.everydaymvvm.app.base.BaseActivity
+import cn.mapotofu.everydaymvvm.app.ext.showMessage
+import cn.mapotofu.everydaymvvm.app.util.Const
+import cn.mapotofu.everydaymvvm.app.util.getPrefer
 import cn.mapotofu.everydaymvvm.databinding.ActivityMainBinding
 import cn.mapotofu.everydaymvvm.ui.activity.settings.SettingsActivity
+import cn.mapotofu.everydaymvvm.viewmodel.request.RequestMainViewModel
 import cn.mapotofu.everydaymvvm.viewmodel.state.MainViewModel
-import com.blankj.utilcode.util.SnackbarUtils
-import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.activity_about.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.nav_drawer_title.view.*
+import me.hgj.jetpackmvvm.ext.parseState
 import me.hgj.jetpackmvvm.network.manager.NetState
 
 class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
+    private val requestMainViewModel: RequestMainViewModel by viewModels()
 
     var exitTime = 0L
+
     override fun layoutId() = R.layout.activity_main
 
     override fun initView(savedInstanceState: Bundle?) {
+        addLoadingObserve(requestMainViewModel)
         //设置侧滑抽屉
         val navController = Navigation.findNavController(this@MainActivity, R.id.nav_frag)
         //控制侧滑抽屉是否显示
@@ -68,7 +78,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
                     //是根页面
                     Log.d("返回键监听", "是根页面")
                     if (System.currentTimeMillis() - exitTime > 2000) {
-                        SnackbarUtils.with(rootView).setMessage("再按一次以退出程序～").show()
+                        Snackbar.make(rootView,"再按一次以退出程序～",Snackbar.LENGTH_LONG).show()
                         exitTime = System.currentTimeMillis()
                     } else {
                         finish()
@@ -80,10 +90,33 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
                 }
             }
         })
+        requestMainViewModel.noticeReq()
     }
 
     override fun createObserver() {
-
+        requestMainViewModel.noticeResult.observeForever { resultState ->
+            parseState(resultState, {
+                it.importantNotice?.let { it1 ->
+                    if (!getPrefer().getBoolean("${Const.KEY_PREFIX_NOTICE_ID}${it1.id}", false)) {
+                        //若未读
+                        showMessage(
+                            "${it1.content}\n\n${it1.date}",
+                            it1.title,
+                            "朕已阅且不再提醒",
+                            {
+                                getPrefer().edit{ putBoolean("${Const.KEY_PREFIX_NOTICE_ID}${it1.id}", true) }
+                            },
+                            "只阅了一点点",
+                            {
+                                getPrefer().edit{ putBoolean("${Const.KEY_PREFIX_NOTICE_ID}${it1.id}", false) }
+                            }
+                        )
+                    }
+                }
+            }, {
+                Log.e("获取通知出错",it.errorMsg)
+            })
+        }
     }
 
     /**

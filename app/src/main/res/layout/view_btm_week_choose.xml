@@ -3,10 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingLeft="@dimen/dp16"
-    android:paddingTop="@dimen/dp16"
-    android:paddingRight="@dimen/dp16"
-    android:paddingBottom="@dimen/dp16">
+    android:padding="@dimen/dp10">
 
     <TextView
         android:id="@+id/dialog_title"
@@ -28,18 +25,6 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline19"
         app:layout_constraintStart_toStartOf="@+id/dialog_title"
         app:layout_constraintTop_toBottomOf="@+id/dialog_title" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp20"
-        android:text="@string/configure"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/guideline19"
-        app:layout_constraintStart_toEndOf="@+id/all"
-        app:layout_constraintTop_toBottomOf="@+id/chipGroup"
-        app:layout_constraintVertical_bias="0.03" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline18"
@@ -64,47 +49,50 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/single"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp20"
-        android:background="?selectableItemBackgroundBorderless"
-        android:gravity="left|center_vertical"
         android:text="单周"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="@id/guideline18"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
         app:layout_constraintTop_toBottomOf="@+id/chipGroup"
-        app:layout_constraintVertical_bias="0.03" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guideline18"
+        app:layout_constraintEnd_toStartOf="@id/doubleWeek"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/doubleWeek"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="双周"
-        android:background="?selectableItemBackgroundBorderless"
-        android:gravity="left|center_vertical"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_marginTop="@dimen/dp20"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/all"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/single"
         app:layout_constraintTop_toBottomOf="@+id/chipGroup"
-        app:layout_constraintVertical_bias="0.03" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/single"
+        app:layout_constraintEnd_toStartOf="@+id/allReverse"/>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/all"
+        android:id="@+id/allReverse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="全选"
-        android:background="?selectableItemBackgroundBorderless"
-        android:gravity="left|center_vertical"
+        android:text="反选"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_marginTop="@dimen/dp20"
+        app:layout_constraintTop_toBottomOf="@+id/chipGroup"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/doubleWeek"
+        app:layout_constraintEnd_toStartOf="@+id/button"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp20"
+        android:text="@string/configure"
+        style="@style/Widget.MaterialComponents.Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/guideline19"
+        app:layout_constraintStart_toEndOf="@+id/allReverse"
         app:layout_constraintTop_toBottomOf="@+id/chipGroup"
         app:layout_constraintVertical_bias="0.03" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,9 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="cn.mapotofu.everydaymvvm">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_LOGS"
+        tools:ignore="ProtectedPermissions" />
+
     <application
         android:name=".app.App"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -14,7 +20,9 @@
         tools:replace="android:theme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.activity.MainActivity">
+            android:name=".ui.activity.MainActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,19 +31,61 @@
         </activity>
         <activity
             android:name=".ui.activity.settings.SettingsActivity"
-            android:label="设置" />
+            android:label="设置"
+            android:exported="false"/>
         <activity
             android:name=".ui.activity.AboutActivity"
-            android:label="关于" />
+            android:label="关于"
+            android:exported="false"/>
         <activity
             android:name=".ui.activity.ErrorActivity"
             android:label="错误界面"
             android:launchMode="standard"
-            android:theme="@style/Theme.MaterialComponents.DayNight">
+            android:theme="@style/Theme.MaterialComponents.DayNight"
+            android:exported="false">
             <intent-filter>
                 <action android:name="cat.ereza.customactivityoncrash.RESTART" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name=".app.widget.NormalDailyProvider"
+            android:label="每日课程-默认"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE_OPTIONS" />
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE_MY" />
+                <!--唤醒小部件-->
+                <action android:name="android.appwidget.action.WAKE_UP" />
+                <!--切换天用的广播-->
+                <action android:name="android.appwidget.action.NEXT_DAY" />
+                <action android:name="android.appwidget.action.PREVIOUS_DAY" />
+
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_daily" />
+        </receiver>
+
+        <!-- 小部件保活服务 -->
+        <service
+            android:name=".app.widget.KeepService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <service
+            android:name=".app.widget.NormalDailyService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+        <service
+            android:name=".app.widget.DailyRemoteViewService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
     </application>
 
 </manifest>
