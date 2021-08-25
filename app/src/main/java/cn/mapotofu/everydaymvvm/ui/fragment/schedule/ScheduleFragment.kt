@@ -20,10 +20,12 @@ import cn.mapotofu.everydaymvvm.data.model.entity.Course
 import cn.mapotofu.everydaymvvm.data.model.entity.TimeTable
 import cn.mapotofu.everydaymvvm.databinding.FragmentScheduleBinding
 import cn.mapotofu.everydaymvvm.ui.adapter.ScheduleViewPagerAdapter
-import cn.mapotofu.everydaymvvm.ui.custom.helper.ScalePageTransformer
 import cn.mapotofu.everydaymvvm.ui.custom.helper.ZoomOutPageTransformer
 import cn.mapotofu.everydaymvvm.viewmodel.request.RequestScheduleViewModel
 import cn.mapotofu.everydaymvvm.viewmodel.state.ScheduleViewModel
+import com.codeboy.pager2_transformers.Pager2_DepthTransformer
+import com.codeboy.pager2_transformers.Pager2_FanTransformer
+import com.codeboy.pager2_transformers.Pager2_GateTransformer
 import kotlinx.android.synthetic.main.fragment_schedule.*
 import me.hgj.jetpackmvvm.ext.nav
 import me.hgj.jetpackmvvm.ext.navigateAction
@@ -50,6 +52,7 @@ class ScheduleFragment : BaseFragment<ScheduleViewModel, FragmentScheduleBinding
 
     override fun layoutId(): Int = R.layout.fragment_schedule
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun initView(savedInstanceState: Bundle?) {
         addLoadingObserve(requestScheduleViewModel)
         mDatabind.viewmodel = mViewModel
@@ -80,7 +83,8 @@ class ScheduleFragment : BaseFragment<ScheduleViewModel, FragmentScheduleBinding
         viewpagerSchedule.offscreenPageLimit = 1
         viewpagerSchedule.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         viewpagerSchedule.setCurrentItem(mViewModel.teachingWeekNum!! - 1, true)
-        viewpagerSchedule.setPageTransformer(ScalePageTransformer())
+        //注意此处，部分动画可能导致不同页面PageItem重叠
+        viewpagerSchedule.setPageTransformer(Pager2_DepthTransformer())
         val afterSpliteWeekCourseList: MutableList<MutableList<Course>> = mutableListOf()
         //外层循环周次
         for (indexWeek in 1..Constants.MAX_WEEK) {

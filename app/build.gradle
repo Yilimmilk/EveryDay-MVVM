@@ -10,8 +10,8 @@ android {
         applicationId "cn.mapotofu.everydaymvvm"
         minSdk 21
         targetSdk 31
-        versionCode 20
-        versionName "3.1.1"
+        versionCode 21
+        versionName "3.1.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         ndk.abiFilters 'armeabi-v7a','arm64-v8a','x86_64'
 
@@ -75,6 +75,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
     //moshi解析json
     implementation 'com.squareup.moshi:moshi-kotlin:1.12.0'
+    implementation 'androidx.core:core:1.6.0'
     kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.12.0'
 
     //room数据库
@@ -105,6 +106,9 @@ dependencies {
     //Adapter封装
     //implementation 'com.drakeet.multitype:multitype:4.3.0'
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
+
+    //viewpager切换动画
+    implementation 'com.github.CodeBoy722:ViewPager2_Transformers:1.0.0'
 
     //implementation 'io.supercharge:shimmerlayout:2.1.0'
     //implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'

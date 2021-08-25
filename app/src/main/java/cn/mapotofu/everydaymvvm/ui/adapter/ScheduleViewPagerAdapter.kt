@@ -13,6 +13,7 @@ import cn.mapotofu.everydaymvvm.data.model.entity.Course
 import cn.mapotofu.everydaymvvm.data.model.entity.TimeTable
 import cn.mapotofu.everydaymvvm.ui.custom.courseinfo.COURSE_UID
 import cn.mapotofu.everydaymvvm.ui.custom.courseinfo.CourseInfoPanel
+import cn.mapotofu.everydaymvvm.ui.custom.coursetable.CourseTableView
 import cn.mapotofu.everydaymvvm.ui.custom.coursetable.entity.BCourse
 import cn.mapotofu.everydaymvvm.ui.custom.coursetable.entity.DataConfig
 import cn.mapotofu.everydaymvvm.ui.custom.coursetable.interfaces.OnClickCourseItemListener
@@ -57,6 +58,7 @@ class ScheduleViewPagerAdapter(
     }
 
     override fun convert(holder: BaseViewHolder, item: MutableList<Course>) {
+        Log.d("CourseItem:", item.toString())
         val dataConfig = DataConfig()
         dataConfig.courseList = DataMapsUtil.dataMappingCourseToBCourse(item)
         dataConfig.timeTable = DataMapsUtil.dataMappingTimeTableToBTimeTable(timetable)
@@ -65,9 +67,10 @@ class ScheduleViewPagerAdapter(
         for (index in 0 until 7){
             dataConfig.weekDay[index] = TimeUtil.getTodayInfoString(termStartDate, holder.layoutPosition + 1, index + 1)
         }
-        holder.itemView.courseTableView.update(uiConfig, dataConfig)
-        holder.itemView.courseTableView.setClickCourseItemListener { view: View, list: List<BCourse>, itemPosition: Int, isThisWeek: Boolean ->
+        holder.getView<CourseTableView>(R.id.courseTableView).courseTableView.update(uiConfig, dataConfig)
+        holder.getView<CourseTableView>(R.id.courseTableView).setClickCourseItemListener { view: View, list: List<BCourse>, itemPosition: Int, isThisWeek: Boolean ->
             val course: Course = item[itemPosition]
+            Log.d("点击课程格子事件", "itemPosition:${itemPosition}, 课程名为:${course.courseName}")
             val bundle = Bundle()
             bundle.putInt(COURSE_UID, course.uid)
             CourseInfoPanel().courseInfo(
@@ -77,7 +80,7 @@ class ScheduleViewPagerAdapter(
                 })
                 .show(fragment.parentFragmentManager)
         }
-        holder.itemView.courseTableView.setLongClickCourseItemListener{ view: View, list: List<BCourse>, itemPosition: Int, isThisWeek: Boolean ->
+        holder.getView<CourseTableView>(R.id.courseTableView).setLongClickCourseItemListener{ view: View, list: List<BCourse>, itemPosition: Int, isThisWeek: Boolean ->
 
         }
     }
