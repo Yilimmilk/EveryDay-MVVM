@@ -1,9 +1,10 @@
 <component name="libraryTable">
   <library name="Gradle: com.louiscad.splitties:splitties-intents-android:3.0.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/820a09d9bf3ddcbdc0ec91c2247b1a85/transformed/jetified-splitties-intents-debug/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/820a09d9bf3ddcbdc0ec91c2247b1a85/transformed/jetified-splitties-intents-debug/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/820a09d9bf3ddcbdc0ec91c2247b1a85/transformed/jetified-splitties-intents-debug/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f578f169ca1c58fcdaab84ffcb3287cd/transformed/jetified-splitties-intents-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f578f169ca1c58fcdaab84ffcb3287cd/transformed/jetified-splitties-intents-debug/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/f578f169ca1c58fcdaab84ffcb3287cd/transformed/jetified-splitties-intents-debug/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-intents-android/3.0.0/9dd6f6ce3af4dff814eeec854faf58c481edf72c/splitties-intents-android-3.0.0-javadoc.jar!/" />

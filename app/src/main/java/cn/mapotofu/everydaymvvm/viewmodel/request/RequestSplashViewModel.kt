@@ -1,14 +1,11 @@
 package cn.mapotofu.everydaymvvm.viewmodel.request
 
 import androidx.lifecycle.MutableLiveData
-import cn.mapotofu.everydaymvvm.app.Constants
 import cn.mapotofu.everydaymvvm.app.network.apiService
-import cn.mapotofu.everydaymvvm.data.model.bean.ClientReportResp
 import cn.mapotofu.everydaymvvm.data.model.bean.ConfResp
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.ext.request
 import me.hgj.jetpackmvvm.state.ResultState
-import retrofit2.http.Field
 
 /**
  * @description
@@ -18,25 +15,17 @@ import retrofit2.http.Field
  */
 class RequestSplashViewModel : BaseViewModel() {
     var confResult = MutableLiveData<ResultState<ConfResp>>()
-    var reportResult = MutableLiveData<ResultState<ClientReportResp>>()
 
-    fun confReq() {
-        request(
-            { apiService.getConf() },
-            confResult,
-            false
-        )
-    }
-
-    fun clientReport(
-        stuNumber: String,
-        stuPassword: String,
-        clientType: Int,
-        clientVersion: String
+    //获取配置以及数据上报，由于第一次登录时无参数，所以初始化所有参数为null，再使用可空类型进行传参
+    fun confReq(
+        stuNumber: String? = null,
+        stuToken: String? = null,
+        clientType: Int? = null,
+        clientVersion: String? = null
     ) {
         request(
-            { apiService.doClientReport(stuNumber, stuPassword, clientType, clientVersion) },
-            reportResult,
+            { apiService.getConf(stuNumber, stuToken, clientType, clientVersion) },
+            confResult,
             false
         )
     }

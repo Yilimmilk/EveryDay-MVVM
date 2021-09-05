@@ -1,7 +1,6 @@
 package cn.mapotofu.everydaymvvm.viewmodel.request
 
 import androidx.lifecycle.MutableLiveData
-import cn.mapotofu.everydaymvvm.app.Constants
 import cn.mapotofu.everydaymvvm.app.network.apiService
 import cn.mapotofu.everydaymvvm.data.model.bean.NoticeResp
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
@@ -19,8 +18,8 @@ class RequestMainViewModel: BaseViewModel() {
 
     fun noticeReq() {
         request(
-            { apiService.getNotice() }
-            , noticeResult,
+            { apiService.getNotice() },
+            noticeResult,
             false,
         )
     }

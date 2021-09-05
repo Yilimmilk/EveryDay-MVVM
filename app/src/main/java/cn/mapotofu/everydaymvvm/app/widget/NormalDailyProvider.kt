@@ -4,6 +4,7 @@ import android.appwidget.AppWidgetManager
 import android.content.Context
 import android.widget.RemoteViews
 import cn.mapotofu.everydaymvvm.R
+import cn.mapotofu.everydaymvvm.app.services.NormalDailyService
 import cn.mapotofu.everydaymvvm.app.util.Const
 import cn.mapotofu.everydaymvvm.app.util.DateUtil
 import cn.mapotofu.everydaymvvm.app.util.getPrefer

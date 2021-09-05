@@ -3,11 +3,15 @@ package cn.mapotofu.everydaymvvm.ui.fragment.splash
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
+import android.view.Menu
+import android.widget.PopupMenu
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.NavHostFragment
 import cn.mapotofu.everydaymvvm.BuildConfig
 import cn.mapotofu.everydaymvvm.R
 import cn.mapotofu.everydaymvvm.app.appViewModel
 import cn.mapotofu.everydaymvvm.app.base.BaseFragment
+import cn.mapotofu.everydaymvvm.app.ext.showMessage
 import cn.mapotofu.everydaymvvm.app.util.CacheUtil
 import cn.mapotofu.everydaymvvm.data.model.entity.ClientConf
 import cn.mapotofu.everydaymvvm.databinding.FragmentSplashBinding
@@ -29,7 +33,7 @@ class SplashFragment : BaseFragment<SplashViewModel, FragmentSplashBinding>() {
     private val requestSplashViewModel: RequestSplashViewModel by viewModels()
     private var isLogin = CacheUtil.getIsLogin()
     private val localConfData = CacheUtil.getClientConf()
-    private val countdownTime: Long = 500
+    private val countdownTime: Long = 0
 
     override fun layoutId() = R.layout.fragment_splash
 
@@ -38,12 +42,29 @@ class SplashFragment : BaseFragment<SplashViewModel, FragmentSplashBinding>() {
         mDatabind.viewmodel = mViewModel
         mDatabind.click = ProxyClick()
 
-        mDatabind.textviewVersion.text = localConfData?.version.toString()
-        // 先请求配置文件
-        requestSplashViewModel.confReq()
+        if (localConfData == null) {
+            mDatabind.textviewVersion.text = "未获取"
+        }else {
+            mDatabind.textviewVersion.text = localConfData.version.toString()
+        }
+
+        //获取配置文件并上报信息
+        if (isLogin){
+            //若已登陆，则进行带参请求
+            requestSplashViewModel.confReq(
+                CacheUtil.getStuInfo()?.studentId!!,
+                CacheUtil.getStuInfo()?.token!!,
+                1,
+                BuildConfig.VERSION_NAME
+            )
+        }else {
+            //若未登陆，则进行无参请求
+            requestSplashViewModel.confReq()
+        }
     }
 
     override fun createObserver() {
+        //配置回调
         requestSplashViewModel.confResult.observe(viewLifecycleOwner, { resultState ->
             parseState(resultState, {
                 //如果成功
@@ -63,56 +84,33 @@ class SplashFragment : BaseFragment<SplashViewModel, FragmentSplashBinding>() {
                 if (localConfData?.version != confData.version){
                     // 更新配置
                     CacheUtil.setClientConf(confData)
-                    mDatabind.textviewVersion.text = confData.version.toString()
-                    mDatabind.textviewVersionUpdateStatus.text = "更新成功"
-                    Log.i("获取配置状态","更新成功")
+                    Snackbar.make(requireActivity().rootView,"配置文件更新完成", Snackbar.LENGTH_LONG).show()
+                    Log.i("获取配置状态","更新成功:${confData.version}")
                 }else {
                     // 不更新配置
-                    mDatabind.textviewVersionUpdateStatus.text = "无需更新"
-                    Log.i("获取配置状态","成功，无需更新")
+                    Log.i("获取配置状态","成功，无需更新:${confData.version}")
                 }
-                // 若已登陆则数据上报，若未登陆则直接导航到登陆页
-                if (isLogin) {
-                    requestSplashViewModel.clientReport(
-                        CacheUtil.getStuInfo()?.studentId!!,
-                        CacheUtil.getStuInfo()?.token!!,
-                        1,
-                        BuildConfig.VERSION_NAME
-                    )
-                }else countDownNavigate(R.id.action_splashFragment_to_loginFragment)
+                //上报数据判断部分
+                it.tokenValid?.let { it1 ->
+                    isLogin = it1
+                    if (it1) {
+                        Log.i("上报状态","成功")
+                    }else {
+                        Log.w("上报状态","成功，Token过期")
+                        CacheUtil.setIsLogin(false)
+                        Snackbar.make(requireActivity().rootView,"哦豁登陆过期了，重新登录吧", Snackbar.LENGTH_LONG).show()
+                        nav().navigate(R.id.action_to_loginFragment)
+                    }
+                }
+                if (isLogin)
+                    countDownNavigate(R.id.action_splashFragment_to_scheduleFragment)
+                else
+                    countDownNavigate(R.id.action_splashFragment_to_loginFragment)
             }, {
                 //失败状态
                 CacheUtil.setIsConfUpdate(false)
-                mDatabind.textviewVersionUpdateStatus.text = "更新失败"
-                Log.e("获取配置状态","失败:$it")
-                //进行跳转
-                if (isLogin)
-                    countDownNavigate(R.id.action_splashFragment_to_scheduleFragment)
-                else
-                    countDownNavigate(R.id.action_splashFragment_to_loginFragment)
-            })
-        })
-        requestSplashViewModel.reportResult.observe(viewLifecycleOwner, { resultState ->
-            parseState(resultState, {
-                //如果成功
-                isLogin = if (it.tokenValid) {
-                    Log.i("上报状态","成功")
-                    true
-                }else {
-                    Log.w("上报状态","成功，Token过期")
-                    CacheUtil.setIsLogin(false)
-                    Snackbar.make(requireActivity().rootView,"哦豁登陆过期了，重新登录吧", Snackbar.LENGTH_LONG).show()
-                    false
-                }
-                //进行跳转
-                if (isLogin)
-                    countDownNavigate(R.id.action_splashFragment_to_scheduleFragment)
-                else
-                    countDownNavigate(R.id.action_splashFragment_to_loginFragment)
-            }, {
-                //失败状态
-                Log.e("上报状态","失败:$it")
-                //进行跳转
+                Snackbar.make(requireActivity().rootView,"配置文件更新失败，将只能使用离线功能", Snackbar.LENGTH_LONG).show()
+                Log.e("获取配置状态","失败:${it.errCode}:${it.errorMsg}:${it.errorLog}")
                 if (isLogin)
                     countDownNavigate(R.id.action_splashFragment_to_scheduleFragment)
                 else
@@ -139,14 +137,14 @@ class SplashFragment : BaseFragment<SplashViewModel, FragmentSplashBinding>() {
     }
 
     inner class ProxyClick {
-        fun offlinemode() {
+        fun offlinemode(){
             CacheUtil.setIsConfUpdate(false)
-            Snackbar.make(requireActivity().rootView,"叮，离线模式",Snackbar.LENGTH_LONG).show()
+            Snackbar.make(requireActivity().rootView,"叮，离线模式～", Snackbar.LENGTH_LONG).show()
+            Log.e("用户手动进入离线模式","")
             if (isLogin)
-                nav().navigateAction(R.id.action_splashFragment_to_scheduleFragment)
+                countDownNavigate(R.id.action_splashFragment_to_scheduleFragment)
             else
-                nav().navigateAction(R.id.action_splashFragment_to_loginFragment)
-            onDestroy()
+                countDownNavigate(R.id.action_splashFragment_to_loginFragment)
         }
     }
 }

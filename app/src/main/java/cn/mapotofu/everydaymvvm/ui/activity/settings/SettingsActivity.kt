@@ -1,21 +1,29 @@
 package cn.mapotofu.everydaymvvm.ui.activity.settings
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.core.content.edit
 import androidx.recyclerview.widget.LinearLayoutManager
 import cn.mapotofu.everydaymvvm.R
+import cn.mapotofu.everydaymvvm.app.App
 import cn.mapotofu.everydaymvvm.app.base.BaseListActivity
 import cn.mapotofu.everydaymvvm.app.ext.showMessage
 import cn.mapotofu.everydaymvvm.app.util.CacheUtil
 import cn.mapotofu.everydaymvvm.app.util.Const
+import cn.mapotofu.everydaymvvm.app.util.RestartAppUtil
 import cn.mapotofu.everydaymvvm.app.util.getPrefer
+import cn.mapotofu.everydaymvvm.ui.activity.MainActivity
 import cn.mapotofu.everydaymvvm.ui.activity.settings.items.*
 import cn.mapotofu.everydaymvvm.ui.adapter.SettingItemAdapter
 import cn.mapotofu.everydaymvvm.viewmodel.state.SettingsViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import me.hgj.jetpackmvvm.util.finish
 import splitties.snackbar.snack
+
+
+
 
 /**
  * @description
@@ -108,8 +116,11 @@ class SettingsActivity : BaseListActivity<SettingsViewModel>() {
                     {
                         if (CacheUtil.getIsLogin()) {
                             CacheUtil.setIsLogin(false)
-                            Toast.makeText(applicationContext, "好了，退了，重新启动App就行", Toast.LENGTH_SHORT).show()
-                            onBackPressed()
+                            Toast.makeText(applicationContext, "重启App生效～", Toast.LENGTH_SHORT).show()
+//                            RestartAppUtil.restartAPP(App.context,100)
+//                            MainActivity().instanceMainActivity.finish()
+//                            startActivity(Intent(this,MainActivity::class.java))
+//                            finish(intent)
                         }
                     },
                     "手滑了",

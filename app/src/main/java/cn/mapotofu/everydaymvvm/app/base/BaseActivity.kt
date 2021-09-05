@@ -97,6 +97,18 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDb
         return UisUtil.getStatusBarHeight(this)
     }
 
+    /**
+     * 重启activity
+     */
+//    fun reloadActivity() {
+//        val intent = intent
+//        overridePendingTransition(0,0)
+//        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+//        finish()
+//        overridePendingTransition(0,0)
+//        startActivity(intent)
+//    }
+
    /**
     * 在任何情况下本来适配正常的布局突然出现适配失效，适配异常等问题，只要重写 Activity 的 getResources() 方法
     */

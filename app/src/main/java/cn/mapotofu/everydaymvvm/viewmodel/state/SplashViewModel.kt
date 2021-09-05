@@ -1,5 +1,6 @@
 package cn.mapotofu.everydaymvvm.viewmodel.state
 
+import cn.mapotofu.everydaymvvm.app.util.CacheUtil
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 
 /**

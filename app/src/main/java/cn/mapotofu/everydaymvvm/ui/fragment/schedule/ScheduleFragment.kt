@@ -23,9 +23,7 @@ import cn.mapotofu.everydaymvvm.ui.adapter.ScheduleViewPagerAdapter
 import cn.mapotofu.everydaymvvm.ui.custom.helper.ZoomOutPageTransformer
 import cn.mapotofu.everydaymvvm.viewmodel.request.RequestScheduleViewModel
 import cn.mapotofu.everydaymvvm.viewmodel.state.ScheduleViewModel
-import com.codeboy.pager2_transformers.Pager2_DepthTransformer
-import com.codeboy.pager2_transformers.Pager2_FanTransformer
-import com.codeboy.pager2_transformers.Pager2_GateTransformer
+import com.codeboy.pager2_transformers.*
 import kotlinx.android.synthetic.main.fragment_schedule.*
 import me.hgj.jetpackmvvm.ext.nav
 import me.hgj.jetpackmvvm.ext.navigateAction
@@ -41,7 +39,6 @@ import me.hgj.jetpackmvvm.ext.parseState
 class ScheduleFragment : BaseFragment<ScheduleViewModel, FragmentScheduleBinding>() {
     private val requestScheduleViewModel: RequestScheduleViewModel by viewModels()
     private lateinit var scheduleViewPagerAdapter: ScheduleViewPagerAdapter
-    private var selectedSemesterSpinnerPosition: Int = 0
     private lateinit var popupWindow: PopupWindow
 
     private lateinit var courseList: MutableList<Course>
@@ -82,10 +79,11 @@ class ScheduleFragment : BaseFragment<ScheduleViewModel, FragmentScheduleBinding
         viewpagerSchedule.adapter = scheduleViewPagerAdapter
         viewpagerSchedule.offscreenPageLimit = 1
         viewpagerSchedule.orientation = ViewPager2.ORIENTATION_HORIZONTAL
-        viewpagerSchedule.setCurrentItem(mViewModel.teachingWeekNum!! - 1, true)
+        viewpagerSchedule.setCurrentItem(currentWeek - 1, true)
         //注意此处，部分动画可能导致不同页面PageItem重叠
         viewpagerSchedule.setPageTransformer(Pager2_DepthTransformer())
-        val afterSpliteWeekCourseList: MutableList<MutableList<Course>> = mutableListOf()
+
+        val afterSplitWeekCourseList: MutableList<MutableList<Course>> = mutableListOf()
         //外层循环周次
         for (indexWeek in 1..Constants.MAX_WEEK) {
             //当前周次课程list
@@ -97,9 +95,9 @@ class ScheduleFragment : BaseFragment<ScheduleViewModel, FragmentScheduleBinding
                 }
             }
             //将当前周次列表加入最终结果
-            afterSpliteWeekCourseList.add(currentWeekCourseList)
+            afterSplitWeekCourseList.add(currentWeekCourseList)
         }
-        scheduleViewPagerAdapter.setNewInstance(afterSpliteWeekCourseList)
+        scheduleViewPagerAdapter.setNewInstance(afterSplitWeekCourseList)
 
 
         // 抽屉按钮

@@ -36,9 +36,15 @@ interface ApiService {
         @Query("cli_token") cliToken: String
     ): BaseResponse<ScheduleResp>
 
-    //获取配置清单
+    //获取配置清单并上报客户端信息
+    //由于不一定有参数传进来，所以为可空类型
     @GET("conf/get-conf")
-    suspend fun getConf(): BaseResponse<ConfResp>
+    suspend fun getConf(
+        @Query("stu_num") stuNumber: String?,
+        @Query("cli_token") stuToken: String?,
+        @Query("client_type") clientType: Int?,
+        @Query("client_version") clientVersion: String?
+    ): BaseResponse<ConfResp>
 
     //获取倒计时
     @GET("conf/get-countdown")
@@ -61,14 +67,4 @@ interface ApiService {
     //获取时间表
     @GET("conf/get-timetable")
     suspend fun getTimeTable(): BaseResponse<TimeTableResp>
-
-    //客户端信息上报
-    @FormUrlEncoded
-    @POST("/client/client-report/")
-    suspend fun doClientReport(
-        @Field("stu_num") stuNumber: String,
-        @Field("cli_token") stuPassword: String,
-        @Field("client_type") clientType: Int,
-        @Field("client_version") clientVersion: String
-    ): BaseResponse<ClientReportResp>
 }

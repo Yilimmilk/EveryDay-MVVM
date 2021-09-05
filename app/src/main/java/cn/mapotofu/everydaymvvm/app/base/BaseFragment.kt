@@ -19,7 +19,7 @@ import me.hgj.jetpackmvvm.ext.navigateAction
 
 abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDbFragment<VM, DB>() {
 
-    /**
+    /** 
      * 当前Fragment绑定的视图布局
      */
     abstract override fun layoutId(): Int

@@ -69,20 +69,26 @@
                 android:resource="@xml/widget_daily" />
         </receiver>
 
+        <!--用于重启App服务-->
+        <service
+            android:name=".app.services.KillSelfService"
+            android:exported="false"
+            android:enabled="true" />
+
         <!-- 小部件保活服务 -->
         <service
-            android:name=".app.widget.KeepService"
+            android:name=".app.services.KeepService"
             android:enabled="true"
             android:exported="false" />
 
         <service
-            android:name=".app.widget.NormalDailyService"
+            android:name=".app.services.NormalDailyService"
             android:enabled="true"
             android:exported="true"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
         <service
-            android:name=".app.widget.DailyRemoteViewService"
+            android:name=".app.services.DailyRemoteViewService"
             android:enabled="true"
             android:exported="true"
             android:permission="android.permission.BIND_REMOTEVIEWS" />

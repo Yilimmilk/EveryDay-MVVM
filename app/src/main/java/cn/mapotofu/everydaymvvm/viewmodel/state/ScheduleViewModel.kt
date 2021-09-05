@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import cn.mapotofu.everydaymvvm.app.App
 import cn.mapotofu.everydaymvvm.app.database.AppDataBase
+import cn.mapotofu.everydaymvvm.app.util.CacheUtil
 import cn.mapotofu.everydaymvvm.data.repository.ScheduleRepository
 import cn.mapotofu.everydaymvvm.app.util.DateUtil
 import cn.mapotofu.everydaymvvm.data.model.entity.Course
@@ -18,18 +19,23 @@ import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
  * @author milk
  * @date 2021/7/31
  */
-class ScheduleViewModel : BaseViewModel(){
+class ScheduleViewModel : BaseViewModel() {
     //数据库相关
     var repository = ScheduleRepository(
         AppDataBase.GetDataBaseInstace().courseDao(),
         AppDataBase.GetDataBaseInstace().timetableDao()
     )
     val clientConf = App.appViewModelInstance.clientConf.value
+
     //课表当前学年学期
-    val currentScheduleYear = clientConf?.scheduleSemester?.substring(IntRange(0,3))
-    val currentScheduleTerm = clientConf?.scheduleSemester?.substring(IntRange(4,4))
+    val currentScheduleYear = clientConf?.scheduleSemester?.substring(IntRange(0, 3))
+    val currentScheduleTerm = clientConf?.scheduleSemester?.substring(IntRange(4, 4))
+
     //周次数据
-    val teachingWeekNum = clientConf?.nowWeek
+    val teachingWeekNum = (DateUtil.getDateDif(
+        DateUtil.getDate("yyyy-MM-dd"),
+        clientConf!!.termStart
+    ) / 7) + 1
     var teachingWeekText = MutableLiveData("第${teachingWeekNum}教学周")
     var teachingWeekSelected = MutableLiveData<Int>(teachingWeekNum)
 

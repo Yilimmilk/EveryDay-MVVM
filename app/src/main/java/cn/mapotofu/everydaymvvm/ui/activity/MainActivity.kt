@@ -10,13 +10,19 @@ import androidx.core.content.edit
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import cn.mapotofu.everydaymvvm.BuildConfig
 import cn.mapotofu.everydaymvvm.R
+import cn.mapotofu.everydaymvvm.app.appViewModel
 import cn.mapotofu.everydaymvvm.app.base.BaseActivity
 import cn.mapotofu.everydaymvvm.app.ext.showMessage
+import cn.mapotofu.everydaymvvm.app.util.CacheUtil
 import cn.mapotofu.everydaymvvm.app.util.Const
 import cn.mapotofu.everydaymvvm.app.util.getPrefer
+import cn.mapotofu.everydaymvvm.data.model.entity.ClientConf
 import cn.mapotofu.everydaymvvm.databinding.ActivityMainBinding
 import cn.mapotofu.everydaymvvm.ui.activity.settings.SettingsActivity
 import cn.mapotofu.everydaymvvm.viewmodel.request.RequestMainViewModel
@@ -25,8 +31,10 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_about.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.nav_drawer_title.view.*
+import me.hgj.jetpackmvvm.ext.nav
 import me.hgj.jetpackmvvm.ext.parseState
 import me.hgj.jetpackmvvm.network.manager.NetState
+import me.hgj.jetpackmvvm.util.finish
 
 class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
     private val requestMainViewModel: RequestMainViewModel by viewModels()
@@ -90,10 +98,12 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
                 }
             }
         })
+        //请求通知内容
         requestMainViewModel.noticeReq()
     }
 
     override fun createObserver() {
+        //通知回调
         requestMainViewModel.noticeResult.observeForever { resultState ->
             parseState(resultState, {
                 it.importantNotice?.let { it1 ->
