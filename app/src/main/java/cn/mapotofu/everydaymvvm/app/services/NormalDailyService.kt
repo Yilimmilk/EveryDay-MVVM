@@ -2,6 +2,8 @@ package cn.mapotofu.everydaymvvm.app.services
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.util.Log
 import android.widget.RemoteViews
 import cn.mapotofu.everydaymvvm.R
@@ -10,6 +12,7 @@ import cn.mapotofu.everydaymvvm.app.util.*
 import cn.mapotofu.everydaymvvm.data.model.entity.Course
 import cn.mapotofu.everydaymvvm.data.repository.ScheduleRepository
 import cn.mapotofu.everydaymvvm.ui.custom.coursetable.entity.BTimeTable
+import cn.mapotofu.everydaymvvm.ui.custom.coursetable.utils.DrawablesUtil
 
 /**
  * @description
@@ -72,9 +75,11 @@ class NormalDailyService : DailyRemoteViewService() {
     ): RemoteViews {
         val remoteViews = RemoteViews(mContext.packageName, R.layout.item_widget_day_class)
         if (course != null) {
-            //remoteViews.setInt(R.id.widgetContainer, "setBackgroundColor", Color.parseColor(course.color))
+            //remoteViews.setInt(R.id.widgetContainer, "setBackgroundColor", DrawablesUtil.getDrawable(Color.parseColor(bCourse.getColor()), 20, 3, Color.WHITE))
+            remoteViews.setInt(R.id.image_left, "setColorFilter",  Color.parseColor(course.color))
+            remoteViews.setInt(R.id.image_left, "setImageAlpha", Color.parseColor(course.color))
             remoteViews.setTextViewText(R.id.day_class_title, course.courseName)
-            remoteViews.setTextViewText(R.id.day_class_subtitle, "@${course.location}")
+            remoteViews.setTextViewText(R.id.day_class_subtitle, "${course.campus}@${course.location}")
             remoteViews.setTextViewText(R.id.day_class_start, "${course.start}")
             remoteViews.setTextViewText(R.id.day_class_end, "${course.start + course.length - 1}")
             remoteViews.setTextViewText(
