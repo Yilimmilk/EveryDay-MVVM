@@ -74,31 +74,20 @@ class NormalDailyService : DailyRemoteViewService() {
         data: MutableList<BTimeTable>
     ): RemoteViews {
         val remoteViews = RemoteViews(mContext.packageName, R.layout.item_widget_day_class)
-        if (course != null) {
-            //remoteViews.setInt(R.id.widgetContainer, "setBackgroundColor", DrawablesUtil.getDrawable(Color.parseColor(bCourse.getColor()), 20, 3, Color.WHITE))
-            remoteViews.setInt(R.id.image_left, "setColorFilter",  Color.parseColor(course.color))
-            remoteViews.setInt(R.id.image_left, "setImageAlpha", Color.parseColor(course.color))
-            remoteViews.setTextViewText(R.id.day_class_title, course.courseName)
-            remoteViews.setTextViewText(R.id.day_class_subtitle, "${course.campus}@${course.location}")
-            remoteViews.setTextViewText(R.id.day_class_start, "${course.start}")
-            remoteViews.setTextViewText(R.id.day_class_end, "${course.start + course.length - 1}")
-            remoteViews.setTextViewText(
-                R.id.day_time_start,
-                data[course.start - 1].startTime
-            )
-            remoteViews.setTextViewText(
-                R.id.day_time_end,
-                data[course.start + course.length - 1 - 1].endTime
-            )
-        } else {
-            val str = ""
-            remoteViews.setTextViewText(R.id.day_class_title, str)
-            remoteViews.setTextViewText(R.id.day_class_subtitle, str)
-            remoteViews.setTextViewText(R.id.day_class_start, str)
-            remoteViews.setTextViewText(R.id.day_class_end, str)
-            remoteViews.setTextViewText(R.id.day_time_start, str)
-            remoteViews.setTextViewText(R.id.day_time_end, str)
-        }
+        remoteViews.setInt(R.id.image_left, "setColorFilter",  Color.parseColor(course.color))
+        remoteViews.setInt(R.id.image_left, "setImageAlpha", 210)
+        remoteViews.setTextViewText(R.id.day_class_title, course.courseName)
+        remoteViews.setTextViewText(R.id.day_class_subtitle, "${course.campus}@${course.location}")
+        remoteViews.setTextViewText(R.id.day_class_start, "${course.start}")
+        remoteViews.setTextViewText(R.id.day_class_end, "${course.start + course.length - 1}")
+        remoteViews.setTextViewText(
+            R.id.day_time_start,
+            data[course.start - 1].startTime
+        )
+        remoteViews.setTextViewText(
+            R.id.day_time_end,
+            data[course.start + course.length - 1 - 1].endTime
+        )
         return remoteViews
     }
 }
