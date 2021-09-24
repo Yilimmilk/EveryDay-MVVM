@@ -21,8 +21,8 @@ import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 class LoadScheduleViewModel : BaseViewModel() {
     //数据库相关
     var repository = ScheduleRepository(
-        AppDataBase.GetDataBaseInstace().courseDao(),
-        AppDataBase.GetDataBaseInstace().timetableDao()
+        AppDataBase.getDataBaseInstance().courseDao(),
+        AppDataBase.getDataBaseInstance().timetableDao()
     )
 
     fun initCourse(course:ScheduleResp) {

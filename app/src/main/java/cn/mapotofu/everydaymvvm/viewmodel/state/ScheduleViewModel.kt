@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import cn.mapotofu.everydaymvvm.app.App
 import cn.mapotofu.everydaymvvm.app.database.AppDataBase
-import cn.mapotofu.everydaymvvm.app.util.CacheUtil
 import cn.mapotofu.everydaymvvm.data.repository.ScheduleRepository
 import cn.mapotofu.everydaymvvm.app.util.DateUtil
 import cn.mapotofu.everydaymvvm.data.model.entity.Course
@@ -22,8 +21,8 @@ import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 class ScheduleViewModel : BaseViewModel() {
     //数据库相关
     var repository = ScheduleRepository(
-        AppDataBase.GetDataBaseInstace().courseDao(),
-        AppDataBase.GetDataBaseInstace().timetableDao()
+        AppDataBase.getDataBaseInstance().courseDao(),
+        AppDataBase.getDataBaseInstance().timetableDao()
     )
     val clientConf = App.appViewModelInstance.clientConf.value
 

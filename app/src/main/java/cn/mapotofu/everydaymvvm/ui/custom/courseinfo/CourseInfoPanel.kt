@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import cn.mapotofu.everydaymvvm.R
 import cn.mapotofu.everydaymvvm.app.util.DateUtil
@@ -72,7 +73,11 @@ class CourseInfoPanel : BottomSheetDialogFragment() {
             if (TextUtils.isEmpty(course.hoursComposition)) "未知" else course.hoursComposition
         courseScore.text =
             if (TextUtils.isEmpty(course.credit)) "未知" else course.credit + "学分"
-        courseWeekInfo.text = "${course.weeks}周"
+        courseWeekInfo.text = if (TextUtils.isEmpty(course.weeksText)) "${course.weeks}周" else course.weeksText
+        courseWeekInfo.setOnLongClickListener {
+            Toast.makeText(this.requireContext(),"包含周次：${course.weeks}",Toast.LENGTH_LONG).show()
+            true
+        }
         courseSession.background = DrawablesUtil.getDrawable(Color.parseColor(course.color), 15, 0, 0)
         courseClassDay.background = DrawablesUtil.getDrawable(Color.BLUE, 15, 0, 0)
         val bundle = Bundle()

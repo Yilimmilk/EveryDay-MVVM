@@ -36,7 +36,9 @@ fun AppCompatActivity.showMessage(
     positiveButtonText: String = "确定",
     positiveAction: () -> Unit = {},
     negativeButtonText: String = "",
-    negativeAction: () -> Unit = {}
+    negativeAction: () -> Unit = {},
+    neutralButtonText: String = "",
+    neutralAction: () -> Unit = {},
 ) {
     MaterialDialog(this)
         .cancelable(true)
@@ -52,8 +54,14 @@ fun AppCompatActivity.showMessage(
                     negativeAction.invoke()
                 }
             }
+            if (neutralButtonText.isNotEmpty()) {
+                neutralButton(text = neutralButtonText) {
+                    neutralAction.invoke()
+                }
+            }
             getActionButton(WhichButton.POSITIVE)
             getActionButton(WhichButton.NEGATIVE)
+            getActionButton(WhichButton.NEUTRAL)
         }
 }
 

@@ -24,10 +24,13 @@ data class ScheduleResp(
     var schoolTerm: String,
 
     @Json(name = "normalCourse")
-    var courseList: MutableList<CourseList>
+    var normalCourseList: MutableList<NormalCourseList>,
+
+    @Json(name = "otherCourse")
+    var otherCourseList: MutableList<OtherCourseList>
 ) {
     @JsonClass(generateAdapter = true)
-    data class CourseList(
+    data class NormalCourseList(
         @Json(name = "courseTitle")
         var courseTitle: String,
 
@@ -75,6 +78,23 @@ data class ScheduleResp(
 
         @Json(name = "totalHours")
         var totalHours: String,
+
+        @Json(name = "credit")
+        var credit: String
+    )
+    @JsonClass(generateAdapter = true)
+    data class OtherCourseList(
+        @Json(name = "courseTitle")
+        var courseTitle: String,
+
+        @Json(name = "teacher")
+        var teacher: String,
+
+        @Json(name = "courseWeek")
+        var courseWeek: String,
+
+        @Json(name = "courseText")
+        var courseText: String,
 
         @Json(name = "credit")
         var credit: String

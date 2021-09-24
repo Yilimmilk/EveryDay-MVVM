@@ -15,6 +15,7 @@
 
     <string name="mounth">月</string>
     <string name="day">日</string>
+    <string name="course_card">其他课程</string>
 
     <string name="configure">确定</string>
     <string name="add_course">添加课程</string>
@@ -25,6 +26,7 @@
     <string name="optional">可选</string>
     <string name="course_name">课程名</string>
     <string name="teacher_name">教师名字</string>
+    <string name="weeks_text">周次</string>
     <string name="course_campus">校区</string>
     <string name="course_position">上课地点</string>
     <string name="hours_composition">学时组成</string>
@@ -37,6 +39,7 @@
     <string name="color_picker">颜色选择器</string>
     <string name="settings">设置</string>
     <string name="timetable">时间表</string>
+    <string name="other_course">其他课程</string>
     <string name="no_coolapk">你好像并没有安装酷安</string>
 
     <string-array name="campus_setting">

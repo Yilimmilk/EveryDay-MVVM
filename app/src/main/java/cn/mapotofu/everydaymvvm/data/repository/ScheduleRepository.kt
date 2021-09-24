@@ -34,7 +34,7 @@ class ScheduleRepository(
         val handleList: MutableList<Course> = mutableListOf()
         try {
             courseList.forEach { course ->
-                if (course.weeks.contains(requireWeek)) {
+                if (course.courseName.first() != '#' && course.weeks.contains(requireWeek)) {
                     handleList.add(course)
                 }
             }

@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment
 import cn.mapotofu.everydaymvvm.BuildConfig
 import cn.mapotofu.everydaymvvm.R
+import cn.mapotofu.everydaymvvm.app.Constants
 import cn.mapotofu.everydaymvvm.app.appViewModel
 import cn.mapotofu.everydaymvvm.app.base.BaseFragment
 import cn.mapotofu.everydaymvvm.app.ext.showMessage
@@ -54,7 +55,7 @@ class SplashFragment : BaseFragment<SplashViewModel, FragmentSplashBinding>() {
             requestSplashViewModel.confReq(
                 CacheUtil.getStuInfo()?.studentId!!,
                 CacheUtil.getStuInfo()?.token!!,
-                1,
+                Constants.CLIENT_TYPE,
                 BuildConfig.VERSION_NAME
             )
         }else {

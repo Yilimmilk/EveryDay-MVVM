@@ -1,10 +1,8 @@
 package cn.mapotofu.everydaymvvm.viewmodel.state
 
-import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import cn.mapotofu.everydaymvvm.app.database.AppDataBase
-import cn.mapotofu.everydaymvvm.app.util.DataMapsUtil
 import cn.mapotofu.everydaymvvm.data.model.entity.Course
 import cn.mapotofu.everydaymvvm.data.repository.AddCourseRepository
 import kotlinx.coroutines.Dispatchers
@@ -29,7 +27,7 @@ class AddCourseViewModel : BaseViewModel() {
     var timePlanText = MutableLiveData<String>()
 
     //数据库相关
-    var repository = AddCourseRepository(AppDataBase.GetDataBaseInstace().courseDao())
+    var repository = AddCourseRepository(AppDataBase.getDataBaseInstance().courseDao())
 
     fun insertCourse(course: Course) {
         viewModelScope.launch(Dispatchers.IO) {

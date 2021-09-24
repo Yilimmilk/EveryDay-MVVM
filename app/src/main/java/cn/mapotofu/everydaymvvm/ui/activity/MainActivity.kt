@@ -112,13 +112,13 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
                         showMessage(
                             "${it1.content}\n\n${it1.date}",
                             it1.title,
-                            "朕已阅且不再提醒",
-                            {
-                                getPrefer().edit{ putBoolean("${Const.KEY_PREFIX_NOTICE_ID}${it1.id}", true) }
-                            },
-                            "只阅了一点点",
+                            "确定",
                             {
                                 getPrefer().edit{ putBoolean("${Const.KEY_PREFIX_NOTICE_ID}${it1.id}", false) }
+                            },
+                            "不再提醒",
+                            {
+                                getPrefer().edit{ putBoolean("${Const.KEY_PREFIX_NOTICE_ID}${it1.id}", true) }
                             }
                         )
                     }

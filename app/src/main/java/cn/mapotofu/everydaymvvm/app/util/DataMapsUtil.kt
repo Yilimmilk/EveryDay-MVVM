@@ -24,15 +24,18 @@ object DataMapsUtil {
 
     //Response课表映射
     fun dataMappingScheduleRespToCourse(scheduleResp: ScheduleResp): MutableList<Course> {
-        val scheduleListBeforeParse = scheduleResp.courseList
+        val normalCourseListBeforeParse = scheduleResp.normalCourseList
+        val otherCourseListBeforeParse = scheduleResp.otherCourseList
         val courseList = mutableListOf<Course>()
-        scheduleListBeforeParse.forEach { it ->
+        val randomIdStart = (400..500).random()
+        normalCourseListBeforeParse.forEach { it ->
             val course = Course(
                 it.courseId,
                 it.courseTitle,
                 it.teacher,
                 it.campus,
                 it.courseRoom,
+                it.courseWeek,
                 it.includeWeeks,
                 it.courseWeekday,
                 it.includeSection.first(),
@@ -41,6 +44,17 @@ object DataMapsUtil {
                 it.credit,
                 Constants.COLOR_1[Random().nextInt(Constants.COLOR_1.size)],
             )
+            courseList.add(course)
+        }
+        otherCourseListBeforeParse.forEachIndexed { index, it ->
+            val course = Course().apply {
+                courseId = "#${randomIdStart + index}"
+                courseName = it.courseTitle
+                teachersName = it.teacher
+                weeksText = it.courseWeek
+                credit = it.credit
+                color = Constants.COLOR_1[Random().nextInt(Constants.COLOR_1.size)]
+            }
             courseList.add(course)
         }
         return courseList

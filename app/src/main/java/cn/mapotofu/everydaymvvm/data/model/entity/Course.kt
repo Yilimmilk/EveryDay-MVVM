@@ -9,7 +9,7 @@ import com.squareup.moshi.Json
 @Entity(tableName = "course_table")
 @TypeConverters(ListCoverter::class)
 data class Course(
-    //课程ID
+    //课程ID，以@开头为手动添加的课程，以#开头为其他课程
     var courseId: String = "",
     //课程名
     var courseName: String = "",
@@ -19,6 +19,8 @@ data class Course(
     var campus: String = "",
     //教室位置
     var location: String = "",
+    //周次文字
+    var weeksText: String = "",
     //包含周次列表
     var weeks: List<Int> = listOf(),
     //星期几

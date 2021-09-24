@@ -9,6 +9,8 @@ import android.widget.*
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import cn.mapotofu.everydaymvvm.R
 import cn.mapotofu.everydaymvvm.app.App
@@ -19,15 +21,20 @@ import cn.mapotofu.everydaymvvm.app.util.*
 import cn.mapotofu.everydaymvvm.data.model.entity.Course
 import cn.mapotofu.everydaymvvm.data.model.entity.TimeTable
 import cn.mapotofu.everydaymvvm.databinding.FragmentScheduleBinding
+import cn.mapotofu.everydaymvvm.ui.adapter.ScheduleOtherCourseAdapter
 import cn.mapotofu.everydaymvvm.ui.adapter.ScheduleViewPagerAdapter
-import cn.mapotofu.everydaymvvm.ui.custom.helper.ZoomOutPageTransformer
 import cn.mapotofu.everydaymvvm.viewmodel.request.RequestScheduleViewModel
 import cn.mapotofu.everydaymvvm.viewmodel.state.ScheduleViewModel
 import com.codeboy.pager2_transformers.*
 import kotlinx.android.synthetic.main.fragment_schedule.*
+import kotlinx.android.synthetic.main.view_other_course.*
 import me.hgj.jetpackmvvm.ext.nav
 import me.hgj.jetpackmvvm.ext.navigateAction
 import me.hgj.jetpackmvvm.ext.parseState
+import androidx.recyclerview.widget.DividerItemDecoration
+
+
+
 
 
 /**
@@ -39,7 +46,9 @@ import me.hgj.jetpackmvvm.ext.parseState
 class ScheduleFragment : BaseFragment<ScheduleViewModel, FragmentScheduleBinding>() {
     private val requestScheduleViewModel: RequestScheduleViewModel by viewModels()
     private lateinit var scheduleViewPagerAdapter: ScheduleViewPagerAdapter
-    private lateinit var popupWindow: PopupWindow
+    private lateinit var scheduleOtherCourseAdapter: ScheduleOtherCourseAdapter
+    private lateinit var popupWindowSelectWeek: PopupWindow
+    private lateinit var popupWindowOtherCourse: PopupWindow
 
     private lateinit var courseList: MutableList<Course>
     private lateinit var timeTableList: MutableList<TimeTable>
@@ -63,7 +72,7 @@ class ScheduleFragment : BaseFragment<ScheduleViewModel, FragmentScheduleBinding
             App.context.getPrefer().getString(Const.KEY_CAMPUS, "jiayu")!!
         )
         termStartDate = mViewModel.termStartDate!!
-        currentWeek = mViewModel.teachingWeekNum!!
+        currentWeek = mViewModel.teachingWeekNum
 
         scheduleViewPagerAdapter = ScheduleViewPagerAdapter(
             this,
@@ -76,29 +85,76 @@ class ScheduleFragment : BaseFragment<ScheduleViewModel, FragmentScheduleBinding
                 else -> false
             }
         )
+        scheduleOtherCourseAdapter = ScheduleOtherCourseAdapter()
         viewpagerSchedule.adapter = scheduleViewPagerAdapter
         viewpagerSchedule.offscreenPageLimit = 1
         viewpagerSchedule.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         viewpagerSchedule.setCurrentItem(currentWeek - 1, true)
         //注意此处，部分动画可能导致不同页面PageItem重叠
-        viewpagerSchedule.setPageTransformer(Pager2_DepthTransformer())
+        viewpagerSchedule.setPageTransformer(Pager2_ZoomOutSlideTransformer())
 
         val afterSplitWeekCourseList: MutableList<MutableList<Course>> = mutableListOf()
+        val otherCourseList: MutableList<Course> = mutableListOf()
         //外层循环周次
         for (indexWeek in 1..Constants.MAX_WEEK) {
             //当前周次课程list
             val currentWeekCourseList: MutableList<Course> = mutableListOf()
             //内层循环遍历所有课程，寻找包含indexWeek的课程并加入list
             courseList.forEach { it ->
-                if (it.weeks.contains(indexWeek)){
+                if (it.courseName.first() != '#' && it.weeks.contains(indexWeek)){
                     currentWeekCourseList.add(it)
                 }
             }
             //将当前周次列表加入最终结果
             afterSplitWeekCourseList.add(currentWeekCourseList)
         }
-        scheduleViewPagerAdapter.setNewInstance(afterSplitWeekCourseList)
+        courseList.forEach { it ->
+            if (it.courseId.first() == '#'){
+                otherCourseList.add(it)
+            }
+        }
 
+        if (otherCourseList.isEmpty()) {
+            fabOtherCourse.hide()
+        } else {
+            fabOtherCourse.show()
+            fabOtherCourse.setOnClickListener {
+                fabOtherCourse.hide()
+                val view: View =
+                    LayoutInflater.from(App.context).inflate(R.layout.view_other_course, null)
+                popupWindowOtherCourse = PopupWindow(
+                    view,
+                    UisUtil.dip2px(App.context, 200F),
+                    WindowManager.LayoutParams.WRAP_CONTENT
+                )
+                //设置外面可触
+                popupWindowOtherCourse.isOutsideTouchable = true
+                //设置可触
+                popupWindowOtherCourse.isFocusable = false
+                popupWindowOtherCourse.setBackgroundDrawable(
+                    DrawablesUtil.getDrawable(
+                        Color.WHITE,
+                        30,
+                        0,
+                        Color.WHITE
+                    )
+                )
+                popupWindowOtherCourse.isTouchable = true
+                popupWindowOtherCourse.elevation = 8f
+                popupWindowOtherCourse.showAtLocation(activity?.window?.decorView, Gravity.CENTER, 0, 0);
+
+                val recyclerOtherCourse = view.findViewById<RecyclerView>(R.id.recyclerOtherCourse)
+                recyclerOtherCourse.adapter = scheduleOtherCourseAdapter
+                recyclerOtherCourse.layoutManager = LinearLayoutManager(App.context)
+                scheduleOtherCourseAdapter.setNewInstance(otherCourseList)
+
+                popupWindowOtherCourse.setOnDismissListener {
+                    fabOtherCourse.show()
+                }
+            }
+        }
+
+        scheduleViewPagerAdapter.setNewInstance(afterSplitWeekCourseList)
 
         // 抽屉按钮
         drawerButton.setOnClickListener {
@@ -132,16 +188,16 @@ class ScheduleFragment : BaseFragment<ScheduleViewModel, FragmentScheduleBinding
         textviewCurrentWeek.setOnClickListener {
             val view: View =
                 LayoutInflater.from(App.context).inflate(R.layout.view_change_week, null)
-            popupWindow = PopupWindow(
+            popupWindowSelectWeek = PopupWindow(
                 view,
                 UisUtil.dip2px(App.context, 200F),
                 WindowManager.LayoutParams.WRAP_CONTENT
             )
             //设置外面可触
-            popupWindow.isOutsideTouchable = true
+            popupWindowSelectWeek.isOutsideTouchable = true
             //设置可触
-            popupWindow.isFocusable = false
-            popupWindow.setBackgroundDrawable(
+            popupWindowSelectWeek.isFocusable = false
+            popupWindowSelectWeek.setBackgroundDrawable(
                 DrawablesUtil.getDrawable(
                     Color.WHITE,
                     30,
@@ -149,9 +205,9 @@ class ScheduleFragment : BaseFragment<ScheduleViewModel, FragmentScheduleBinding
                     Color.WHITE
                 )
             )
-            popupWindow.isTouchable = true
-            popupWindow.elevation = 8f
-            popupWindow.showAsDropDown(textviewCurrentWeek, 20, 30)
+            popupWindowSelectWeek.isTouchable = true
+            popupWindowSelectWeek.elevation = 8f
+            popupWindowSelectWeek.showAsDropDown(textviewCurrentWeek, 20, 30)
 
             val seekBar = view.findViewById<SeekBar>(R.id.seekBar)
             val weekTv = view.findViewById<TextView>(R.id.weekText)
@@ -182,6 +238,7 @@ class ScheduleFragment : BaseFragment<ScheduleViewModel, FragmentScheduleBinding
                 scheduleViewPagerAdapter.notifyItemChanged(position)
             }
         })
+
     }
 
     override fun initData() {

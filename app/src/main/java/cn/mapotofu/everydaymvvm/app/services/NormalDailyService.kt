@@ -2,7 +2,6 @@ package cn.mapotofu.everydaymvvm.app.services
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.util.Log
 import android.widget.RemoteViews
@@ -12,7 +11,6 @@ import cn.mapotofu.everydaymvvm.app.util.*
 import cn.mapotofu.everydaymvvm.data.model.entity.Course
 import cn.mapotofu.everydaymvvm.data.repository.ScheduleRepository
 import cn.mapotofu.everydaymvvm.ui.custom.coursetable.entity.BTimeTable
-import cn.mapotofu.everydaymvvm.ui.custom.coursetable.utils.DrawablesUtil
 
 /**
  * @description
@@ -22,8 +20,8 @@ import cn.mapotofu.everydaymvvm.ui.custom.coursetable.utils.DrawablesUtil
  */
 class NormalDailyService : DailyRemoteViewService() {
     private val repository = ScheduleRepository(
-        AppDataBase.GetDataBaseInstace().courseDao(),
-        AppDataBase.GetDataBaseInstace().timetableDao()
+        AppDataBase.getDataBaseInstance().courseDao(),
+        AppDataBase.getDataBaseInstance().timetableDao()
     )
 
     //这里回调数据
