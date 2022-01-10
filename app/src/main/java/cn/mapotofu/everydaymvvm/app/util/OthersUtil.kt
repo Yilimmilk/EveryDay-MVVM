@@ -1,12 +1,12 @@
 package cn.mapotofu.everydaymvvm.app.util
 
+import android.app.ActivityManager
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import cn.mapotofu.everydaymvvm.BuildConfig
 import cn.mapotofu.everydaymvvm.R
 import cn.mapotofu.everydaymvvm.app.App.Companion.context
@@ -94,5 +94,16 @@ object OthersUtil {
         intent.putExtra(Intent.EXTRA_SUBJECT, "朝暮安卓端BUG反馈") // 主题
         intent.putExtra(Intent.EXTRA_TEXT, msg) // 正文
         context.startActivity(intent)
+    }
+
+    /**
+     * 结束App
+     */
+    fun exitAPP(context: Context) {
+        val activityManager = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        val appTaskList = activityManager.appTasks
+        for (appTask in appTaskList) {
+            appTask.finishAndRemoveTask()
+        }
     }
 }

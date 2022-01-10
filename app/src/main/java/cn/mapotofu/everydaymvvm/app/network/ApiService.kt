@@ -12,7 +12,7 @@ import retrofit2.http.*
 interface ApiService {
     //获取客户端登陆Token
     @FormUrlEncoded
-    @POST("/client/client-login/")
+    @POST("client/client-login/")
     suspend fun getClientToken(
         @Field("stu_num") stuNumber: String,
         @Field("stu_passwd") stuPassword: String,
@@ -20,14 +20,14 @@ interface ApiService {
     ): BaseResponse<LoginTokenResp>
 
     //获取个人信息
-    @GET("/info/get-pinfo")
+    @GET("info/get-pinfo/")
     suspend fun getPersonalInfo(
         @Query("stu_num") stuNumber: String,
         @Query("cli_token") cliToken: String
     ): BaseResponse<PersonalInfoResp>
 
     //获取课表
-    @GET("/info/get-schedule")
+    @GET("info/get-schedule/")
     suspend fun getScheduleList(
         @Query("stu_num") stuNumber: String,
         @Query("req_year") reqYear: String,
@@ -36,9 +36,31 @@ interface ApiService {
         @Query("cli_token") cliToken: String
     ): BaseResponse<ScheduleResp>
 
+    //获取成绩
+    @GET("info/get-grade/")
+    suspend fun getGradeList(
+        @Query("stu_num") stuNumber: String,
+        @Query("req_year") reqYear: String,
+        @Query("req_term") reqTerm: String,
+        @Query("use_cache") useCache: String,
+        @Query("cli_token") cliToken: String
+    ): BaseResponse<GradeResp>
+
+    //获取成绩详情
+    @GET("info/get-grade_detail/")
+    suspend fun getGradeDetail(
+        @Query("stu_num") stuNumber: String,
+        @Query("req_year") reqYear: String,
+        @Query("req_term") reqTerm: String,
+        @Query("course_name") courseName: String,
+        @Query("class_id") classId: String,
+        @Query("use_cache") useCache: String,
+        @Query("cli_token") cliToken: String
+    ): BaseResponse<GradeDetailResp>
+
     //获取配置清单并上报客户端信息
     //由于不一定有参数传进来，所以为可空类型
-    @GET("conf/get-conf")
+    @GET("conf/get-conf/")
     suspend fun getConf(
         @Query("stu_num") stuNumber: String?,
         @Query("cli_token") stuToken: String?,
@@ -47,24 +69,24 @@ interface ApiService {
     ): BaseResponse<ConfResp>
 
     //获取倒计时
-    @GET("conf/get-countdown")
+    @GET("conf/get-countdown/")
     suspend fun getCountDown(): BaseResponse<CountDownResp>
 
     //获取通知
-    @GET("conf/get-notice")
+    @GET("conf/get-notice/")
     suspend fun getNotice(): BaseResponse<NoticeResp>
 
     //获取关于
-    @GET("conf/get-about")
+    @GET("conf/get-about/")
     suspend fun getAbout(): BaseResponse<AboutResp>
 
     //获取学期
-    @GET("/conf/get-semester")
+    @GET("conf/get-semester/")
     suspend fun getSemesterList(
         @Query("stu_num") stuNumber: String,
     ): BaseResponse<SemesterResp>
 
     //获取时间表
-    @GET("conf/get-timetable")
+    @GET("conf/get-timetable/")
     suspend fun getTimeTable(): BaseResponse<TimeTableResp>
 }

@@ -1,6 +1,7 @@
 package cn.mapotofu.everydaymvvm.ui.adapter
 
 import android.content.res.ColorStateList
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,8 +15,8 @@ import kotlinx.android.synthetic.main.item_color_picker.view.*
 
 internal class ColorPickerAdapter(
     private val dialog: ColorPicker?,
-    private var colors: IntArray,
-    private val selectedColor: Int?,
+    private var colors: MutableList<String>,
+    private val selectedColor: String?,
     private val listener: ColorPickerListener
 ) : RecyclerView.Adapter<ColorPickerAdapter.ColorItemViewHolder>() {
 
@@ -44,10 +45,10 @@ internal class ColorPickerAdapter(
             bindColorView(color)
         }
 
-        private fun bindColorView(@ColorInt color: Int) {
+        private fun bindColorView(color: String) {
             itemView.colorSelected.isVisible = selectedColor != null && selectedColor == color
             itemView.colorSelected.setImageResource(R.drawable.ic_checked_24dp)
-            itemView.colorSelectedCircle.imageTintList = ColorStateList.valueOf(color)
+            itemView.colorSelectedCircle.imageTintList = ColorStateList.valueOf(Color.parseColor(color))
         }
 
         override fun onClick(v: View?) {

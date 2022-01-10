@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewmodel"
+            type="cn.mapotofu.everydaymvvm.viewmodel.state.MainViewModel" />
     </data>
 
     <androidx.drawerlayout.widget.DrawerLayout

@@ -5,7 +5,6 @@ import android.appwidget.AppWidgetManager
 import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
-import androidx.core.content.edit
 import cn.mapotofu.everydaymvvm.app.Constants
 import cn.mapotofu.everydaymvvm.app.util.Const
 import cn.mapotofu.everydaymvvm.app.util.getPrefer

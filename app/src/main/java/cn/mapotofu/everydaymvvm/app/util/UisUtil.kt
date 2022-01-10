@@ -6,7 +6,6 @@ import android.content.res.Resources
 import android.os.Build
 import android.text.Html
 import android.text.Spanned
-import cn.mapotofu.everydaymvvm.app.util.UisUtil
 import android.view.LayoutInflater
 import cn.mapotofu.everydaymvvm.app.App
 import android.util.DisplayMetrics

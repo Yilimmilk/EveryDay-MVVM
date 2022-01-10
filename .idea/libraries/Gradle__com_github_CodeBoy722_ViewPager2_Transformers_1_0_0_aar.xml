@@ -1,10 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.CodeBoy722:ViewPager2_Transformers:1.0.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1c9fba2f25fb31b1cc974d369dd91025/transformed/jetified-ViewPager2_Transformers-1.0.0/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/1423a4c5cec9ddf84b57de1758b95b2b/transformed/jetified-ViewPager2_Transformers-1.0.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1423a4c5cec9ddf84b57de1758b95b2b/transformed/jetified-ViewPager2_Transformers-1.0.0/AndroidManifest.xml" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1423a4c5cec9ddf84b57de1758b95b2b/transformed/jetified-ViewPager2_Transformers-1.0.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1af398e205f898c0fafac18c130884bc/transformed/jetified-ViewPager2_Transformers-1.0.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/74534c044531dba3ebaa13dede6d0ce1/transformed/jetified-ViewPager2_Transformers-1.0.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/74534c044531dba3ebaa13dede6d0ce1/transformed/jetified-ViewPager2_Transformers-1.0.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/74534c044531dba3ebaa13dede6d0ce1/transformed/jetified-ViewPager2_Transformers-1.0.0/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

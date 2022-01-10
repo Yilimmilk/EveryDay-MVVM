@@ -1,6 +1,7 @@
 package cn.mapotofu.everydaymvvm.ui.fragment.add_course
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.graphics.Color.*
 import android.os.Bundle
 import android.view.View
@@ -50,7 +51,7 @@ class AddCourseFragment : BaseFragment<AddCourseViewModel, FragmentAddCourseBind
             isNewCourse = true
             course = Course().apply {
                 courseId = "@${System.currentTimeMillis()}"
-                color = Constants.COLOR_1[Random().nextInt(Constants.COLOR_1.size)]
+                color = Constants.COLOR_PALETTE[Random().nextInt(Constants.COLOR_PALETTE.size)]
             }
         }
         //初始化部分UI
@@ -60,12 +61,11 @@ class AddCourseFragment : BaseFragment<AddCourseViewModel, FragmentAddCourseBind
         //颜色选择器
         mDatabind.buttonColorSelector.setOnClickListener {
             ColorPicker().colorPicker(
-                resources.getIntArray(R.array.colorPickerPanelColors),
+                Constants.COLOR_PALETTE,
                 listener = { color ->
-                    val hexColorStr = String.format("#%06X", 0xFFFFFF and color)
-                    course.color = hexColorStr
-                    mViewModel.colorText.postValue(hexColorStr)
-                    mDatabind.contentBlockColor.setBackgroundColor(color)
+                    course.color = color
+                    mViewModel.colorText.postValue(color)
+                    mDatabind.contentBlockColor.setBackgroundColor(parseColor(color))
                 }).show(requireActivity().supportFragmentManager)
         }
         //时间计划选择器

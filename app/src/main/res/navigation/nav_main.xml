@@ -47,6 +47,14 @@
     </fragment>
 
     <action
+        android:id="@+id/action_to_scheduleFragment"
+        app:destination="@id/scheduleFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/pop_enter_anim"
+        app:popExitAnim="@anim/pop_exit_anim" />
+
+    <action
         android:id="@+id/action_to_loginFragment"
         app:destination="@id/loginFragment"
         app:enterAnim="@anim/nav_default_enter_anim"
@@ -73,5 +81,20 @@
         android:name="cn.mapotofu.everydaymvvm.ui.fragment.add_course.AddCourseFragment"
         android:label="AddCourseFragment"
         tools:layout="@layout/fragment_add_course" />
+
+    <fragment
+        android:id="@+id/gradeFragment"
+        android:name="cn.mapotofu.everydaymvvm.ui.fragment.grade.GradeFragment"
+        android:label="GradeFragment"
+        tools:layout="@layout/fragment_grade" >
+    </fragment>
+
+    <action
+        android:id="@+id/action_to_gradeFragment"
+        app:destination="@id/gradeFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/pop_enter_anim"
+        app:popExitAnim="@anim/pop_exit_anim" />
 
 </navigation>

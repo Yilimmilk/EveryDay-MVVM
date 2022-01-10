@@ -2,7 +2,6 @@ package cn.mapotofu.everydaymvvm.app.ext
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment

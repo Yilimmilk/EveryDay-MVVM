@@ -33,10 +33,6 @@ import me.hgj.jetpackmvvm.ext.navigateAction
 import me.hgj.jetpackmvvm.ext.parseState
 import androidx.recyclerview.widget.DividerItemDecoration
 
-
-
-
-
 /**
  * @description
  * @package cn.mapotofu.everydaymvvm.ui.fragment.schedule

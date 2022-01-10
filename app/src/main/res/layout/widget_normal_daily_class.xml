@@ -46,6 +46,21 @@
             android:tint="@android:color/black" />
     </RelativeLayout>
 
+    <TextView
+        android:id="@+id/textview_no_course"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/task_widget_head"
+        android:layout_marginStart="@dimen/dp10"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginEnd="@dimen/dp10"
+        android:layout_marginBottom="@dimen/dp10"
+        android:gravity="center"
+        android:text="没\n课\n！"
+        android:textSize="@dimen/t30"
+        android:textStyle="bold"
+        android:visibility="gone"/>
+
     <ListView
         android:id="@+id/listview"
         android:layout_width="match_parent"
@@ -58,5 +73,6 @@
         android:divider="@null"
         android:dividerHeight="0dp"
         android:scrollbars="none"
+        android:visibility="visible"
         tools:listitem="@layout/item_widget_day_class" />
 </RelativeLayout>

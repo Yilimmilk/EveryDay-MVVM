@@ -2,15 +2,23 @@ package cn.mapotofu.everydaymvvm.app
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
+import android.widget.Toast
 import cat.ereza.customactivityoncrash.config.CaocConfig
+import cn.mapotofu.everydaymvvm.BR
 import cn.mapotofu.everydaymvvm.BuildConfig
 import cn.mapotofu.everydaymvvm.ui.activity.MainActivity
 import cn.mapotofu.everydaymvvm.app.event.AppViewModel
 import cn.mapotofu.everydaymvvm.app.event.EventViewModel
 import cn.mapotofu.everydaymvvm.app.ext.getProcessName
 import cn.mapotofu.everydaymvvm.ui.activity.ErrorActivity
+import cn.mapotofu.everydaymvvm.ui.activity.UpdateActivity
+import cn.mapotofu.everydaymvvm.viewmodel.state.GradeViewModel
+import com.drake.brv.utils.BRV
 import com.tencent.bugly.Bugly
-import com.tencent.bugly.crashreport.CrashReport
+import com.tencent.bugly.beta.Beta
+import com.tencent.bugly.beta.upgrade.UpgradeListener
+import com.tencent.bugly.beta.upgrade.UpgradeStateListener
 import com.tencent.mmkv.MMKV
 import me.hgj.jetpackmvvm.base.BaseApp
 import me.hgj.jetpackmvvm.ext.util.jetpackMvvmLog
@@ -32,6 +40,7 @@ class App : BaseApp() {
     companion object {
         @SuppressLint("StaticFieldLeak")
         lateinit var context: Context
+
         @SuppressLint("StaticFieldLeak")
         lateinit var instance: App
         lateinit var eventViewModelInstance: EventViewModel
@@ -53,12 +62,44 @@ class App : BaseApp() {
         val packageName = context.packageName
         // 获取当前进程名
         val processName = getProcessName(android.os.Process.myPid())
-        // 设置是否为上报进程
-        // val strategy = CrashReport.UserStrategy(context)
-        // strategy.isUploadProcess = processName == null || processName == packageName
-        // 初始化Bugly
-        //Beta.upgradeDialogLayoutId = R.layout.view_upgrade_dialog
+        /*在application中初始化时设置监听，监听策略的收取*/
+        Beta.upgradeListener = UpgradeListener { ret, strategy, isManual, isSilence ->
+            if (strategy != null) {
+                val i = Intent()
+                i.setClass(applicationContext, UpdateActivity::class.java)
+                i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(i)
+                //Toast.makeText(applicationContext, "检测到更新！\uD83E\uDD73", Toast.LENGTH_SHORT).show()
+            } else {
+                //Toast.makeText(applicationContext, "没有更新", Toast.LENGTH_LONG).show()
+            }
+        }
+
+        /* 设置更新状态回调接口 */
+        Beta.upgradeStateListener = object : UpgradeStateListener {
+            /* @param isManual  true:手动检查 false:自动检查 */
+            override fun onUpgradeSuccess(isManual: Boolean) {
+                //Toast.makeText(applicationContext, "检测到更新！\uD83E\uDD73", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onUpgradeFailed(isManual: Boolean) {
+                Toast.makeText(applicationContext, "更新失败～ \uD83D\uDE2D", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onUpgrading(isManual: Boolean) {
+                if (isManual) Toast.makeText(applicationContext, "正在检查更新～ \uD83D\uDE2C", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onUpgradeNoVersion(isManual: Boolean) {
+                if (isManual) Toast.makeText(applicationContext, "你已是最新版本了～ \uD83D\uDE0E", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onDownloadCompleted(isManual: Boolean) {
+                Toast.makeText(applicationContext, "下载完成！ \uD83E\uDD29", Toast.LENGTH_SHORT).show()
+            }
+        }
         Bugly.init(context, "7a3a48047c", false)
+
         jetpackMvvmLog = BuildConfig.DEBUG
 
         //防止项目崩溃，崩溃后打开错误界面

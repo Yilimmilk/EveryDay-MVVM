@@ -19,6 +19,7 @@ import cn.mapotofu.everydaymvvm.ui.custom.coursetable.entity.BTimeTable
  * @date 2021/8/14
  */
 class NormalDailyService : DailyRemoteViewService() {
+    //课程数据仓库
     private val repository = ScheduleRepository(
         AppDataBase.getDataBaseInstance().courseDao(),
         AppDataBase.getDataBaseInstance().timetableDao()

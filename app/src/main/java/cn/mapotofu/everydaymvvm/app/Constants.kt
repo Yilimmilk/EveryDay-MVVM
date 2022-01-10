@@ -9,32 +9,33 @@ import cn.mapotofu.everydaymvvm.data.model.entity.AboutItem
  * @date 2021/6/22
  */
 object Constants {
-    const val URL_REMOTE_API_SERVER = "https://api.mapotofu.cn/"
-    const val URL_LOCAL_API_SERVER = "http://192.168.1.164:8000/"
+    const val URL_REMOTE_API_SERVER = "https://api.mapotofu.cn/v1/"
+    const val URL_LOCAL_API_SERVER = "http://192.168.50.173:8000/v1/"
     const val CLIENT_TYPE = 1
     const val MAX_WEEK = 24
     const val MAX_SESSION = 12
 
     const val APP_WIDGET_ID = "app_widget_id"
 
-    val COLOR_1 = arrayOf(
-        "#A992FE",
-        "#FDDF4E",
-        "#5EEFA0",
-        "#FFA17D",
-        "#D68DF9",
-        "#86B0FC",
-        "#FC9586",
-        "#65BFEA",
-        "#659DEA",
-        "#6A65EA",
-        "#A97CF8",
-        "#E891F3",
-        "#F391D5",
-        "#F391B4",
-        "#F39193",
-        "#96C487",
-        "#87C2C4"
+    val COLOR_PALETTE = mutableListOf(
+        "#CCE57373",
+        "#CC7986CB",
+        "#CC64B5F6",
+        "#CC81C784",
+        "#CC4DB6AC",
+        "#CC947A6D",
+        "#CCFFA726",
+        "#CCF19EC2",
+        "#CC7A7E23",
+        "#CCFBDA41",
+        "#CC1B813E",
+        "#CCE16B8C",
+        "#CCEF3473",
+        "#CC005CAF",
+        "#CCB28FCE",
+        "#CCC1328E",
+        "#CC787878",
+        "#CC904840"
     )
 
     //参考项目

@@ -9,16 +9,6 @@
     <color name="colorPrimaryDarkNight">#0288D1</color>
     <color name="colorPrimaryLightNight">#B3E5FC</color>
 
-    <array name="colorPickerPanelColors">
-        <item>#CCE57373</item>
-        <item>#CC7986CB</item>
-        <item>#CC64B5F6</item>
-        <item>#CC81C784</item>
-        <item>#CC9575CD</item>
-        <item>#CC4DB6AC</item>
-        <item>#CCFFA726</item>
-    </array>
-
     <color name="choose_tag">#4A536DFE</color><!-- 课表顶部当前日期背景色 -->
 
     <color name="white_transparent">#D6FFFFFF</color>

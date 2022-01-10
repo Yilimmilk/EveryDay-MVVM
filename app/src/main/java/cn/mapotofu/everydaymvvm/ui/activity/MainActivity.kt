@@ -60,6 +60,16 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
         //自定义选项监听
         mDatabind.navView.setNavigationItemSelectedListener {
             when (it.itemId) {
+                R.id.scheduleFragment -> {
+                    mDatabind.drawerLayout.closeDrawer(GravityCompat.START)
+                    navController.navigate(R.id.action_to_scheduleFragment)
+                    true
+                }
+                R.id.gradeFragment -> {
+                    mDatabind.drawerLayout.closeDrawer(GravityCompat.START)
+                    navController.navigate(R.id.action_to_gradeFragment)
+                    true
+                }
                 R.id.settingsActivity -> {
                     mDatabind.drawerLayout.closeDrawer(GravityCompat.START)
                     startActivity(Intent(this, SettingsActivity::class.java))
@@ -81,7 +91,8 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
                 if (navController.currentDestination!!.id == R.id.splashFragment ||
                     navController.currentDestination!!.id == R.id.loginFragment ||
                     navController.currentDestination!!.id == R.id.loadScheduleFragment ||
-                    navController.currentDestination!!.id == R.id.scheduleFragment
+                    navController.currentDestination!!.id == R.id.scheduleFragment ||
+                    navController.currentDestination!!.id == R.id.gradeFragment
                 ) {
                     //是根页面
                     Log.d("返回键监听", "是根页面")

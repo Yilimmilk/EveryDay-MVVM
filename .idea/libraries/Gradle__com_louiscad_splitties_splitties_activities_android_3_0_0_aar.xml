@@ -1,10 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: com.louiscad.splitties:splitties-activities-android:3.0.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9b69d523293c6b2545d3ddd875e5b8f7/transformed/jetified-splitties-activities-debug/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f08eff08da4b6def68be8351f750af3c/transformed/jetified-splitties-activities-debug/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f08eff08da4b6def68be8351f750af3c/transformed/jetified-splitties-activities-debug/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/f08eff08da4b6def68be8351f750af3c/transformed/jetified-splitties-activities-debug/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/49e82431bd1026b51908142d6f348561/transformed/jetified-splitties-activities-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/baea76a2b3cfecab281b5afb37558c70/transformed/jetified-splitties-activities-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/baea76a2b3cfecab281b5afb37558c70/transformed/jetified-splitties-activities-debug/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/baea76a2b3cfecab281b5afb37558c70/transformed/jetified-splitties-activities-debug/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-activities-android/3.0.0/5218b20eae51976cdbf69c8e74e1d6676554bee6/splitties-activities-android-3.0.0-javadoc.jar!/" />

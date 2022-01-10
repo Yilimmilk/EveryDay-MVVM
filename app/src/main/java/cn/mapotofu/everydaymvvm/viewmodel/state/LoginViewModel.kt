@@ -13,6 +13,8 @@ class LoginViewModel : BaseViewModel() {
     //学号密码
     var stuId = MutableLiveData<String>()
     var stuPasswd = MutableLiveData<String>()
+    //登陆模式
+    var tokenMode = MutableLiveData<Boolean>(false)
 
     //请求网络状态
     var requestInProgress = MutableLiveData<Boolean>(false)

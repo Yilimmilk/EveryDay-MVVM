@@ -1,17 +1,8 @@
 package cn.mapotofu.everydaymvvm.ui.activity
 
-import android.annotation.SuppressLint
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.view.MotionEvent
 import android.view.View
-import android.view.ViewTreeObserver
-import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.core.content.ContextCompat
-import androidx.dynamicanimation.animation.DynamicAnimation
 import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,9 +17,6 @@ import cn.mapotofu.everydaymvvm.ui.adapter.OnClickCallback
 import cn.mapotofu.everydaymvvm.viewmodel.request.RequestAboutViewModel
 import cn.mapotofu.everydaymvvm.viewmodel.state.AboutViewModel
 import com.google.android.material.snackbar.Snackbar
-import com.tencent.bugly.Bugly
-import com.tencent.bugly.beta.Beta
-import com.tencent.bugly.crashreport.CrashReport
 import kotlinx.android.synthetic.main.activity_about.*
 import me.hgj.jetpackmvvm.ext.parseState
 
@@ -41,21 +29,11 @@ import me.hgj.jetpackmvvm.ext.parseState
 class AboutActivity : BaseActivity<AboutViewModel, ActivityAboutBinding>() {
     private val requestAboutViewModel: RequestAboutViewModel by viewModels()
 
-    //是否第一次检测
-    private var isFirstCheck = true
-
     override fun layoutId(): Int = R.layout.activity_about
 
     override fun initView(savedInstanceState: Bundle?) {
         addLoadingObserve(requestAboutViewModel)
         mDatabind.viewmodel = mViewModel
-
-        mDatabind.versionSlogan.setOnClickListener {
-            if (isFirstCheck) {
-                Beta.checkUpgrade(true, false)
-                isFirstCheck = false
-            }
-        }
 
         loadAnimation(mDatabind.imageLogo)
 

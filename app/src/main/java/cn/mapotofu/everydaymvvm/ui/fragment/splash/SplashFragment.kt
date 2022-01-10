@@ -34,14 +34,15 @@ class SplashFragment : BaseFragment<SplashViewModel, FragmentSplashBinding>() {
     private val requestSplashViewModel: RequestSplashViewModel by viewModels()
     private var isLogin = CacheUtil.getIsLogin()
     private val localConfData = CacheUtil.getClientConf()
-    private val countdownTime: Long = 0
+    private var confUpdateStatus = false
+    private val countdownTimeNavigate: Long = 0
+    private val countdownTimeOfflineMode: Long = 1500
 
     override fun layoutId() = R.layout.fragment_splash
 
     override fun initView(savedInstanceState: Bundle?) {
         addLoadingObserve(requestSplashViewModel)
         mDatabind.viewmodel = mViewModel
-        mDatabind.click = ProxyClick()
 
         if (localConfData == null) {
             mDatabind.textviewVersion.text = "未获取"
@@ -62,12 +63,33 @@ class SplashFragment : BaseFragment<SplashViewModel, FragmentSplashBinding>() {
             //若未登陆，则进行无参请求
             requestSplashViewModel.confReq()
         }
+
+        object : CountDownTimer(countdownTimeOfflineMode, 1000) {
+            override fun onTick(millisUntilFinished: Long) {}
+            override fun onFinish() {
+                if (!confUpdateStatus) {
+                    Snackbar.make(requireActivity().rootView,"网络不佳？", Snackbar.LENGTH_LONG)
+                        .setAction("离线模式") {
+                            CacheUtil.setIsConfUpdate(false)
+                            Snackbar.make(requireActivity().rootView, "离线模式，部分功能将不可用", Snackbar.LENGTH_LONG)
+                                .show()
+                            Log.e("用户手动进入离线模式", "")
+                            if (isLogin)
+                                countDownNavigate(R.id.action_splashFragment_to_scheduleFragment)
+                            else
+                                countDownNavigate(R.id.action_splashFragment_to_loginFragment)
+                        }
+                        .show()
+                }
+            }
+        }.start()
     }
 
     override fun createObserver() {
         //配置回调
         requestSplashViewModel.confResult.observe(viewLifecycleOwner, { resultState ->
             parseState(resultState, {
+                confUpdateStatus = true
                 //如果成功
                 val confData = ClientConf(
                     it.version,
@@ -121,7 +143,7 @@ class SplashFragment : BaseFragment<SplashViewModel, FragmentSplashBinding>() {
     }
 
     private fun countDownNavigate(resId:Int){
-        object : CountDownTimer(countdownTime, 200) {
+        object : CountDownTimer(countdownTimeNavigate, 1000) {
             override fun onTick(millisUntilFinished: Long) {}
             override fun onFinish() {
                 nav().navigateAction(resId)
@@ -135,17 +157,5 @@ class SplashFragment : BaseFragment<SplashViewModel, FragmentSplashBinding>() {
 //            countDownTimer.cancel();
 //            countDownTimer = null;
 //        }
-    }
-
-    inner class ProxyClick {
-        fun offlinemode(){
-            CacheUtil.setIsConfUpdate(false)
-            Snackbar.make(requireActivity().rootView,"叮，离线模式～", Snackbar.LENGTH_LONG).show()
-            Log.e("用户手动进入离线模式","")
-            if (isLogin)
-                countDownNavigate(R.id.action_splashFragment_to_scheduleFragment)
-            else
-                countDownNavigate(R.id.action_splashFragment_to_loginFragment)
-        }
     }
 }

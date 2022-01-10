@@ -1,10 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: com.louiscad.splitties:splitties-fragmentargs-android:3.0.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/605840863ac825bb767cdf7924f0785d/transformed/jetified-splitties-fragmentargs-debug/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d8e5d7f613c5628c5c95c9f2ef130093/transformed/jetified-splitties-fragmentargs-debug/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/d8e5d7f613c5628c5c95c9f2ef130093/transformed/jetified-splitties-fragmentargs-debug/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d8e5d7f613c5628c5c95c9f2ef130093/transformed/jetified-splitties-fragmentargs-debug/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/cc003e32117b11e1519fa85e4edcfa3c/transformed/jetified-splitties-fragmentargs-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/859760b6293ee1e6fd15a212db44509b/transformed/jetified-splitties-fragmentargs-debug/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/859760b6293ee1e6fd15a212db44509b/transformed/jetified-splitties-fragmentargs-debug/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/859760b6293ee1e6fd15a212db44509b/transformed/jetified-splitties-fragmentargs-debug/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-fragmentargs-android/3.0.0/7f0ec096526af8df4b8feba6ee21b907ddb68888/splitties-fragmentargs-android-3.0.0-javadoc.jar!/" />

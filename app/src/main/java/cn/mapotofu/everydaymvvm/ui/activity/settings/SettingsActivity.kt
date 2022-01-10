@@ -19,6 +19,7 @@ import cn.mapotofu.everydaymvvm.ui.activity.settings.items.*
 import cn.mapotofu.everydaymvvm.ui.adapter.SettingItemAdapter
 import cn.mapotofu.everydaymvvm.viewmodel.state.SettingsViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.tencent.bugly.beta.Beta
 import me.hgj.jetpackmvvm.util.finish
 import splitties.snackbar.snack
 
@@ -78,6 +79,8 @@ class SettingsActivity : BaseListActivity<SettingsViewModel>() {
         items.add(CategoryItem("常规", true))
         items.add(HorizontalItem("校区", campusList[campusListIndex]))
         items.add(HorizontalItem("退出登录", "啪的一下就退出去了"))
+        items.add(CategoryItem("更新相关", false))
+        items.add(HorizontalItem("检查更新", "如题"))
     }
 
     private fun onSwitchItemCheckChange(item: SwitchItem, isChecked: Boolean) {
@@ -126,6 +129,13 @@ class SettingsActivity : BaseListActivity<SettingsViewModel>() {
                     "手滑了",
                     {}
                 )
+            }
+            "检查更新" -> {
+                /**
+                 * @param isManual  用户手动点击检查，非用户点击操作请传false
+                 * @param isSilence 是否显示弹窗等交互，[true:没有弹窗和toast] [false:有弹窗或toast]
+                 */
+                Beta.checkUpgrade(true,false)
             }
         }
     }

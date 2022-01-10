@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.*
 import androidx.core.view.get
@@ -18,6 +17,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+import me.hgj.jetpackmvvm.ext.view.notNull
 
 /**
  * @description
@@ -44,7 +44,17 @@ class TimePlanPanel : BottomSheetDialogFragment() {
         if (savedInstanceState != null) dismiss()
         val view = inflater.inflate(R.layout.view_btm_base_dialog_ui, container, false)
         view.findViewById<FrameLayout>(R.id.view_base_btm_dialog_ui).apply {
-            addView(getWeekView(context, this, course, totalWeek, totalSession, isNewCourse, listener))
+            addView(
+                getWeekView(
+                    context,
+                    this,
+                    course,
+                    totalWeek,
+                    totalSession,
+                    isNewCourse,
+                    listener
+                )
+            )
         }
         return view
     }
@@ -109,7 +119,7 @@ class TimePlanPanel : BottomSheetDialogFragment() {
                 text = "${i + 1}"
                 isCheckable = true
                 isCheckedIconVisible = true
-                if (!isNewCourse && course.weeks.isNotEmpty() && course.weeks.contains(i + 1)) {
+                if (course.weeks.isNotEmpty() && course.weeks.contains(i + 1)) {
                     isChecked = true
                 }
                 chipGroup.addView(this)
@@ -165,42 +175,42 @@ class TimePlanPanel : BottomSheetDialogFragment() {
     ): View? {
         val timeView = UisUtil.inflate(context, R.layout.view_btm_time_choose)
         val weeks = arrayOf("星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日")
-        val session = arrayOf("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12")
+        val sessions = arrayOf("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12")
         val dayPicker = timeView.findViewById<NumberPicker>(R.id.day_picker).apply {
             displayedValues = weeks
             minValue = 0
             maxValue = weeks.size - 1
-            if (!isNewCourse) {
+            if (course.day!=0) {
                 value = course.day - 1
             }
             descendantFocusability = DatePicker.FOCUS_BLOCK_DESCENDANTS
         }
         val sessionStartPicker =
             timeView.findViewById<NumberPicker>(R.id.session_start_picker).apply {
-                displayedValues = session
+                displayedValues = sessions
                 minValue = 0
-                maxValue = session.size - 1
+                maxValue = sessions.size - 1
                 descendantFocusability = DatePicker.FOCUS_BLOCK_DESCENDANTS
-                if (!isNewCourse) {
+                if (course.start!=0) {
                     value = course.start - 1
                 }
             }
         val sessionEndPicker = timeView.findViewById<NumberPicker>(R.id.session_end_picker).apply {
-            displayedValues = session
+            displayedValues = sessions
             minValue = 0
-            maxValue = session.size - 1
+            maxValue = sessions.size - 1
             descendantFocusability = DatePicker.FOCUS_BLOCK_DESCENDANTS
-            if (!isNewCourse) {
-                value = course.length - 1
+            if (course.length!=0) {
+                value = course.start + course.length - 1 - 1
             }
         }
         timeView.findViewById<Button>(R.id.button).setOnClickListener {
             course.day = dayPicker.value + 1
-            val r1 = session[sessionStartPicker.value]
-            val r2 = session[sessionEndPicker.value]
+            val r1 = sessions[sessionStartPicker.value]
+            val r2 = sessions[sessionEndPicker.value]
             if (r1.toInt() <= r2.toInt()) {
                 course.start = r1.toInt()
-                course.length = r2.toInt()
+                course.length = r2.toInt() - r1.toInt() + 1
                 listener?.invoke(course)
                 dialog?.dismiss()
             } else {

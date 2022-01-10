@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.afollestad.material-dialogs:color:3.3.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/5040d39d68f87660a49a10c80daab77e/transformed/jetified-color-3.3.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/5040d39d68f87660a49a10c80daab77e/transformed/jetified-color-3.3.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/5040d39d68f87660a49a10c80daab77e/transformed/jetified-color-3.3.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b382d18281e226d2f7aae4a475b0cff8/transformed/jetified-color-3.3.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b382d18281e226d2f7aae4a475b0cff8/transformed/jetified-color-3.3.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/b382d18281e226d2f7aae4a475b0cff8/transformed/jetified-color-3.3.0/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

@@ -1,16 +1,12 @@
 package cn.mapotofu.everydaymvvm.app.util
 
+import android.util.Log
 import cn.mapotofu.everydaymvvm.app.Constants
-import cn.mapotofu.everydaymvvm.data.model.bean.AboutResp
-import cn.mapotofu.everydaymvvm.data.model.bean.ScheduleResp
-import cn.mapotofu.everydaymvvm.data.model.bean.SemesterResp
-import cn.mapotofu.everydaymvvm.data.model.bean.TimeTableResp
-import cn.mapotofu.everydaymvvm.data.model.entity.AboutItem
-import cn.mapotofu.everydaymvvm.data.model.entity.Course
-import cn.mapotofu.everydaymvvm.data.model.entity.Semester
-import cn.mapotofu.everydaymvvm.data.model.entity.TimeTable
+import cn.mapotofu.everydaymvvm.data.model.bean.*
+import cn.mapotofu.everydaymvvm.data.model.entity.*
 import cn.mapotofu.everydaymvvm.ui.custom.coursetable.entity.BCourse
 import cn.mapotofu.everydaymvvm.ui.custom.coursetable.entity.BTimeTable
+import cn.mapotofu.everydaymvvm.viewmodel.state.GradeViewModel
 import java.util.*
 
 /**
@@ -21,14 +17,26 @@ import java.util.*
  */
 
 object DataMapsUtil {
-
     //Response课表映射
     fun dataMappingScheduleRespToCourse(scheduleResp: ScheduleResp): MutableList<Course> {
         val normalCourseListBeforeParse = scheduleResp.normalCourseList
         val otherCourseListBeforeParse = scheduleResp.otherCourseList
+        //普通课程
         val courseList = mutableListOf<Course>()
+        //其他课程随机ID
         val randomIdStart = (400..500).random()
+        //颜色队列
+        val colorQueue: Queue<String> = LinkedList()
+        //打乱颜色数组后依次入队
+        for (item in Constants.COLOR_PALETTE.shuffled()) colorQueue.offer(item)
+        //已经出现过的课程Map
+        val alreadyAppearedCourseId = mutableMapOf<String, String>()
+        //遍历
         normalCourseListBeforeParse.forEach { it ->
+            //出队第一个值
+            val color = colorQueue.poll()
+            //随即将出队的值从末尾入列
+            colorQueue.offer(color)
             val course = Course(
                 it.courseId,
                 it.courseTitle,
@@ -42,8 +50,12 @@ object DataMapsUtil {
                 it.includeSection.last() - it.includeSection.first() + 1,
                 it.hoursComposition,
                 it.credit,
-                Constants.COLOR_1[Random().nextInt(Constants.COLOR_1.size)],
+                (if (alreadyAppearedCourseId.containsKey(it.courseId)) alreadyAppearedCourseId[it.courseId] else color)!!,
             )
+            //如果当前map不包含key，则将当前循环课程id加入到数组中
+            if (!alreadyAppearedCourseId.containsKey(it.courseId)) alreadyAppearedCourseId[it.courseId] =
+                color!!
+            //向最终结果添加当前item
             courseList.add(course)
         }
         otherCourseListBeforeParse.forEachIndexed { index, it ->
@@ -53,7 +65,7 @@ object DataMapsUtil {
                 teachersName = it.teacher
                 weeksText = it.courseWeek
                 credit = it.credit
-                color = Constants.COLOR_1[Random().nextInt(Constants.COLOR_1.size)]
+                color = Constants.COLOR_PALETTE[Random().nextInt(Constants.COLOR_PALETTE.size)]
             }
             courseList.add(course)
         }
@@ -187,5 +199,35 @@ object DataMapsUtil {
             qaItemList.add(qaItem)
         }
         return qaItemList
+    }
+
+    fun dataMappingGradeRespToGradeModel(gradeList: GradeResp): MutableList<GradeViewModel.GradeModel> {
+        val gradeModelList = mutableListOf<GradeViewModel.GradeModel>()
+        gradeList.course.forEach { it ->
+            val gradeModel = GradeViewModel.GradeModel(
+                it.courseTitle,
+                it.classId,
+                it.courseNature,
+                "${it.credit}学分",
+                "${it.grade}分",
+                if(it.gradePoint == " ") "无" else "${it.gradePoint}绩点",
+                it.gradeNature
+            )
+            gradeModelList.add(gradeModel)
+        }
+        return gradeModelList
+    }
+
+    fun dataMappingGradeDetailRespToGradeDetailModel(gradeDetailList: GradeDetailResp): MutableList<GradeViewModel.GradeDetailModel> {
+        val gradeDetailModelList = mutableListOf<GradeViewModel.GradeDetailModel>()
+        gradeDetailList.courseDetail.forEach { it ->
+            val gradeDetailModel = GradeViewModel.GradeDetailModel(
+                it.name,
+                it.percent,
+                "${it.score}分"
+            )
+            gradeDetailModelList.add(gradeDetailModel)
+        }
+        return gradeDetailModelList
     }
 }

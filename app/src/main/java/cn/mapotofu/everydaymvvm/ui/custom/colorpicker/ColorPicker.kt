@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.view_btm_color_picker.*
  * 参考项目地址：https://github.com/msasikanth/ColorSheet
  */
 
-typealias ColorPickerListener = ((color: Int) -> Unit)?
+typealias ColorPickerListener = ((color: String) -> Unit)?
 
 class ColorPicker : BottomSheetDialogFragment() {
 
@@ -74,8 +74,8 @@ class ColorPicker : BottomSheetDialogFragment() {
     }
 
     fun colorPicker(
-        colors: IntArray,
-        @ColorInt selectedColor: Int? = null,
+        colors: MutableList<String>,
+        selectedColor: String? = null,
         listener: ColorPickerListener
     ): ColorPicker {
         colorPickerAdapter = ColorPickerAdapter(this, colors, selectedColor, listener)

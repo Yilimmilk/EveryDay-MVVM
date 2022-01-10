@@ -20,6 +20,7 @@ import cn.mapotofu.everydaymvvm.data.model.entity.UserInfo
 import cn.mapotofu.everydaymvvm.databinding.FragmentLoginBinding
 import cn.mapotofu.everydaymvvm.viewmodel.request.RequestLoginViewModel
 import cn.mapotofu.everydaymvvm.viewmodel.state.LoginViewModel
+import kotlinx.android.synthetic.main.fragment_login.*
 import me.hgj.jetpackmvvm.ext.nav
 import me.hgj.jetpackmvvm.ext.navigateAction
 import me.hgj.jetpackmvvm.ext.parseState
@@ -107,18 +108,46 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
                 mViewModel.privacyStatus.value == false -> showMessage("请先同意隐私协议以及用户协议~")
                 else -> {
                     mViewModel.requestInProgress.postValue(true)
-                    requestLoginViewModel.loginReq(
-                        mViewModel.stuId.value!!,
-                        mViewModel.stuPasswd.value!!
-                    )
+                    if (mViewModel.tokenMode.value == true) {
+                        val stuInfo = UserInfo(
+                            mViewModel.stuId.value!!,
+                            "测试模式",
+                            "none",
+                            mViewModel.stuPasswd.value!!,
+                            Constants.CLIENT_TYPE
+                        )
+                        CacheUtil.setStuInfo(stuInfo)
+                        CacheUtil.setIsLogin(true)
+                        appViewModel.studentInfo.value = stuInfo
+                        nav().navigateAction(R.id.action_loginFragment_to_loadScheduleFragment)
+                    }else {
+                        requestLoginViewModel.loginReq(
+                            mViewModel.stuId.value!!,
+                            mViewModel.stuPasswd.value!!
+                        )
+                    }
+
                 }
             }
         }
 
         var onPrivacyCheckedChangeListener =
-            CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
+            CompoundButton.OnCheckedChangeListener { v, isChecked ->
                 if (isChecked) privacyPolicy()
                 mViewModel.privacyStatus.postValue(isChecked)
+            }
+
+        var onSwitchModeCheckedChangeListener =
+            CompoundButton.OnCheckedChangeListener { v, isChecked ->
+                if (isChecked) {
+                    mViewModel.tokenMode.postValue(true)
+                    v.text = resources.getString(R.string.token_mode_text)
+                    edittextStudentPassword.hint = "客户端Token"
+                } else {
+                    mViewModel.tokenMode.postValue(false)
+                    v.text = resources.getString(R.string.student_number_mode)
+                    edittextStudentPassword.hint = "教务系统密码"
+                }
             }
     }
 }

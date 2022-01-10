@@ -1,25 +1,19 @@
 package cn.mapotofu.everydaymvvm.app.base
 
 import android.os.Bundle
-import android.widget.ImageButton
 import android.widget.TextView
-import androidx.core.view.GravityCompat
 import androidx.databinding.ViewDataBinding
-import androidx.drawerlayout.widget.DrawerLayout
 import cn.mapotofu.everydaymvvm.R
 import cn.mapotofu.everydaymvvm.app.ext.dismissLoadingExt
 import cn.mapotofu.everydaymvvm.app.ext.hideSoftKeyboard
 import cn.mapotofu.everydaymvvm.app.ext.showLoadingExt
 import cn.mapotofu.everydaymvvm.app.util.CacheUtil
-import kotlinx.android.synthetic.main.activity_main.*
 import me.hgj.jetpackmvvm.base.fragment.BaseVmDbFragment
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
-import me.hgj.jetpackmvvm.ext.nav
-import me.hgj.jetpackmvvm.ext.navigateAction
 
 abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDbFragment<VM, DB>() {
 
-    /** 
+    /**
      * 当前Fragment绑定的视图布局
      */
     abstract override fun layoutId(): Int

@@ -5,11 +5,12 @@
 
     <string name="conf_version_text">配置清单版本号:</string>
     <string name="conf_version_status">未更新</string>
-    <string name="login_hint">使用学号登陆</string>
     <string name="account_hint">教务系统学号</string>
     <string name="password_hint">教务系统密码</string>
     <string name="login_button_text">登入</string>
     <string name="login_agreement_text">我同意《用户条款》和《隐私政策》</string>
+    <string name="student_number_mode">使用学号登陆</string>
+    <string name="token_mode_text">使用Token登陆\n-测试模式</string>
 
     <string name="prepare_database_text">正在准备数据库…\n请保持网络畅通\n稍等一下咯</string>
 
@@ -40,8 +41,9 @@
     <string name="settings">设置</string>
     <string name="timetable">时间表</string>
     <string name="other_course">其他课程</string>
-    <string name="no_coolapk">你好像并没有安装酷安</string>
-
+    <string name="grade">课程成绩</string>
+    <string name="grade_detail">成绩详情</string>
+    
     <string-array name="campus_setting">
         <item>嘉鱼校区</item>
         <item>武昌校区</item>
@@ -58,6 +60,7 @@
     <string name="open_source_subtitle">感谢以下开源项目为本项目提供了支持</string>
     <string name="open_source_refer">以下是参考过的项目(不分先后)</string>
     <string name="open_source_impl">以下是引用的项目(不分先后)</string>
+    <string name="no_coolapk">你好像并没有安装酷安</string>
 
     <string name="privacyPolicy">"""本软件尊重并保护所有使用服务用户的个人隐私权，并会不时更新本隐私权政策。本隐私权政策属于用户协议不可分割的一部分。
 

@@ -1,12 +1,9 @@
 package cn.mapotofu.everydaymvvm.app.util
 
-import android.app.Service
 import android.content.Context
 import android.content.Intent
-import android.os.IBinder
 import android.os.Process
 import cn.mapotofu.everydaymvvm.app.services.KillSelfService
-
 
 /**
  * @description
