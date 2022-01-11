@@ -10,7 +10,7 @@ import cn.mapotofu.everydaymvvm.data.model.entity.AboutItem
  */
 object Constants {
     const val URL_REMOTE_API_SERVER = "https://api.mapotofu.cn/v1/"
-    const val URL_LOCAL_API_SERVER = "http://192.168.50.173:8000/v1/"
+    const val URL_LOCAL_API_SERVER = "http://192.168.50.173:8000/"
     const val CLIENT_TYPE = 1
     const val MAX_WEEK = 24
     const val MAX_SESSION = 12

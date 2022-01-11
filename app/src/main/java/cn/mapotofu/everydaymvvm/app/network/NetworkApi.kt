@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit
 
 //双重校验锁式-单例 封装NetApiService 方便直接快速调用简单的接口
 val apiService: ApiService by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
-    NetworkApi.INSTANCE.getApi(ApiService::class.java, Constants.URL_LOCAL_API_SERVER)
+    NetworkApi.INSTANCE.getApi(ApiService::class.java, Constants.URL_REMOTE_API_SERVER)
 }
 
 class NetworkApi : BaseNetworkApi() {
@@ -48,9 +48,9 @@ class NetworkApi : BaseNetworkApi() {
             // 日志拦截器
             addInterceptor(LogInterceptor())
             //超时时间 连接、读、写
-            connectTimeout(6, TimeUnit.SECONDS)
-            readTimeout(4, TimeUnit.SECONDS)
-            writeTimeout(4, TimeUnit.SECONDS)
+            connectTimeout(10, TimeUnit.SECONDS)
+            readTimeout(10, TimeUnit.SECONDS)
+            writeTimeout(10, TimeUnit.SECONDS)
         }
         return builder
     }

@@ -19,11 +19,11 @@ class GradeViewModel : BaseViewModel() {
     //成绩原报文
     var gradeResponse = MutableLiveData<GradeResp>()
     //基本信息
-    val stuId = appViewModel.studentInfo.value?.studentId!!
-    val cliToken = appViewModel.studentInfo.value?.token!!
-    var useCache = true
-    var reqScheduleYear = appViewModel.clientConf.value?.scheduleSemester?.substring(IntRange(0,3))!!
-    var reqScheduleTerm = appViewModel.clientConf.value?.scheduleSemester?.substring(IntRange(4,4))!!
+    val stuId = MutableLiveData(appViewModel.studentInfo.value?.studentId)
+    val cliToken = MutableLiveData(appViewModel.studentInfo.value?.token)
+    var useCache = MutableLiveData(true)
+    var reqScheduleYear = MutableLiveData(appViewModel.clientConf.value?.scheduleSemester?.substring(IntRange(0,3)))
+    var reqScheduleTerm = MutableLiveData(appViewModel.clientConf.value?.scheduleSemester?.substring(IntRange(4,4)))
 
     data class GradeModel(
         var courseTitle: String = "",

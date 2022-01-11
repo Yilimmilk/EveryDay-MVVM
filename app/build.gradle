@@ -12,7 +12,7 @@ android {
         targetSdk 31
         versionCode 37
         //版本命名规则：版本号-分支代码平台代码，分支代码：测试版B(Beta),稳定版S(Stable)，平台代码安卓A(Android)，苹果I(IOS)
-        versionName "4.0.4-SA"
+        versionName "4.1.0-BA"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         ndk.abiFilters 'armeabi-v7a','arm64-v8a','x86_64'
 

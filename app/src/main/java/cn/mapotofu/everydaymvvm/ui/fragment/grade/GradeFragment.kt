@@ -53,16 +53,25 @@ class GradeFragment : BaseFragment<GradeViewModel, FragmentGradeBinding>() {
         BRV.modelId = BR.model
 
         requestGradeViewModel.gradeReq(
-            mViewModel.stuId,
-            mViewModel.reqScheduleYear,
-            mViewModel.reqScheduleTerm,
-            mViewModel.useCache,
-            mViewModel.cliToken
+            mViewModel.stuId.value!!,
+            mViewModel.reqScheduleYear.value!!,
+            mViewModel.reqScheduleTerm.value!!,
+            mViewModel.useCache.value!!,
+            mViewModel.cliToken.value!!
         )
         // 抽屉按钮
         drawerButton.setOnClickListener {
             val drawer = requireActivity().findViewById<DrawerLayout>(R.id.drawer_layout)
             drawer.openDrawer(GravityCompat.START)
+        }
+        refreshButton.setOnClickListener {
+            requestGradeViewModel.gradeReq(
+                mViewModel.stuId.value!!,
+                mViewModel.reqScheduleYear.value!!,
+                mViewModel.reqScheduleTerm.value!!,
+                false,
+                mViewModel.cliToken.value!!
+            )
         }
     }
 
@@ -74,13 +83,13 @@ class GradeFragment : BaseFragment<GradeViewModel, FragmentGradeBinding>() {
                     addType<GradeViewModel.GradeModel>(R.layout.item_grade)
                     R.id.buttonGradeDetail.onFastClick {
                         requestGradeViewModel.gradeDetailReq(
-                            mViewModel.stuId,
-                            mViewModel.reqScheduleYear,
-                            mViewModel.reqScheduleTerm,
+                            mViewModel.stuId.value!!,
+                            mViewModel.reqScheduleYear.value!!,
+                            mViewModel.reqScheduleTerm.value!!,
                             getModel<GradeViewModel.GradeModel>().courseTitle,
                             getModel<GradeViewModel.GradeModel>().classId,
                             false,
-                            mViewModel.cliToken
+                            mViewModel.cliToken.value!!
                         )
                     }
                 }.models = DataMapsUtil.dataMappingGradeRespToGradeModel(it)
