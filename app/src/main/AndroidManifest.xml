@@ -48,11 +48,6 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".ui.activity.UpdateActivity"
-            android:label="更新页面"
-            android:exported="false"/>
-
         <receiver
             android:name=".app.widget.NormalDailyProvider"
             android:label="朝暮-今日课程"
