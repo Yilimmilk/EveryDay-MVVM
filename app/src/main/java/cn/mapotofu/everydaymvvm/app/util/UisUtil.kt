@@ -13,10 +13,11 @@ import android.view.WindowManager
 import android.util.TypedValue
 import android.view.View
 import androidx.core.text.HtmlCompat
+import me.hgj.jetpackmvvm.base.appContext
 
 object UisUtil {
-    var height = screenHeight
-    var width = screenWidth
+//    var height = screenHeight
+//    var width = screenWidth
 
     /**
      * 获取反射布局
@@ -53,9 +54,9 @@ object UisUtil {
     }
 
     val screenWidth: Int
-        get() = getDisplayMetrics(App.context).widthPixels
+        get() = getDisplayMetrics(appContext).widthPixels
     val screenHeight: Int
-        get() = getDisplayMetrics(App.context).heightPixels
+        get() = getDisplayMetrics(appContext).heightPixels
 
     private fun getDisplayMetrics(context: Context): DisplayMetrics {
         val metrics = DisplayMetrics()

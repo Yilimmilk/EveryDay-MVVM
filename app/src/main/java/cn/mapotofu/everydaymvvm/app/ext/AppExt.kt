@@ -1,6 +1,7 @@
 package cn.mapotofu.everydaymvvm.app.ext
 
 import android.text.TextUtils
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
@@ -9,8 +10,11 @@ import cn.mapotofu.everydaymvvm.app.util.CacheUtil
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.WhichButton
 import com.afollestad.materialdialogs.actions.getActionButton
+import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import me.hgj.jetpackmvvm.ext.navigateAction
+import splitties.alertdialog.appcompat.title
 import java.io.BufferedReader
 import java.io.FileReader
 import java.io.IOException
@@ -92,6 +96,92 @@ fun Fragment.showMessage(
                 }
                 getActionButton(WhichButton.POSITIVE)
                 getActionButton(WhichButton.NEGATIVE)
+            }
+    }
+}
+
+/**
+ * @param view 显示对话框的主体View 必填项
+ * @param positiveButtonText 确定按钮文字 默认确定
+ * @param positiveAction 点击确定按钮触发的方法 默认空方法
+ * @param negativeButtonText 取消按钮文字 默认空 不为空时显示该按钮
+ * @param negativeAction 点击取消按钮触发的方法 默认空方法
+ * @param neutralButtonText 其他活动按钮文字 默认空 不为空时显示该按钮
+ * @param neutralAction 点击其他活动按钮触发的方法 默认空方法
+ */
+fun AppCompatActivity.showCustomDialog(
+    view: View,
+    positiveButtonText: String = "确定",
+    positiveAction: () -> Unit = {},
+    negativeButtonText: String = "",
+    negativeAction: () -> Unit = {},
+    neutralButtonText: String = "",
+    neutralAction: () -> Unit = {},
+) {
+    MaterialDialog(this)
+        .cancelable(true)
+        .lifecycleOwner(this)
+        .show {
+            customView(view = view)
+            positiveButton(text = positiveButtonText) {
+                positiveAction.invoke()
+            }
+            if (negativeButtonText.isNotEmpty()) {
+                negativeButton(text = negativeButtonText) {
+                    negativeAction.invoke()
+                }
+            }
+            if (neutralButtonText.isNotEmpty()) {
+                neutralButton(text = neutralButtonText) {
+                    neutralAction.invoke()
+                }
+            }
+            getActionButton(WhichButton.POSITIVE)
+            getActionButton(WhichButton.NEGATIVE)
+            getActionButton(WhichButton.NEUTRAL)
+        }
+}
+
+/**
+ * @param view 显示对话框的主体View 必填项
+ * @param positiveButtonText 确定按钮文字 默认确定
+ * @param positiveAction 点击确定按钮触发的方法 默认空方法
+ * @param negativeButtonText 取消按钮文字 默认空 不为空时显示该按钮
+ * @param negativeAction 点击取消按钮触发的方法 默认空方法
+ * @param neutralButtonText 其他活动按钮文字 默认空 不为空时显示该按钮
+ * @param neutralAction 点击其他活动按钮触发的方法 默认空方法
+ */
+fun Fragment.showCustomDialog(
+    view: View,
+    positiveButtonText: String = "确定",
+    positiveAction: () -> Unit = {},
+    negativeButtonText: String = "",
+    negativeAction: () -> Unit = {},
+    neutralButtonText: String = "",
+    neutralAction: () -> Unit = {},
+) {
+    activity?.let {
+        MaterialDialog(it)
+            .cancelable(true)
+            .lifecycleOwner(viewLifecycleOwner)
+            .show {
+                customView(view = view)
+                positiveButton(text = positiveButtonText) {
+                    positiveAction.invoke()
+                }
+                if (negativeButtonText.isNotEmpty()) {
+                    negativeButton(text = negativeButtonText) {
+                        negativeAction.invoke()
+                    }
+                }
+                if (neutralButtonText.isNotEmpty()) {
+                    neutralButton(text = neutralButtonText) {
+                        neutralAction.invoke()
+                    }
+                }
+                getActionButton(WhichButton.POSITIVE)
+                getActionButton(WhichButton.NEGATIVE)
+                getActionButton(WhichButton.NEUTRAL)
             }
     }
 }

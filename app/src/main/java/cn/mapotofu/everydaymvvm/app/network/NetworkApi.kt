@@ -48,9 +48,9 @@ class NetworkApi : BaseNetworkApi() {
             // 日志拦截器
             addInterceptor(LogInterceptor())
             //超时时间 连接、读、写
-            connectTimeout(10, TimeUnit.SECONDS)
-            readTimeout(10, TimeUnit.SECONDS)
-            writeTimeout(10, TimeUnit.SECONDS)
+            connectTimeout(6, TimeUnit.SECONDS)
+            readTimeout(6, TimeUnit.SECONDS)
+            writeTimeout(6, TimeUnit.SECONDS)
         }
         return builder
     }

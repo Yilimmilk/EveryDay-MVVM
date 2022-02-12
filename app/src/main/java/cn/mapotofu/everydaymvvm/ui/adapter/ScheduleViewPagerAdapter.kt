@@ -1,12 +1,10 @@
 package cn.mapotofu.everydaymvvm.ui.adapter
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import cn.mapotofu.everydaymvvm.R
-import cn.mapotofu.everydaymvvm.app.App
 import cn.mapotofu.everydaymvvm.app.util.DataMapsUtil
 import cn.mapotofu.everydaymvvm.app.util.UisUtil
 import cn.mapotofu.everydaymvvm.data.model.entity.Course
@@ -16,12 +14,12 @@ import cn.mapotofu.everydaymvvm.ui.custom.courseinfo.CourseInfoPanel
 import cn.mapotofu.everydaymvvm.ui.custom.coursetable.CourseTableView
 import cn.mapotofu.everydaymvvm.ui.custom.coursetable.entity.BCourse
 import cn.mapotofu.everydaymvvm.ui.custom.coursetable.entity.DataConfig
-import cn.mapotofu.everydaymvvm.ui.custom.coursetable.interfaces.OnClickCourseItemListener
 import cn.mapotofu.everydaymvvm.ui.custom.coursetable.entity.UIConfig
-import cn.mapotofu.everydaymvvm.ui.custom.coursetable.utils.TimeUtil
+import cn.mapotofu.everydaymvvm.app.util.TimeUtil
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import kotlinx.android.synthetic.main.item_course_table.view.*
+import me.hgj.jetpackmvvm.base.appContext
 
 /**
  * @description
@@ -48,17 +46,17 @@ class ScheduleViewPagerAdapter(
         uiConfig.itemTextSize = 12
         uiConfig.itemTopMargin = 5
         uiConfig.itemSideMargin = 3
-        uiConfig.sectionViewWidth = UisUtil.dip2px(App.context, 40F)
+        uiConfig.sectionViewWidth = UisUtil.dip2px(appContext, 40F)
         uiConfig.isShowTimeTable = true
         uiConfig.maxSection = 12
         uiConfig.isShowNotCurWeekCourse = false
-        uiConfig.sectionHeight = UisUtil.dip2px(App.context, 60F)
-        uiConfig.chooseWeekColor = App.context.resources.getColor(R.color.colorPrimary)
+        uiConfig.sectionHeight = UisUtil.dip2px(appContext, 60F)
+        uiConfig.chooseWeekColor = appContext.resources.getColor(R.color.colorPrimary)
         if (isDarkMode) uiConfig.colorUI = UIConfig.LIGHT else uiConfig.colorUI = UIConfig.DARK
     }
 
     override fun convert(holder: BaseViewHolder, item: MutableList<Course>) {
-        Log.d("CourseItem:", item.toString())
+//        Log.d("CourseItem:", item.toString())
         val dataConfig = DataConfig()
         dataConfig.courseList = DataMapsUtil.dataMappingCourseToBCourse(item)
         dataConfig.timeTable = DataMapsUtil.dataMappingTimeTableToBTimeTable(timetable)
@@ -70,7 +68,7 @@ class ScheduleViewPagerAdapter(
         holder.getView<CourseTableView>(R.id.courseTableView).courseTableView.update(uiConfig, dataConfig)
         holder.getView<CourseTableView>(R.id.courseTableView).setClickCourseItemListener { view: View, list: List<BCourse>, itemPosition: Int, isThisWeek: Boolean ->
             val course: Course = item[itemPosition]
-            Log.d("点击课程格子事件", "itemPosition:${itemPosition}, 课程名为:${course.courseName}")
+//            Log.d("点击课程格子事件", "itemPosition:${itemPosition}, 课程名为:${course.courseName}")
             val bundle = Bundle()
             bundle.putInt(COURSE_UID, course.uid)
             CourseInfoPanel().courseInfo(

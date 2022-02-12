@@ -20,11 +20,10 @@ class RequestSplashViewModel : BaseViewModel() {
     fun confReq(
         stuNumber: String? = null,
         stuToken: String? = null,
-        clientType: Int? = null,
         clientVersion: String? = null
     ) {
         request(
-            { apiService.getConf(stuNumber, stuToken, clientType, clientVersion) },
+            { apiService.getConf(stuNumber, stuToken, clientVersion) },
             confResult,
             false
         )

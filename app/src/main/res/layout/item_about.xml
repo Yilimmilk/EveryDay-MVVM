@@ -1,34 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="4dp">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+        <variable
+            name="model"
+            type="cn.mapotofu.everydaymvvm.data.model.entity.AboutItem" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/root_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="8dp">
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp">
 
-        <TextView
-            android:id="@+id/textviewTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="标题"
-            android:textColor="?android:attr/textColorPrimary"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp">
 
-        <TextView
-            android:id="@+id/textviewContent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="内容"
-            android:textColor="@color/gray"
-            app:layout_constraintStart_toStartOf="@id/textviewTitle"
-            app:layout_constraintTop_toBottomOf="@id/textviewTitle" />
+            <TextView
+                android:id="@+id/textviewTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.title}"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="标题" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:id="@+id/textviewContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.content}"
+                android:textColor="@color/gray"
+                app:layout_constraintStart_toStartOf="@id/textviewTitle"
+                app:layout_constraintTop_toBottomOf="@id/textviewTitle"
+                tools:text="内容多福多寿个水电费水电费" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

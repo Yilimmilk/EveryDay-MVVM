@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import cn.mapotofu.everydaymvvm.app.network.apiService
 import cn.mapotofu.everydaymvvm.data.model.bean.GradeDetailResp
 import cn.mapotofu.everydaymvvm.data.model.bean.GradeResp
+import cn.mapotofu.everydaymvvm.data.model.bean.SemesterResp
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.ext.request
 import me.hgj.jetpackmvvm.state.ResultState
@@ -17,6 +18,7 @@ import me.hgj.jetpackmvvm.state.ResultState
 class RequestGradeViewModel: BaseViewModel() {
     var gradeResult = MutableLiveData<ResultState<GradeResp>>()
     var gradeDetailResult = MutableLiveData<ResultState<GradeDetailResp>>()
+    var semesterResult = MutableLiveData<ResultState<SemesterResp>>()
 
     //请求成绩
     fun gradeReq(
@@ -64,5 +66,10 @@ class RequestGradeViewModel: BaseViewModel() {
             }, gradeDetailResult,
             true
         )
+    }
+
+    //请求学期表
+    fun semesterReq(stuId: String) {
+        request({ apiService.getSemesterList(stuId) }, semesterResult, false)
     }
 }

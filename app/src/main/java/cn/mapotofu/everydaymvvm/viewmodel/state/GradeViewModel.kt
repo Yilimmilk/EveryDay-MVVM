@@ -4,6 +4,8 @@ import androidx.databinding.BaseObservable
 import androidx.lifecycle.MutableLiveData
 import cn.mapotofu.everydaymvvm.app.appViewModel
 import cn.mapotofu.everydaymvvm.data.model.bean.GradeResp
+import com.drake.brv.annotaion.ItemOrientation
+import com.drake.brv.item.ItemDrag
 import com.drake.brv.item.ItemExpand
 import com.drake.brv.item.ItemHover
 import com.drake.brv.item.ItemPosition
@@ -22,8 +24,8 @@ class GradeViewModel : BaseViewModel() {
     val stuId = MutableLiveData(appViewModel.studentInfo.value?.studentId)
     val cliToken = MutableLiveData(appViewModel.studentInfo.value?.token)
     var useCache = MutableLiveData(true)
-    var reqScheduleYear = MutableLiveData(appViewModel.clientConf.value?.scheduleSemester?.substring(IntRange(0,3)))
-    var reqScheduleTerm = MutableLiveData(appViewModel.clientConf.value?.scheduleSemester?.substring(IntRange(4,4)))
+    var reqGradeYear = MutableLiveData(appViewModel.clientConf.value?.gradeSemester?.substring(IntRange(0,3)))
+    var reqGradeTerm = MutableLiveData(appViewModel.clientConf.value?.gradeSemester?.substring(IntRange(4,4)))
 
     data class GradeModel(
         var courseTitle: String = "",
@@ -33,10 +35,12 @@ class GradeViewModel : BaseViewModel() {
         var grade: String = "0",
         var gradePoint: String = "0.0",
         var gradeNature: String = "",
-    ):  ItemHover, ItemPosition, BaseObservable() {
+    ): ItemPosition,
+        ItemDrag,
+        BaseObservable() {
         var finalList: List<GradeDetailModel> = listOf()
-        override var itemHover: Boolean = true
         override var itemPosition: Int = 0
+        override var itemOrientationDrag: Int = ItemOrientation.ALL
     }
 
     data class GradeDetailModel(
@@ -44,4 +48,8 @@ class GradeViewModel : BaseViewModel() {
         var itemPercent: String = "",
         var itemScore: String = ""
     )
+
+    companion object {
+        val TAG: String = this::class.java.enclosingClass.simpleName
+    }
 }

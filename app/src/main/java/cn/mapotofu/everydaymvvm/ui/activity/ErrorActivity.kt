@@ -46,4 +46,8 @@ class ErrorActivity : BaseActivity<BaseViewModel, ActivityErrorBinding>() {
             }
         }
     }
+
+    companion object {
+        val TAG: String = this::class.java.enclosingClass.simpleName
+    }
 }

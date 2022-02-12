@@ -2,7 +2,36 @@
     <string name="app_name">朝暮</string>
 
     <string name="error_occurred">啊哈，好像崩溃了。\n不过没多大事，点下面重新启动就行\n错误日志已经自动上报给服务器了～\n不会上报你的隐私的，放心</string>
+    <string name="aha_get_error">啊哈出错了</string>
+    <string name="message_network_error_log">错误代码:%1$s\n错误消息:%2$s\n错误日志:%3$s</string>
+    <string name="init_schedule_success">初始化课表成功</string>
+    <string name="init_schedule_fail">初始化课表失败</string>
+    <string name="init_schedule_fail_try_again">初始化课表失败,重新试试？</string>
+    <string name="init_timetable_success">初始化时间表成功</string>
+    <string name="init_timetable_fail">初始化时间表失败</string>
+    <string name="init_timetable_fail_try_again">初始化时间表失败,重新试试？</string>
+    <string name="get_notice_fail">获取通知失败</string>
+    <string name="get_notice_fail_try_again">获取通知失败,重新试试？</string>
+    <string name="get_grade_fail">获取成绩失败</string>
+    <string name="get_grade_fail_try_again">获取成绩失败,重新试试？</string>
+    <string name="get_grade_detail_fail">获取成绩详情失败</string>
+    <string name="get_response_fail">请求失败</string>
+    <string name="get_response_fail_try_again">请求失败,重新试试?</string>
+    <string name="try_to_exit_and_login_again">重新登录试试？</string>
+    <string name="login_fail">登陆失败</string>
+    <string name="login_fail_maybe_jw_system_timeout">emmm，登陆失败了......\n有时候是教务系统响应超时，重新登陆一下？</string>
+    <string name="android_version_too_low_please_add_widget_manually">emmmm您的系统安卓版本太低了，没办法自动添加到桌面。\n\n你去百度上搜\"你的手机品牌+添加桌面小部件\"，按照网页上的办法，手动添加到桌面吧。</string>
 
+    <string name="accept">确定</string>
+    <string name="cancel">取消</string>
+    <string name="never_notify">不再提醒</string>
+    <string name="this_one_has_nothing">别戳了，这条啥也没有~</string>
+    <string name="other_selection">其他选项</string>
+    <string name="refresh_course">刷新课程</string>
+    <string name="refresh_grade">刷新成绩</string>
+    <string name="switch_semester">切换学期</string>
+    <string name="back">返回</string>
+    <string name="select_week">选择星期</string>
     <string name="conf_version_text">配置清单版本号:</string>
     <string name="conf_version_status">未更新</string>
     <string name="account_hint">教务系统学号</string>
@@ -14,9 +43,12 @@
 
     <string name="prepare_database_text">正在准备数据库…\n请保持网络畅通\n稍等一下咯</string>
 
-    <string name="mounth">月</string>
+    <string name="month">月</string>
     <string name="day">日</string>
     <string name="course_card">其他课程</string>
+    <string name="num_of_teaching_week">第%1$d教学周</string>
+    <string name="holiday_mode">假期模式</string>
+    <string name="not_this_week">非本周</string>
 
     <string name="configure">确定</string>
     <string name="add_course">添加课程</string>

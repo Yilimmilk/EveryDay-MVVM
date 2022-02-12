@@ -20,14 +20,9 @@ data class BaseResponse<T>(
     val statusMsg: String,
     @field:Json(name = "data")
     val data: T
-    ) : BaseResponse<T>() {
-
+) : BaseResponse<T>() {
     override fun isSucces() = status == 200
-
     override fun getResponseCode() = status
-
-    override fun getResponseData() = data
-
     override fun getResponseMsg() = statusMsg
-
+    override fun getResponseData() = data
 }

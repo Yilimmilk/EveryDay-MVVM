@@ -6,6 +6,7 @@ import android.widget.CompoundButton
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
 import androidx.fragment.app.viewModels
+import androidx.transition.TransitionInflater
 import cn.mapotofu.everydaymvvm.R
 import cn.mapotofu.everydaymvvm.app.App
 import cn.mapotofu.everydaymvvm.app.Constants
@@ -21,6 +22,7 @@ import cn.mapotofu.everydaymvvm.databinding.FragmentLoginBinding
 import cn.mapotofu.everydaymvvm.viewmodel.request.RequestLoginViewModel
 import cn.mapotofu.everydaymvvm.viewmodel.state.LoginViewModel
 import kotlinx.android.synthetic.main.fragment_login.*
+import me.hgj.jetpackmvvm.base.appContext
 import me.hgj.jetpackmvvm.ext.nav
 import me.hgj.jetpackmvvm.ext.navigateAction
 import me.hgj.jetpackmvvm.ext.parseState
@@ -44,26 +46,28 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
     }
 
     override fun createObserver() {
-        requestLoginViewModel.loginResult.observe(viewLifecycleOwner, { resultState ->
+        requestLoginViewModel.loginResult.observe(viewLifecycleOwner) { resultState ->
             parseState(resultState, {
                 mViewModel.requestInProgress.postValue(false)
                 val stuInfo = UserInfo(
                     it.studentId!!,
                     it.name!!,
                     mViewModel.stuPasswd.value!!,
-                    it.token!!,
-                    Constants.CLIENT_TYPE
+                    it.token!!
                 )
-                CacheUtil.setStuInfo(stuInfo)
-                CacheUtil.setIsLogin(true)
-                appViewModel.studentInfo.value = stuInfo
+                mViewModel.userInfo.postValue(stuInfo)
+                //TODO 目测是数据倒灌引起的bug？无法在viewmodel内更新appviewmodel的数据，通过下面这行代码临时解决一下
+                appViewModel.studentInfo.postValue(stuInfo)
+                mViewModel.isLogin.postValue(true)
+                setTransitionAnimate()
                 nav().navigateAction(R.id.action_loginFragment_to_loadScheduleFragment)
             }, {
                 mViewModel.requestInProgress.postValue(false)
-                CacheUtil.setIsLogin(false)
-                showMessage(it.errorMsg, "啊哈出错了")
+                mViewModel.isLogin.postValue(false)
+                val errorLog = resources.getString(R.string.message_network_error_log)
+                showMessage("${resources.getString(R.string.login_fail_maybe_jw_system_timeout)}\n\n${String.format(errorLog, it.errCode, it.errorMsg, it.errorLog)}", resources.getString(R.string.login_fail))
             })
-        })
+        }
     }
 
     private fun privacyPolicy() {
@@ -74,11 +78,11 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
             "同意并继续",
             {
                 userAgreement()
-                App.context.getPrefer().edit { putBoolean(Const.KEY_PRIVACY_POLICY, true) }
+                appContext.getPrefer().edit { putBoolean(Const.KEY_PRIVACY_POLICY, true) }
             },
             "不同意",
             {
-                App.context.getPrefer().edit { putBoolean(Const.KEY_PRIVACY_POLICY, false) }
+                appContext.getPrefer().edit { putBoolean(Const.KEY_PRIVACY_POLICY, false) }
                 mDatabind.checkboxPrivacy.isChecked = false
             }
         )
@@ -90,10 +94,10 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
             text,
             "用户协议1.0",
             "同意并继续",
-            { App.context.getPrefer().edit { putBoolean(Const.KEY_USER_AGREEMENT, true) } },
+            { appContext.getPrefer().edit { putBoolean(Const.KEY_USER_AGREEMENT, true) } },
             "不同意",
             {
-                App.context.getPrefer().edit { putBoolean(Const.KEY_USER_AGREEMENT, false) }
+                appContext.getPrefer().edit { putBoolean(Const.KEY_USER_AGREEMENT, false) }
                 mDatabind.checkboxPrivacy.isChecked = false
             }
         )
@@ -113,12 +117,12 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
                             mViewModel.stuId.value!!,
                             "测试模式",
                             "none",
-                            mViewModel.stuPasswd.value!!,
-                            Constants.CLIENT_TYPE
+                            mViewModel.stuPasswd.value!!
                         )
-                        CacheUtil.setStuInfo(stuInfo)
-                        CacheUtil.setIsLogin(true)
+                        mViewModel.userInfo.postValue(stuInfo)
+                        mViewModel.isLogin.postValue(true)
                         appViewModel.studentInfo.value = stuInfo
+                        setTransitionAnimate()
                         nav().navigateAction(R.id.action_loginFragment_to_loadScheduleFragment)
                     }else {
                         requestLoginViewModel.loginReq(
@@ -149,5 +153,15 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
                     edittextStudentPassword.hint = "教务系统密码"
                 }
             }
+    }
+
+    private fun setTransitionAnimate() {
+        val transInflater = TransitionInflater.from(requireContext())
+        exitTransition = transInflater.inflateTransition(R.transition.explode)
+        enterTransition = transInflater.inflateTransition(R.transition.fade)
+    }
+
+    companion object {
+        val TAG: String = this::class.java.enclosingClass.simpleName
     }
 }

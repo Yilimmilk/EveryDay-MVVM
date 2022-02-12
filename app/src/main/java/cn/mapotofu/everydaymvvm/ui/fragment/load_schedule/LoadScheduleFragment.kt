@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.CountDownTimer
 import androidx.fragment.app.viewModels
+import androidx.transition.TransitionInflater
 import cn.mapotofu.everydaymvvm.R
 import cn.mapotofu.everydaymvvm.app.appViewModel
 import cn.mapotofu.everydaymvvm.app.base.BaseFragment
@@ -33,50 +34,95 @@ class LoadScheduleFragment : BaseFragment<LoadScheduleViewModel, FragmentLoadSch
         val stuId = appViewModel.studentInfo.value?.studentId
         val cliToken = appViewModel.studentInfo.value?.token
         var useCache = false
-        var reqScheduleYear = appViewModel.clientConf.value?.scheduleSemester?.substring(IntRange(0,3))
-        var reqScheduleTerm = appViewModel.clientConf.value?.scheduleSemester?.substring(IntRange(4,4))
+        var reqScheduleYear =
+            appViewModel.clientConf.value?.scheduleSemester?.substring(IntRange(0, 3))
+        var reqScheduleTerm =
+            appViewModel.clientConf.value?.scheduleSemester?.substring(IntRange(4, 4))
 
-        if (arguments!=null){
+        if (arguments != null) {
             reqScheduleYear = requireArguments().getString("req-year", "")
             reqScheduleTerm = requireArguments().getString("req-term", "")
-            useCache = requireArguments().getBoolean("use-cache",false)
+            useCache = requireArguments().getBoolean("use-cache", false)
         }
-        requestLoadScheduleViewModel.scheduleReq(stuId!!,reqScheduleYear!!,reqScheduleTerm!!,useCache,cliToken!!)
+
+        requestLoadScheduleViewModel.scheduleReq(
+            stuId!!,
+            reqScheduleYear!!,
+            reqScheduleTerm!!,
+            useCache,
+            cliToken!!
+        )
         requestLoadScheduleViewModel.timetableReq()
 
-        countDownNavigate(R.id.action_loadScheduleFragment_to_scheduleFragment)
+        countDownNavigate()
     }
 
     @SuppressLint("SetTextI18n")
     override fun createObserver() {
-        requestLoadScheduleViewModel.scheduleResult.observe(viewLifecycleOwner, { resultState ->
+        requestLoadScheduleViewModel.scheduleResult.observe(viewLifecycleOwner) { resultState ->
             parseState(resultState, {
                 mViewModel.initCourse(it)
-                mDatabind.textviewContent.text = "课表初始化成功\n${mDatabind.textviewContent.text}"
+                mDatabind.textviewContent.text =
+                    "${resources.getString(R.string.init_schedule_success)}\n${mDatabind.textviewContent.text}"
             }, {
-                mDatabind.textviewContent.text = "课表初始化失败\n${mDatabind.textviewContent.text}"
-                showMessage("试试重启App？或者清除App所有数据后再试试吧。${it.errorMsg}","初始化课表失败")
+                mDatabind.textviewContent.text =
+                    "${resources.getString(R.string.init_schedule_fail)}\n${mDatabind.textviewContent.text}"
+                val errorLog = resources.getString(R.string.message_network_error_log)
+                showMessage(
+                    "${resources.getString(R.string.try_to_exit_and_login_again)}\n\n${
+                        String.format(
+                            errorLog,
+                            it.errCode,
+                            it.errorMsg,
+                            it.errorLog
+                        )
+                    }",
+                    resources.getString(R.string.init_schedule_fail),
+                )
             })
-        })
+        }
 
-        requestLoadScheduleViewModel.timetableResult.observe(viewLifecycleOwner, { resultState ->
+        requestLoadScheduleViewModel.timetableResult.observe(viewLifecycleOwner) { resultState ->
             parseState(resultState, {
                 mViewModel.initTimeTable(it)
-                mDatabind.textviewContent.text = "时间表初始化成功\n${mDatabind.textviewContent.text}"
+                mDatabind.textviewContent.text =
+                    "${resources.getString(R.string.init_timetable_success)}\n${mDatabind.textviewContent.text}"
             }, {
-                mDatabind.textviewContent.text = "课表初始化失败\n${mDatabind.textviewContent.text}"
-                showMessage("试试重启App？或者清除App所有数据后再试试吧。${it.errorMsg}","初始化时间表失败")
+                mDatabind.textviewContent.text =
+                    "${resources.getString(R.string.init_timetable_fail)}\n${mDatabind.textviewContent.text}"
+                val errorLog = resources.getString(R.string.message_network_error_log)
+                showMessage(
+                    "${resources.getString(R.string.try_to_exit_and_login_again)}\n\n${
+                        String.format(
+                            errorLog,
+                            it.errCode,
+                            it.errorMsg,
+                            it.errorLog
+                        )
+                    }",
+                    resources.getString(R.string.init_timetable_fail),
+                )
             })
-        })
-        nav().navigateAction(R.id.action_loadScheduleFragment_to_scheduleFragment)
+        }
     }
 
-    private fun countDownNavigate(resId:Int){
-        object : CountDownTimer(5000, 1000) {
+    private fun countDownNavigate() {
+        object : CountDownTimer(7000, 1000) {
             override fun onTick(millisUntilFinished: Long) {}
             override fun onFinish() {
-                nav().navigateAction(resId)
+                setTransitionAnimate()
+                nav().navigateAction(R.id.action_loadScheduleFragment_to_scheduleFragment)
             }
         }.start()
+    }
+
+    private fun setTransitionAnimate() {
+        val transInflater = TransitionInflater.from(requireContext())
+        exitTransition = transInflater.inflateTransition(R.transition.explode)
+        enterTransition = transInflater.inflateTransition(R.transition.fade)
+    }
+
+    companion object {
+        val TAG: String = this::class.java.enclosingClass.simpleName
     }
 }

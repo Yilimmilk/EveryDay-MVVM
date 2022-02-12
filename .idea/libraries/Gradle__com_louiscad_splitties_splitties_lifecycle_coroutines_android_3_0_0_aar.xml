@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: com.louiscad.splitties:splitties-lifecycle-coroutines-android:3.0.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/da1cfc9a4b426df9513c1bb8590d8f26/transformed/jetified-splitties-lifecycle-coroutines-debug/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/06cee2b0be5c3b607f15e6df8ff1defe/transformed/jetified-splitties-lifecycle-coroutines-debug/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/81c51202b3c07c0c3972da86e465365a/transformed/jetified-splitties-lifecycle-coroutines-debug/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/81c51202b3c07c0c3972da86e465365a/transformed/jetified-splitties-lifecycle-coroutines-debug/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/81c51202b3c07c0c3972da86e465365a/transformed/jetified-splitties-lifecycle-coroutines-debug/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b3ffee741c5e90679113bcc2761061d5/transformed/jetified-splitties-lifecycle-coroutines-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b9987e2d09b4b52e4f60c909a888dada/transformed/jetified-splitties-lifecycle-coroutines-debug/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/66779ab1c2ea970206b9f61413bc9b3c/transformed/jetified-splitties-lifecycle-coroutines-debug/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/66779ab1c2ea970206b9f61413bc9b3c/transformed/jetified-splitties-lifecycle-coroutines-debug/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/66779ab1c2ea970206b9f61413bc9b3c/transformed/jetified-splitties-lifecycle-coroutines-debug/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-lifecycle-coroutines-android/3.0.0/6709d0a1e64bca0f588d840f82d9fe13a4383afa/splitties-lifecycle-coroutines-android-3.0.0-javadoc.jar!/" />

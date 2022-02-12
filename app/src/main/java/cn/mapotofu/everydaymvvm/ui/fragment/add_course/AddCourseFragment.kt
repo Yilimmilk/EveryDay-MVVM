@@ -13,6 +13,7 @@ import cn.mapotofu.everydaymvvm.app.ext.hideSoftKeyboard
 import cn.mapotofu.everydaymvvm.app.ext.showMessage
 import cn.mapotofu.everydaymvvm.data.model.entity.Course
 import cn.mapotofu.everydaymvvm.databinding.FragmentAddCourseBinding
+import cn.mapotofu.everydaymvvm.ui.activity.MainActivity
 import cn.mapotofu.everydaymvvm.ui.custom.colorpicker.ColorPicker
 import cn.mapotofu.everydaymvvm.ui.custom.courseinfo.COURSE_UID
 import cn.mapotofu.everydaymvvm.ui.custom.timeplan.TimePlanPanel
@@ -96,9 +97,9 @@ class AddCourseFragment : BaseFragment<AddCourseViewModel, FragmentAddCourseBind
             //检查数据
             if (checkDataAndInsert(course)){
                 if (isNewCourse)
-                    Snackbar.make(requireActivity().rootView,"添加成功",Snackbar.LENGTH_LONG).show()
+                    (activity as MainActivity).makeSnackBar("添加成功")
                 else
-                    Snackbar.make(requireActivity().rootView,"修改成功",Snackbar.LENGTH_LONG).show()
+                    (activity as MainActivity).makeSnackBar("修改成功")
                 nav().navigateUp()
             }
         }
@@ -129,7 +130,7 @@ class AddCourseFragment : BaseFragment<AddCourseViewModel, FragmentAddCourseBind
             mViewModel.courseNameText.value.isNullOrEmpty() ->
                 mDatabind.textfieldCourseName.error = "必须"
             course.weeks.isEmpty() || course.day == 0 || course.start == 0 || course.length == 0 ->
-                Snackbar.make(requireActivity().rootView,"时间计划不能为空",Snackbar.LENGTH_LONG).show()
+                (activity as MainActivity).makeSnackBar("时间计划不能为空")
             else -> {
                 mViewModel.apply {
                     if (isNewCourse) insertCourse(course) else updateCourse(course)
@@ -147,12 +148,16 @@ class AddCourseFragment : BaseFragment<AddCourseViewModel, FragmentAddCourseBind
             "确定",
             {
                 mViewModel.deleteCourse(courseUid)
-                Snackbar.make(requireActivity().rootView,"删除[$courseName]成功~",Snackbar.LENGTH_LONG).show()
+                (activity as MainActivity).makeSnackBar("删除[$courseName]成功~")
                 nav().navigateUp()
             },
             "取消",
             {}
         )
+    }
+
+    companion object {
+        val TAG: String = this::class.java.enclosingClass.simpleName
     }
 }
 

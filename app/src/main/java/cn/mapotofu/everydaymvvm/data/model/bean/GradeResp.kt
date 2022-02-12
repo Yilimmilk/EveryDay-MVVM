@@ -24,8 +24,9 @@ data class GradeResp(
     @Json(name = "schoolTerm")
     var schoolTerm: String,
 
+    //废弃字段
     @Json(name = "gpa")
-    var gpa: Float,
+    var gpa: Float = 0.0F,
 
     @Json(name = "course")
     var course: MutableList<Course>

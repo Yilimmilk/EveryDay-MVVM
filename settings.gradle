@@ -1,2 +1,3 @@
 rootProject.name = "朝暮-MVVM"
 include ':app'
+include ':JetpackMvvm'

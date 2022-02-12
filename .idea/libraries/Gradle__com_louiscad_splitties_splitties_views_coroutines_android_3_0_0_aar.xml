@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: com.louiscad.splitties:splitties-views-coroutines-android:3.0.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/842ccd7e57ee59826f0437e907ec0028/transformed/jetified-splitties-views-coroutines-debug/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/af4cba011ccc386b9e235dc1b8acc119/transformed/jetified-splitties-views-coroutines-debug/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d7487e875b9b2a5e2545d9e26e58fde8/transformed/jetified-splitties-views-coroutines-debug/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/d7487e875b9b2a5e2545d9e26e58fde8/transformed/jetified-splitties-views-coroutines-debug/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d7487e875b9b2a5e2545d9e26e58fde8/transformed/jetified-splitties-views-coroutines-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/7c0b892bec037e55283171e0d78783e7/transformed/jetified-splitties-views-coroutines-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/212c4fd6c2b7af0958d7fd1c20b9c4cc/transformed/jetified-splitties-views-coroutines-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/81a25311fb18e23b209f95ec4861777e/transformed/jetified-splitties-views-coroutines-debug/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/81a25311fb18e23b209f95ec4861777e/transformed/jetified-splitties-views-coroutines-debug/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/81a25311fb18e23b209f95ec4861777e/transformed/jetified-splitties-views-coroutines-debug/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-views-coroutines-android/3.0.0/57dabfcf8a2657ca3c6556dc30e050c76156c01a/splitties-views-coroutines-android-3.0.0-javadoc.jar!/" />

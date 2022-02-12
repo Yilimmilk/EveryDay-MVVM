@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Toast
 import cn.mapotofu.everydaymvvm.app.App
 import cn.mapotofu.everydaymvvm.app.widget.BoardCastSender.send
+import me.hgj.jetpackmvvm.base.appContext
 
 class KeepService : Service() {
     override fun onBind(intent: Intent): IBinder? {
@@ -24,7 +25,7 @@ class KeepService : Service() {
         val sb = StringBuilder()
         sb.append("启动辅助服务！")
         sb.append(stringExtra)
-        Toast.makeText(App.context, sb.toString(), Toast.LENGTH_SHORT).show()
+        Toast.makeText(appContext, sb.toString(), Toast.LENGTH_SHORT).show()
         val intent2 = Intent(stringExtra)
         val str = EXTRA_STR
         intent2.putExtra(str, intent.getStringExtra(str))

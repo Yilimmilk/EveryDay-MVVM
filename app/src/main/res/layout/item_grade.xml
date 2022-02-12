@@ -4,116 +4,133 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="model"
             type="cn.mapotofu.everydaymvvm.viewmodel.state.GradeViewModel.GradeModel" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dp5">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/card_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="8dp">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/textviewTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{model.courseTitle}"
-                android:textColor="?android:attr/textColorPrimary"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="高等数学" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/card_header"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="8dp">
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/ll_container"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp5"
-                android:orientation="vertical"
-                app:layout_constraintStart_toStartOf="@id/textviewTitle"
-                app:layout_constraintTop_toBottomOf="@id/textviewTitle">
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/ll1"
+                <TextView
+                    android:id="@+id/textviewTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textviewCourseNature"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@{model.courseNature}"
-                        android:textColor="@color/gray"
-                        tools:text="必修" />
-
-                    <TextView
-                        android:id="@+id/textviewGradeNature"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/dp5"
-                        android:text="@{model.gradeNature}"
-                        android:textColor="@color/gray"
-                        tools:text="正常考试" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:text="@{model.courseTitle}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="高等数学" />
 
                 <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/ll2"
+                    android:id="@+id/ll_container"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp5"
-                    android:orientation="horizontal">
+                    android:layout_marginTop="@dimen/dp10"
+                    android:orientation="vertical"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textviewTitle">
 
-                    <TextView
-                        android:id="@+id/textviewCredit"
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/ll1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{model.credit}"
-                        android:textColor="@color/gray"
-                        tools:text="5.5学分" />
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/textviewGradePoint"
+                        <TextView
+                            android:id="@+id/textviewCourseNature"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/gray"
+                            android:text="@{model.courseNature}"
+                            tools:text="必修" />
+
+                        <TextView
+                            android:id="@+id/textviewGradeNature"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp5"
+                            android:textColor="@color/gray"
+                            android:text="@{model.gradeNature}"
+                            tools:text="正常考试" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/ll2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/dp5"
-                        android:text="@{model.gradePoint}"
-                        android:textColor="@color/gray"
-                        tools:text="1绩点" />
+                        android:layout_marginTop="@dimen/dp5"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textviewCredit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/gray"
+                            android:text="@{model.credit}"
+                            tools:text="5.5学分" />
+
+                        <TextView
+                            android:id="@+id/textviewGradePoint"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp5"
+                            android:textColor="@color/gray"
+                            android:text="@{model.gradePoint}"
+                            tools:text="1绩点" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                <TextView
+                    android:id="@+id/textviewGrade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{model.grade}"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="@dimen/t17"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/fab_detail"
+                    app:layout_constraintStart_toStartOf="@+id/fab_detail"
+                    app:layout_constraintTop_toTopOf="@+id/textviewTitle"
+                    tools:text="60分" />
 
-            <TextView
-                android:id="@+id/textviewGrade"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/dp10"
-                android:text="@{model.grade}"
-                android:textSize="@dimen/t17"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/buttonGradeDetail"
-                app:layout_constraintEnd_toStartOf="@+id/buttonGradeDetail"
-                app:layout_constraintTop_toTopOf="@+id/buttonGradeDetail"
-                tools:text="60" />
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fab_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:contentDescription="@string/grade_detail"
+                    app:fabSize="mini"
+                    app:elevation="@dimen/dp5"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:srcCompat="@drawable/ic_detail_32dp"
+                    style="@style/Widget.Material3.FloatingActionButton.Tertiary"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/buttonGradeDetail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="成绩详情"
-                android:contentDescription="@{model.classId}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textviewTitle" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <ViewStub
+                android:id="@+id/card_stub"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inflatedId="@+id/innerView" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
     </com.google.android.material.card.MaterialCardView>
 </layout>

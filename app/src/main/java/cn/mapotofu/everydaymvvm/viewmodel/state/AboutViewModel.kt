@@ -17,4 +17,8 @@ class AboutViewModel: BaseViewModel() {
     init {
         versionSlogan.value = "版本号:${OthersUtil.appVersion}\nPowered By Kotlin/Java\nBuild On JetPack"
     }
+
+    companion object {
+        val TAG: String = this::class.java.enclosingClass.simpleName
+    }
 }

@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: com.louiscad.splitties:splitties-views-coroutines-material-android:3.0.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d8f651aaab079fc5938bf91fda4dbdef/transformed/jetified-splitties-views-coroutines-material-debug/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/cdfa316d62486ae5608c3a494eb10f8c/transformed/jetified-splitties-views-coroutines-material-debug/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/45ec23b982e6b1af4fa376a4269bbb52/transformed/jetified-splitties-views-coroutines-material-debug/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/45ec23b982e6b1af4fa376a4269bbb52/transformed/jetified-splitties-views-coroutines-material-debug/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/45ec23b982e6b1af4fa376a4269bbb52/transformed/jetified-splitties-views-coroutines-material-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1c2d3788c93d19b2c3a068ad1374244a/transformed/jetified-splitties-views-coroutines-material-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/159318696ca09ebdadd54df4ab36c389/transformed/jetified-splitties-views-coroutines-material-debug/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/0ca23a5b6bf8fa146e13392640ac85aa/transformed/jetified-splitties-views-coroutines-material-debug/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0ca23a5b6bf8fa146e13392640ac85aa/transformed/jetified-splitties-views-coroutines-material-debug/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0ca23a5b6bf8fa146e13392640ac85aa/transformed/jetified-splitties-views-coroutines-material-debug/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-views-coroutines-material-android/3.0.0/3981dfaba29762e9eacff72b140bb1474350e03c/splitties-views-coroutines-material-android-3.0.0-javadoc.jar!/" />

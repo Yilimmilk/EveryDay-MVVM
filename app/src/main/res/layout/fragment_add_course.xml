@@ -12,7 +12,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="true"
         tools:context=".ui.fragment.add_course.AddCourseFragment">
 
         <androidx.constraintlayout.widget.Guideline
@@ -119,6 +118,7 @@
             android:paddingStart="@dimen/dp10"
             android:paddingEnd="@dimen/dp10"
             android:text="@string/save"
+            style="@style/Widget.Material3.Button.TonalButton"
             app:layout_constraintBottom_toTopOf="@+id/guideline29"
             app:layout_constraintEnd_toStartOf="@+id/guideline22"
             app:layout_constraintTop_toTopOf="@+id/guideline24" />
@@ -414,15 +414,15 @@
 
         </ScrollView>
 
-        <androidx.appcompat.widget.AppCompatButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/delete_button"
-            style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/dp16"
             android:text="@string/delete"
             android:textColor="@android:color/holo_red_light"
             android:visibility="gone"
+            style="@style/Widget.Material3.Button.TextButton"
             app:layout_constraintBottom_toBottomOf="@+id/save_course"
             app:layout_constraintEnd_toStartOf="@+id/save_course"
             app:layout_constraintTop_toTopOf="@+id/save_course" />

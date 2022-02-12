@@ -12,66 +12,12 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/root_coordinator"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
-
-        <LinearLayout
-            android:id="@+id/rootView"
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerGradeList"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingTop="@dimen/dp10"
-            android:orientation="vertical">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageButton
-                    android:id="@+id/drawerButton"
-                    android:layout_width="23dp"
-                    android:layout_height="43dp"
-                    android:background="?android:attr/selectableItemBackgroundBorderless"
-                    android:paddingEnd="20dp"
-                    android:src="@drawable/ic_menu_32dp"
-                    android:tint="?attr/colorControlNormal"
-                    app:layout_constraintBottom_toBottomOf="@+id/textviewTitle"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textviewTitle"/>
-
-                <TextView
-                    android:id="@+id/textviewTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/grade"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="?android:attr/textColorPrimary"
-                    app:layout_constraintStart_toEndOf="@+id/drawerButton"
-                    app:layout_constraintTop_toTopOf="parent"/>
-
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/refreshButton"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:layout_marginEnd="12dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:src="@drawable/ic_reload_24dp"
-                    android:tint="?attr/colorControlNormal"
-                    android:tooltipText="刷新成绩"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textviewTitle" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerGradeList"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clipChildren="false"
-                android:clipToPadding="false"
-                tools:itemCount="5"
-                tools:listitem="@layout/item_grade"/>
-
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            tools:itemCount="5"
+            tools:listitem="@layout/item_grade"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

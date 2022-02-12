@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/朝暮-MVVM.iml" filepath="$PROJECT_DIR$/.idea/modules/朝暮-MVVM.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/JetpackMvvm/朝暮-MVVM.JetpackMvvm.iml" filepath="$PROJECT_DIR$/.idea/modules/JetpackMvvm/朝暮-MVVM.JetpackMvvm.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/朝暮-MVVM.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/朝暮-MVVM.app.iml" />
     </modules>
   </component>

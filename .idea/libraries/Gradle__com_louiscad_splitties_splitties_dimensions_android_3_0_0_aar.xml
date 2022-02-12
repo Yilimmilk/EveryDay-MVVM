@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: com.louiscad.splitties:splitties-dimensions-android:3.0.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d52be8938e98d7b44fe8099a5db598c2/transformed/jetified-splitties-dimensions-debug/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/8baa627200b74e6f905e62d59a0eb12e/transformed/jetified-splitties-dimensions-debug/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/ad6ab6c5264a9306322950b5d471814f/transformed/jetified-splitties-dimensions-debug/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ad6ab6c5264a9306322950b5d471814f/transformed/jetified-splitties-dimensions-debug/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ad6ab6c5264a9306322950b5d471814f/transformed/jetified-splitties-dimensions-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c28ac81f511cc6e231508c9cbd9999b5/transformed/jetified-splitties-dimensions-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b3f169f97c1445043ef587ba13f5cf23/transformed/jetified-splitties-dimensions-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/49b585851d9a11d138ab318799aa495e/transformed/jetified-splitties-dimensions-debug/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/49b585851d9a11d138ab318799aa495e/transformed/jetified-splitties-dimensions-debug/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/49b585851d9a11d138ab318799aa495e/transformed/jetified-splitties-dimensions-debug/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-dimensions-android/3.0.0/7d9db8c1ded2c3e88d63123d421df60dac2f7586/splitties-dimensions-android-3.0.0-javadoc.jar!/" />

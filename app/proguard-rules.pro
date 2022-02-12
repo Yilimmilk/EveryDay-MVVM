@@ -76,6 +76,8 @@
 -keep interface com.squareup.okhttp3.** { *; }
 -keep class com.squareup.moshi.**{*;}
 -keep interface com.squareup.moshi.**{*;}
+-keep class com.just.agentweb.** {*;}
+
 
 -dontwarn com.google.android.material.**
 -dontnote com.google.android.material.**
@@ -84,3 +86,12 @@
 -dontwarn com.squareup.okhttp3.**
 -dontwarn com.squareup.retrofit2.**
 -dontwarn com.squareup.moshi.**
+-dontwarn com.just.agentweb.**
+
+
+################ ViewBinding & DataBinding ###############
+-keepclassmembers class * implements androidx.viewbinding.ViewBinding {
+  public static * inflate(android.view.LayoutInflater);
+  public static * inflate(android.view.LayoutInflater, android.view.ViewGroup, boolean);
+  public static * bind(android.view.View);
+}

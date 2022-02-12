@@ -160,12 +160,13 @@
 
     </com.google.android.material.card.MaterialCardView>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp8"
         android:text="@string/configure"
+        style="@style/Widget.Material3.Button.ElevatedButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/guideline19"
         app:layout_constraintTop_toTopOf="@+id/guideline38" />

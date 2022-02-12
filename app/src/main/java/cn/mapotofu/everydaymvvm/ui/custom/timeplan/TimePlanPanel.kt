@@ -238,4 +238,8 @@ class TimePlanPanel : BottomSheetDialogFragment() {
     fun show(fragmentManager: FragmentManager) {
         this.show(fragmentManager, "CourseInfo")
     }
+
+    companion object {
+        val TAG: String = this::class.java.enclosingClass.simpleName
+    }
 }

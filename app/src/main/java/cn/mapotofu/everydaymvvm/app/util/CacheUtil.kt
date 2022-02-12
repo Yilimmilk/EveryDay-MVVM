@@ -9,7 +9,6 @@ object CacheUtil {
     //MMKV的ID名
     private const val ID_LOGIN_DATA = "Login_Data"
     private const val ID_CONF_DATA = "Conf_Data"
-    private const val ID_USER_SETTINGS = "User_Settings"
 
     //字段key名
     private const val STU_INFO = "stu-info"
@@ -17,8 +16,6 @@ object CacheUtil {
 
     private const val CLIENT_CONF = "client-conf"
     private const val IS_CONF_UPDATE = "is-conf-update"
-
-    private const val SELECTED_SEMESTER = "selected-semester"
 
     //学生信息
     fun getStuInfo(): UserInfo? {
@@ -80,24 +77,5 @@ object CacheUtil {
     fun setIsConfUpdate(isConfUpdate: Boolean) {
         val kv = MMKV.mmkvWithID(ID_CONF_DATA)
         kv.encode(IS_CONF_UPDATE, isConfUpdate)
-    }
-
-    //学期选择配置
-    fun getSelectedSemester(): Semester? {
-        val kv = MMKV.mmkvWithID(ID_USER_SETTINGS)
-        val semesterStr = kv.decodeString(SELECTED_SEMESTER)
-        return if (semesterStr.isNullOrEmpty()) {
-            null
-        } else {
-            MoshiUtil.fromJson(semesterStr, Semester::class.java)
-        }
-    }
-    fun setSelectedSemester(semester: Semester?) {
-        val kv = MMKV.mmkvWithID(ID_USER_SETTINGS)
-        if (semester == null) {
-            kv.encode(SELECTED_SEMESTER, "")
-        } else {
-            kv.encode(SELECTED_SEMESTER, MoshiUtil.toJson(semester))
-        }
     }
 }

@@ -46,4 +46,8 @@ class AddCourseViewModel : BaseViewModel() {
     fun getCourse(uid: Int): Course {
         return repository.getCourse(uid)
     }
+
+    companion object {
+        val TAG: String = this::class.java.enclosingClass.simpleName
+    }
 }

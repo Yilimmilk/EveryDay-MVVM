@@ -16,7 +16,7 @@ import androidx.fragment.app.FragmentManager
 import cn.mapotofu.everydaymvvm.R
 import cn.mapotofu.everydaymvvm.app.util.DateUtil
 import cn.mapotofu.everydaymvvm.data.model.entity.Course
-import cn.mapotofu.everydaymvvm.app.util.DrawablesUtil
+import cn.mapotofu.everydaymvvm.app.util.ViewsUtil
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -78,8 +78,8 @@ class CourseInfoPanel : BottomSheetDialogFragment() {
             Toast.makeText(this.requireContext(),"包含周次：${course.weeks}",Toast.LENGTH_LONG).show()
             true
         }
-        courseSession.background = DrawablesUtil.getDrawable(Color.parseColor(course.color), 15, 0, 0)
-        courseClassDay.background = DrawablesUtil.getDrawable(Color.BLUE, 15, 0, 0)
+        courseSession.background = ViewsUtil.getDrawable(Color.parseColor(course.color), 15, 0, 0)
+        courseClassDay.background = ViewsUtil.getDrawable(Color.BLUE, 15, 0, 0)
         val bundle = Bundle()
         bundle.putInt(COURSE_UID, course.uid)
         edit.setOnClickListener {
@@ -135,6 +135,10 @@ class CourseInfoPanel : BottomSheetDialogFragment() {
 
     fun show(fragmentManager: FragmentManager) {
         this.show(fragmentManager, "CourseInfo")
+    }
+
+    companion object {
+        val TAG: String = this::class.java.enclosingClass.simpleName
     }
 }
 

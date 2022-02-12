@@ -25,5 +25,8 @@ data class SemesterResp(
 
         @Json(name = "term")
         val term: String,
+
+        @Json(name = "text")
+        val text: String,
     )
 }

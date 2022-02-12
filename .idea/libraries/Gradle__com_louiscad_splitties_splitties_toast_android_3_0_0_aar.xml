@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: com.louiscad.splitties:splitties-toast-android:3.0.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/27a72e60a9eb8b1b82923358d9bdcfb8/transformed/jetified-splitties-toast-debug/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f72bfb016d4592e70a44eeab7fec5723/transformed/jetified-splitties-toast-debug/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/dc4483b4501378c97bab2661533e3611/transformed/jetified-splitties-toast-debug/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/dc4483b4501378c97bab2661533e3611/transformed/jetified-splitties-toast-debug/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/dc4483b4501378c97bab2661533e3611/transformed/jetified-splitties-toast-debug/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/8fbc1c02bf406551be1e3a00d8ad53fe/transformed/jetified-splitties-toast-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/58d5ca44147c73fcfdb7a04274c66f49/transformed/jetified-splitties-toast-debug/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/7e5f61007962e13e5c894b252aa6ca23/transformed/jetified-splitties-toast-debug/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/7e5f61007962e13e5c894b252aa6ca23/transformed/jetified-splitties-toast-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/7e5f61007962e13e5c894b252aa6ca23/transformed/jetified-splitties-toast-debug/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-toast-android/3.0.0/c58e7f57d5fe7121fd684d2b440bfdc2f156c2b0/splitties-toast-android-3.0.0-javadoc.jar!/" />

@@ -19,6 +19,5 @@ data class UserInfo(
     var studentId: String="",
     var name: String="",
     var password: String="",
-    var token: String="",
-    var type: Int =0
+    var token: String=""
 ) : Parcelable

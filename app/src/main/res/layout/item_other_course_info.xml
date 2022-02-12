@@ -1,68 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingBottom="@dimen/dp5"
-    android:paddingStart="@dimen/dp5"
-    android:paddingEnd="@dimen/dp5">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <FrameLayout
-        android:id="@+id/divider"
+    <data>
+        <variable
+            name="model"
+            type="cn.mapotofu.everydaymvvm.viewmodel.state.ScheduleViewModel.OtherCourseModel" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/lightgray"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textview_title"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/course_name"
-        app:layout_constraintStart_toEndOf="@id/guideline1"
-        app:layout_constraintTop_toTopOf="@id/divider" />
+        android:layout_margin="@dimen/dp5">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/ll1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/dp5"
+            android:paddingTop="@dimen/dp5"
+            android:paddingBottom="@dimen/dp5"
+            android:orientation="vertical">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textview_teacher"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/teacher_name"
-        app:layout_constraintStart_toStartOf="@+id/textview_weeks"
-        app:layout_constraintTop_toBottomOf="@+id/textview_title" />
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingEnd="@dimen/dp5"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textview_weeks"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/weeks_text"
-        app:layout_constraintTop_toBottomOf="@id/textview_teacher"
-        app:layout_constraintStart_toEndOf="@id/guideline1"/>
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/dp25"
+                    android:layout_height="@dimen/dp25"
+                    android:src="@drawable/ic_course_24dp"
+                    app:tint="@android:color/holo_purple" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textview_credit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/course_score"
-        app:layout_constraintTop_toBottomOf="@id/textview_weeks"
-        app:layout_constraintStart_toEndOf="@id/guideline1"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textview_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp3"
+                    android:text="@{model.itemCourseName}"
+                    android:textColor="?android:attr/textColorPrimary"
+                    tools:text="数据结构课程设计" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.05"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.95"/>
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:dividerInsetStart="@dimen/dp24"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingEnd="@dimen/dp5"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/dp25"
+                    android:layout_height="@dimen/dp25"
+                    android:src="@drawable/ic_teacher_24dp"
+                    app:tint="@android:color/holo_orange_dark" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textview_teacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp3"
+                    android:text="@{model.itemTeacherName}"
+                    android:textColor="?android:attr/textColorPrimary"
+                    tools:text="教师名" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:dividerInsetStart="@dimen/dp24"/>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingEnd="@dimen/dp5"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/dp25"
+                    android:layout_height="@dimen/dp25"
+                    android:src="@drawable/ic_week_24dp"
+                    app:tint="@android:color/holo_red_light" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textview_weeks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp3"
+                    android:text="@{model.itemWeeks}"
+                    android:textColor="?android:attr/textColorPrimary"
+                    tools:text="周次" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:dividerInsetStart="@dimen/dp24"/>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingEnd="@dimen/dp5"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/dp25"
+                    android:layout_height="@dimen/dp25"
+                    android:src="@drawable/ic_score_24dp"
+                    app:tint="@android:color/holo_green_dark" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textview_credit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp3"
+                    android:text="@{model.itemCredit}"
+                    android:textColor="?android:attr/textColorPrimary"
+                    tools:text="学分" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

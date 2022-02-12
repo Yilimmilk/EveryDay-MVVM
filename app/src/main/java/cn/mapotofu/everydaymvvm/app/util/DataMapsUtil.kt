@@ -7,6 +7,7 @@ import cn.mapotofu.everydaymvvm.data.model.entity.*
 import cn.mapotofu.everydaymvvm.ui.custom.coursetable.entity.BCourse
 import cn.mapotofu.everydaymvvm.ui.custom.coursetable.entity.BTimeTable
 import cn.mapotofu.everydaymvvm.viewmodel.state.GradeViewModel
+import cn.mapotofu.everydaymvvm.viewmodel.state.ScheduleViewModel
 import java.util.*
 
 /**
@@ -17,6 +18,20 @@ import java.util.*
  */
 
 object DataMapsUtil {
+    //Response配置文件映射
+    fun dataMappingConfRespToClientConf(confResp: ConfResp): ClientConf {
+        return ClientConf(
+            confResp.version,
+            confResp.chooseSemester,
+            confResp.gradeSemester,
+            confResp.scheduleSemester,
+            confResp.isMaintenance,
+            confResp.isVacation,
+            confResp.canCourseChoose,
+            confResp.termStart
+        )
+    }
+
     //Response课表映射
     fun dataMappingScheduleRespToCourse(scheduleResp: ScheduleResp): MutableList<Course> {
         val normalCourseListBeforeParse = scheduleResp.normalCourseList
@@ -229,5 +244,19 @@ object DataMapsUtil {
             gradeDetailModelList.add(gradeDetailModel)
         }
         return gradeDetailModelList
+    }
+
+    fun dataMappingOtherCourseListToOtherCourseModel(otherCourseList: MutableList<Course>): MutableList<ScheduleViewModel.OtherCourseModel> {
+        val otherCourseModelList = mutableListOf<ScheduleViewModel.OtherCourseModel>()
+        otherCourseList.forEach { it ->
+            val otherCourseModel = ScheduleViewModel.OtherCourseModel(
+                it.courseName,
+                it.teachersName,
+                it.weeksText,
+                "${it.credit}学分"
+            )
+            otherCourseModelList.add(otherCourseModel)
+        }
+        return otherCourseModelList
     }
 }

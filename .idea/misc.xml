@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../.gradle/caches/transforms-3/c34623dbbc160a945a207c144013f058/transformed/jetified-core-3.3.0/res/layout/md_listitem.xml" value="0.3845108695652174" />
+        <entry key="../../../.gradle/caches/transforms-3/fa3be041bba43ad491a6dc76fe3036fe/transformed/jetified-agentweb-core-v5.0.0-alpha.1-androidx/res/layout/agentweb_error_page.xml" value="0.35507246376811596" />
         <entry key="../../../Library/Android/sdk/platforms/android-30/data/res/layout/simple_list_item_1.xml" value="0.228125" />
         <entry key="app/src/main/res/drawable-v24/ic_arrow_collapse.xml" value="0.4046875" />
         <entry key="app/src/main/res/drawable-v24/ic_grade.xml" value="0.4166666666666667" />
@@ -15,26 +16,40 @@
         <entry key="app/src/main/res/drawable-v24/shape_rect_10_transparentwhite.xml" value="0.40208333333333335" />
         <entry key="app/src/main/res/drawable/ic_about_32dp.xml" value="0.4166666666666667" />
         <entry key="app/src/main/res/drawable/ic_add.xml" value="0.4166666666666667" />
+        <entry key="app/src/main/res/drawable/ic_add_24dp.xml" value="0.2359375" />
         <entry key="app/src/main/res/drawable/ic_arrow_collapse.xml" value="0.4046875" />
+        <entry key="app/src/main/res/drawable/ic_arrow_down_24dp.xml" value="0.4046875" />
         <entry key="app/src/main/res/drawable/ic_arrow_expand.xml" value="0.4046875" />
+        <entry key="app/src/main/res/drawable/ic_arrow_left_24dp.xml" value="0.2315" />
         <entry key="app/src/main/res/drawable/ic_arrow_right_24dp.xml" value="0.3890625" />
         <entry key="app/src/main/res/drawable/ic_back_24dp.xml" value="0.4166666666666667" />
+        <entry key="app/src/main/res/drawable/ic_campus_24dp.xml" value="0.2359375" />
+        <entry key="app/src/main/res/drawable/ic_checked_24dp.xml" value="0.2359375" />
         <entry key="app/src/main/res/drawable/ic_circle.xml" value="0.4166666666666667" />
         <entry key="app/src/main/res/drawable/ic_course.xml" value="0.4166666666666667" />
+        <entry key="app/src/main/res/drawable/ic_course_24dp.xml" value="0.2359375" />
+        <entry key="app/src/main/res/drawable/ic_detail_32dp.xml" value="0.2359375" />
         <entry key="app/src/main/res/drawable/ic_edit.xml" value="0.4166666666666667" />
+        <entry key="app/src/main/res/drawable/ic_edit_24dp.xml" value="0.2359375" />
         <entry key="app/src/main/res/drawable/ic_grade.xml" value="0.4166666666666667" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.40208333333333335" />
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.40208333333333335" />
         <entry key="app/src/main/res/drawable/ic_list.xml" value="0.4192708333333333" />
         <entry key="app/src/main/res/drawable/ic_menu.xml" value="0.4192708333333333" />
+        <entry key="app/src/main/res/drawable/ic_menu_24dp.xml" value="0.4046875" />
         <entry key="app/src/main/res/drawable/ic_menu_32dp.xml" value="0.3890625" />
+        <entry key="app/src/main/res/drawable/ic_more_vert_24dp.xml" value="0.4046875" />
         <entry key="app/src/main/res/drawable/ic_next.xml" value="0.40208333333333335" />
+        <entry key="app/src/main/res/drawable/ic_next_24dp.xml" value="0.2359375" />
         <entry key="app/src/main/res/drawable/ic_password.xml" value="0.4166666666666667" />
         <entry key="app/src/main/res/drawable/ic_person_info.xml" value="0.4166666666666667" />
         <entry key="app/src/main/res/drawable/ic_person_info_32dp.xml" value="0.4166666666666667" />
+        <entry key="app/src/main/res/drawable/ic_practice_24dp.xml" value="0.2520833333333333" />
         <entry key="app/src/main/res/drawable/ic_qita.xml" value="0.3890625" />
         <entry key="app/src/main/res/drawable/ic_reload.xml" value="0.4192708333333333" />
+        <entry key="app/src/main/res/drawable/ic_reload_24dp.xml" value="0.2359375" />
         <entry key="app/src/main/res/drawable/ic_schedule.xml" value="0.4166666666666667" />
+        <entry key="app/src/main/res/drawable/ic_schedule_32dp.xml" value="0.2359375" />
         <entry key="app/src/main/res/drawable/ic_score.xml" value="0.4166666666666667" />
         <entry key="app/src/main/res/drawable/ic_score_24dp.xml" value="0.4166666666666667" />
         <entry key="app/src/main/res/drawable/ic_semester.xml" value="0.4166666666666667" />
@@ -48,6 +63,9 @@
         <entry key="app/src/main/res/drawable/ic_week.xml" value="0.4166666666666667" />
         <entry key="app/src/main/res/drawable/ic_week_24dp.xml" value="0.4166666666666667" />
         <entry key="app/src/main/res/drawable/shape_card.xml" value="0.4046875" />
+        <entry key="app/src/main/res/drawable/shape_card_white.xml" value="0.24583333333333332" />
+        <entry key="app/src/main/res/drawable/shape_card_with_corner_stroke.xml" value="0.4046875" />
+        <entry key="app/src/main/res/drawable/shape_card_with_corner_stroke_left_right.xml" value="0.3984615384615385" />
         <entry key="app/src/main/res/drawable/shape_card_with_stroke.xml" value="0.4046875" />
         <entry key="app/src/main/res/drawable/shape_config_card_background.xml" value="0.4166666666666667" />
         <entry key="app/src/main/res/drawable/shape_item_color_picker_check.xml" value="0.4166666666666667" />
@@ -81,7 +99,9 @@
         <entry key="app/src/main/res/layout/item_about.xml" value="0.22864583333333333" />
         <entry key="app/src/main/res/layout/item_color_picker.xml" value="0.3845108695652174" />
         <entry key="app/src/main/res/layout/item_course_table.xml" value="0.4005208333333333" />
-        <entry key="app/src/main/res/layout/item_grade.xml" value="0.3885416666666667" />
+        <entry key="app/src/main/res/layout/item_expandable_card_view.xml" value="0.3786231884057971" />
+        <entry key="app/src/main/res/layout/item_expandable_grade_detail.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/item_grade.xml" value="0.335" />
         <entry key="app/src/main/res/layout/item_grade_detail.xml" value="0.3885416666666667" />
         <entry key="app/src/main/res/layout/item_list_popup_window.xml" value="0.228125" />
         <entry key="app/src/main/res/layout/item_other_course_info.xml" value="0.375" />
@@ -98,9 +118,15 @@
         <entry key="app/src/main/res/layout/view_change_week.xml" value="0.3859375" />
         <entry key="app/src/main/res/layout/view_course_info.xml" value="0.3859375" />
         <entry key="app/src/main/res/layout/view_grade_detail.xml" value="0.2359375" />
+        <entry key="app/src/main/res/layout/view_message_dialog.xml" value="0.335" />
         <entry key="app/src/main/res/layout/view_other_course.xml" value="0.271286231884058" />
+        <entry key="app/src/main/res/layout/view_select_week.xml" value="0.3632246376811594" />
         <entry key="app/src/main/res/layout/widget_normal_daily_class.xml" value="0.3859375" />
+        <entry key="app/src/main/res/menu/menu_grade.xml" value="0.21979166666666666" />
         <entry key="app/src/main/res/menu/menu_main.xml" value="0.4046875" />
+        <entry key="app/src/main/res/menu/menu_navigation.xml" value="0.3885416666666667" />
+        <entry key="app/src/main/res/menu/menu_schedule.xml" value="0.3885416666666667" />
+        <entry key="app/src/main/res/menu/menu_schedule_alternate.xml" value="0.2359375" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.40208333333333335" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.40208333333333335" />
         <entry key="app/src/main/res/xml/normal_week.xml" value="0.384375" />

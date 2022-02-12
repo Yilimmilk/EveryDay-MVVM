@@ -1,36 +1,30 @@
 package cn.mapotofu.everydaymvvm.ui.fragment.grade
 
-import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
-import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.View
-import android.view.WindowManager
+import android.view.*
+import android.widget.PopupMenu
 import android.widget.PopupWindow
-import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
+import android.widget.TextView
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cn.mapotofu.everydaymvvm.BR
 import cn.mapotofu.everydaymvvm.R
-import cn.mapotofu.everydaymvvm.app.App
+import cn.mapotofu.everydaymvvm.app.appViewModel
 import cn.mapotofu.everydaymvvm.app.base.BaseFragment
 import cn.mapotofu.everydaymvvm.app.ext.showMessage
+import cn.mapotofu.everydaymvvm.app.util.CacheUtil
 import cn.mapotofu.everydaymvvm.app.util.DataMapsUtil
-import cn.mapotofu.everydaymvvm.app.util.DrawablesUtil
-import cn.mapotofu.everydaymvvm.app.util.UisUtil
 import cn.mapotofu.everydaymvvm.databinding.FragmentGradeBinding
+import cn.mapotofu.everydaymvvm.ui.activity.MainActivity
 import cn.mapotofu.everydaymvvm.viewmodel.request.RequestGradeViewModel
 import cn.mapotofu.everydaymvvm.viewmodel.state.GradeViewModel
-import com.drake.brv.item.ItemExpand
-import com.drake.brv.layoutmanager.HoverGridLayoutManager
 import com.drake.brv.utils.*
-import kotlinx.android.synthetic.main.fragment_schedule.*
-import kotlinx.android.synthetic.main.view_grade_detail.*
-import kotlinx.android.synthetic.main.view_grade_detail.view.*
+import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.item_grade.view.*
+import me.hgj.jetpackmvvm.ext.nav
+import me.hgj.jetpackmvvm.ext.navigateAction
 import me.hgj.jetpackmvvm.ext.parseState
 
 /**
@@ -42,50 +36,48 @@ import me.hgj.jetpackmvvm.ext.parseState
 class GradeFragment : BaseFragment<GradeViewModel, FragmentGradeBinding>() {
     private val requestGradeViewModel: RequestGradeViewModel by viewModels()
 
-    private lateinit var popupWindowGradeDetail: PopupWindow
-
     override fun layoutId(): Int = R.layout.fragment_grade
 
     override fun initView(savedInstanceState: Bundle?) {
         addLoadingObserve(requestGradeViewModel)
         mDatabind.viewmodel = mViewModel
+        setHasOptionsMenu(true)
         // 初始化BindingAdapter的默认绑定ID
         BRV.modelId = BR.model
 
+        requireActivity().top_app_bar.title = resources.getString(R.string.grade)
+        requireActivity().top_app_bar.subtitle =
+            "${mViewModel.reqGradeYear.value}学年第${mViewModel.reqGradeTerm.value}学期"
+        requireActivity().bottom_app_bar.setFabAlignmentModeAndReplaceMenu(
+            BottomAppBar.FAB_ALIGNMENT_MODE_CENTER,
+            R.menu.menu_grade
+        )
+
         requestGradeViewModel.gradeReq(
             mViewModel.stuId.value!!,
-            mViewModel.reqScheduleYear.value!!,
-            mViewModel.reqScheduleTerm.value!!,
+            mViewModel.reqGradeYear.value!!,
+            mViewModel.reqGradeTerm.value!!,
             mViewModel.useCache.value!!,
             mViewModel.cliToken.value!!
         )
-        // 抽屉按钮
-        drawerButton.setOnClickListener {
-            val drawer = requireActivity().findViewById<DrawerLayout>(R.id.drawer_layout)
-            drawer.openDrawer(GravityCompat.START)
-        }
-        refreshButton.setOnClickListener {
-            requestGradeViewModel.gradeReq(
-                mViewModel.stuId.value!!,
-                mViewModel.reqScheduleYear.value!!,
-                mViewModel.reqScheduleTerm.value!!,
-                false,
-                mViewModel.cliToken.value!!
-            )
+
+        requireActivity().fab.setImageResource(R.drawable.ic_analytics_24dp)
+        requireActivity().fab.setOnClickListener {
+            (activity as MainActivity).makeSnackBar("成绩分析页，还没做出来:D")
         }
     }
 
     override fun createObserver() {
-        requestGradeViewModel.gradeResult.observe(viewLifecycleOwner, { resultState ->
+        requestGradeViewModel.gradeResult.observe(viewLifecycleOwner) { resultState ->
             parseState(resultState, {
                 mViewModel.gradeResponse.postValue(it)
                 mDatabind.recyclerGradeList.linear().setup {
                     addType<GradeViewModel.GradeModel>(R.layout.item_grade)
-                    R.id.buttonGradeDetail.onFastClick {
+                    R.id.fab_detail.onClick {
                         requestGradeViewModel.gradeDetailReq(
                             mViewModel.stuId.value!!,
-                            mViewModel.reqScheduleYear.value!!,
-                            mViewModel.reqScheduleTerm.value!!,
+                            mViewModel.reqGradeYear.value!!,
+                            mViewModel.reqGradeTerm.value!!,
                             getModel<GradeViewModel.GradeModel>().courseTitle,
                             getModel<GradeViewModel.GradeModel>().classId,
                             false,
@@ -93,48 +85,105 @@ class GradeFragment : BaseFragment<GradeViewModel, FragmentGradeBinding>() {
                         )
                     }
                 }.models = DataMapsUtil.dataMappingGradeRespToGradeModel(it)
-            }, {
-                showMessage("获取成绩失败，重新试试?${it.errorMsg}", "获取成绩失败")
-            })
-        })
-        requestGradeViewModel.gradeDetailResult.observe(viewLifecycleOwner, { resultState ->
-            parseState(resultState, { it1 ->
-                val view: View = LayoutInflater.from(App.context).inflate(R.layout.view_grade_detail, null)
-                popupWindowGradeDetail = PopupWindow(
-                    view,
-                    UisUtil.dip2px(App.context, 200F),
-                    WindowManager.LayoutParams.WRAP_CONTENT
-                )
-                //设置外面可触
-                popupWindowGradeDetail.isOutsideTouchable = true
-                //设置可触
-                popupWindowGradeDetail.isFocusable = false
-                popupWindowGradeDetail.setBackgroundDrawable(
-                    DrawablesUtil.getDrawable(
-                        Color.WHITE,
-                        30,
-                        0,
-                        Color.WHITE
-                    )
-                )
-                popupWindowGradeDetail.isTouchable = true
-                popupWindowGradeDetail.elevation = 8f
-                popupWindowGradeDetail.showAtLocation(activity?.window?.decorView, Gravity.CENTER, 0, 0);
-
-                val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerGradeDetail)
-                val layoutManager = HoverGridLayoutManager(requireContext(), 2) // 2 则代表列表一行铺满要求跨度为2
-                layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-                    override fun getSpanSize(position: Int): Int {
-                        if (position < 0) return 1 // 如果添加分割线可能导致position为负数
-                        // 根据类型设置列表item跨度
-                        return 1
-                    }
+                if (mViewModel.useCache.value == false) {
+                    (activity as MainActivity).makeSnackBar("刷新成功")
+                } else {
+                    //仅首次采用缓存
+                    mViewModel.useCache.postValue(false)
                 }
-                recyclerView.layoutManager = layoutManager
-                recyclerView.setup {
+            }, {
+                val errorLog = resources.getString(R.string.message_network_error_log)
+                showMessage(
+                    "${resources.getString(R.string.get_grade_fail)}\n\n${
+                        String.format(
+                            errorLog,
+                            it.errCode,
+                            it.errorMsg,
+                            it.errorLog
+                        )
+                    }", resources.getString(R.string.get_grade_fail)
+                )
+            })
+        }
+        requestGradeViewModel.gradeDetailResult.observe(viewLifecycleOwner) { resultState ->
+            parseState(resultState, { it1 ->
+                val view = View.inflate(requireContext(), R.layout.view_grade_detail, null)
+                val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerGradeDetail)
+                recyclerView.linear().setup {
                     addType<GradeViewModel.GradeDetailModel>(R.layout.item_grade_detail)
                 }.models = DataMapsUtil.dataMappingGradeDetailRespToGradeDetailModel(it1)
+                MaterialAlertDialogBuilder(requireContext())
+                    .setTitle(resources.getString(R.string.grade_detail))
+                    .setView(view)
+                    .setPositiveButton(resources.getString(R.string.accept)) { dialog, which ->
+
+                    }
+                    .show()
             })
-        })
+        }
+        requestGradeViewModel.semesterResult.observe(viewLifecycleOwner) { resultState ->
+            parseState(resultState, { it ->
+                val listPopupSemesterSelector =
+                    PopupMenu(requireContext(), requireActivity().bottom_app_bar)
+                it.semesterList.forEach { value ->
+                    listPopupSemesterSelector.menu.add(
+                        Menu.NONE,
+                        value.id,
+                        Menu.NONE,
+                        value.text
+                    )
+                }
+                listPopupSemesterSelector.setOnMenuItemClickListener { item ->
+                    it.semesterList[item.itemId].let { it1 ->
+                        requestGradeViewModel.gradeReq(
+                            mViewModel.stuId.value!!,
+                            it1.year,
+                            it1.term,
+                            true,
+                            mViewModel.cliToken.value!!
+                        )
+                    }
+                    true
+                }
+                listPopupSemesterSelector.show()
+            }, {
+                val errorLog = resources.getString(R.string.message_network_error_log)
+                showMessage(
+                    "${resources.getString(R.string.get_response_fail_try_again)}\n\n${String.format(errorLog, it.errCode, it.errorMsg, it.errorLog)}",
+                    resources.getString(R.string.aha_get_error)
+                )
+            })
+        }
+    }
+
+    private fun showSemesterMenu(stuId: String) {
+        requestGradeViewModel.semesterReq(stuId)
+        showLoading("正在请求学期表，等一下咯...")
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_grade, menu)
+    }
+
+    override fun onOptionsItemSelected(menuItem: MenuItem): Boolean {
+        when (menuItem.itemId) {
+            R.id.refresh_grade -> {
+                requestGradeViewModel.gradeReq(
+                    mViewModel.stuId.value!!,
+                    mViewModel.reqGradeYear.value!!,
+                    mViewModel.reqGradeTerm.value!!,
+                    mViewModel.useCache.value!!,
+                    mViewModel.cliToken.value!!
+                )
+            }
+            R.id.switch_semester -> {
+                appViewModel.studentInfo.value?.let { it1 -> showSemesterMenu(it1.studentId) }
+            }
+        }
+        return true
+    }
+
+    companion object {
+        val TAG: String = this::class.java.enclosingClass.simpleName
     }
 }

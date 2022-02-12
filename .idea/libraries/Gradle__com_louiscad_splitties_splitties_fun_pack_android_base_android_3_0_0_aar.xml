@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: com.louiscad.splitties:splitties-fun-pack-android-base-android:3.0.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/022cf335eb23d57fa053811a44357c96/transformed/jetified-splitties-fun-pack-android-base-debug/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ef614cf215fc2ef59e956fc20316b3de/transformed/jetified-splitties-fun-pack-android-base-debug/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/5c80cab812941e8c4c93ed3df0e61889/transformed/jetified-splitties-fun-pack-android-base-debug/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/5c80cab812941e8c4c93ed3df0e61889/transformed/jetified-splitties-fun-pack-android-base-debug/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/5c80cab812941e8c4c93ed3df0e61889/transformed/jetified-splitties-fun-pack-android-base-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f19bdb197325109859f68dc85ba696f5/transformed/jetified-splitties-fun-pack-android-base-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/29187b2ea29981b6b33ea540b92ae455/transformed/jetified-splitties-fun-pack-android-base-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a129e3fbcb908bc1d50d7e3c1e9362ab/transformed/jetified-splitties-fun-pack-android-base-debug/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/a129e3fbcb908bc1d50d7e3c1e9362ab/transformed/jetified-splitties-fun-pack-android-base-debug/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a129e3fbcb908bc1d50d7e3c1e9362ab/transformed/jetified-splitties-fun-pack-android-base-debug/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-fun-pack-android-base-android/3.0.0/1e44c27727f36eeb4a4c6f02d7d0a9e3071fd98d/splitties-fun-pack-android-base-android-3.0.0-javadoc.jar!/" />

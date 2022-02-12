@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: com.louiscad.splitties:splitties-views-cardview-android:3.0.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b770dc179a7094a6f346bc154af209ba/transformed/jetified-splitties-views-cardview-debug/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/3a27df4faf4b04ff5c37d870496cf119/transformed/jetified-splitties-views-cardview-debug/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/fb77b605d45ad5fbecdefbe15b0d0ea8/transformed/jetified-splitties-views-cardview-debug/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/fb77b605d45ad5fbecdefbe15b0d0ea8/transformed/jetified-splitties-views-cardview-debug/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/fb77b605d45ad5fbecdefbe15b0d0ea8/transformed/jetified-splitties-views-cardview-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/73029664a2bdafb86900817b59de6710/transformed/jetified-splitties-views-cardview-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9f1c8fadadc2a22b23ef8ba6afd5e91a/transformed/jetified-splitties-views-cardview-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e71d805d507db3e296b2b460053c7faa/transformed/jetified-splitties-views-cardview-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e71d805d507db3e296b2b460053c7faa/transformed/jetified-splitties-views-cardview-debug/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/e71d805d507db3e296b2b460053c7faa/transformed/jetified-splitties-views-cardview-debug/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-views-cardview-android/3.0.0/50f17961da2269ca3102f0661c55a2caad47c42b/splitties-views-cardview-android-3.0.0-javadoc.jar!/" />

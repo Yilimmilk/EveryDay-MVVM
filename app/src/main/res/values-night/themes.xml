@@ -1,32 +1,32 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.朝暮MVVM" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="Theme.朝暮MVVM" parent="Theme.Material3.Dark.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/colorPrimaryNight</item>
-        <item name="colorPrimaryVariant">@color/colorPrimaryDarkNight</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimary">@color/light_blue_800</item>
+        <item name="colorOnPrimary">@color/light_blue_200</item>
+        <item name="colorPrimaryContainer">@color/light_blue_300</item>
+        <item name="colorOnPrimaryContainer">@color/light_blue_900</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/colorAccent</item>
-        <item name="colorSecondaryVariant">@color/colorAccent</item>
-        <item name="colorOnSecondary">@color/white</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryDark</item>
-        <!-- Customize your theme here. -->
-        <item name="bottomSheetDialogTheme">@style/CustomBottomSheetDialog</item>
+        <item name="colorSecondary">@color/blue_800</item>
+        <item name="colorOnSecondary">@color/blue_200</item>
+        <item name="colorSecondaryContainer">@color/blue_300</item>
+        <item name="colorOnSecondaryContainer">@color/blue_900</item>
+        <!-- Tertiary brand color. -->
+        <item name="colorTertiary">@color/yellow_800</item>
+        <item name="colorOnTertiary">@color/yellow_200</item>
+        <item name="colorTertiaryContainer">@color/yellow_300</item>
+        <item name="colorOnTertiaryContainer">@color/yellow_900</item>
+        <!-- Status bar and Navigation bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="21">@android:color/transparent</item>
+        <item name="android:navigationBarColor">?attr/colorSurface</item>
+        <!-- Custom style theme. -->
+        <item name="md_background_color">?attr/colorBackgroundFloating</item>
     </style>
 
-    <!--BottomSheetDialog出现效果-->
-    <style name="CustomBottomSheetDialog" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
-        <item name="bottomSheetStyle">@style/CustomBottomSheet</item>
-    </style>
-    <style name="CustomBottomSheet" parent="Widget.MaterialComponents.BottomSheet">
-        <item name="shapeAppearanceOverlay">@style/CustomShapeAppearanceBottomSheetDialog</item>
-    </style>
-    <style name="CustomShapeAppearanceBottomSheetDialog" parent="">
+    <style name="RoundedCornerImageStyle">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSizeTopRight">16dp</item>
-        <item name="cornerSizeTopLeft">16dp</item>
-        <item name="cornerSizeBottomRight">0dp</item>
-        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSize">12dp</item>
     </style>
+
+    <style name="NoticeAlertDialogCustom" parent="Theme.MaterialComponents.DayNight.Dialog" />
 </resources>

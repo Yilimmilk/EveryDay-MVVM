@@ -31,14 +31,6 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDb
      */
     override fun createObserver() {}
 
-    override fun initData() {
-        //侧边菜单栏头部文字
-        if (CacheUtil.getIsLogin()) {
-            requireActivity().findViewById<TextView>(R.id.studentDrawerName)?.text = CacheUtil.getStuInfo()?.name
-            requireActivity().findViewById<TextView>(R.id.studentDrawerID)?.text = CacheUtil.getStuInfo()?.studentId
-        }
-    }
-
     /**
      * 打开等待框
      */

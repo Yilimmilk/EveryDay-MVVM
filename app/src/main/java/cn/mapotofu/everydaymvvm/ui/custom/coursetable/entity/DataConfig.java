@@ -1,15 +1,6 @@
 package cn.mapotofu.everydaymvvm.ui.custom.coursetable.entity;
 
-import static cn.mapotofu.everydaymvvm.ui.custom.coursetable.utils.TimeUtil.compareDate;
-import static cn.mapotofu.everydaymvvm.ui.custom.coursetable.utils.TimeUtil.getWeekDayByString;
-
-import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.List;
-
-import cn.mapotofu.everydaymvvm.ui.custom.coursetable.entity.BCourse;
-import cn.mapotofu.everydaymvvm.ui.custom.coursetable.entity.BTimeTable;
-import cn.mapotofu.everydaymvvm.ui.custom.coursetable.utils.TimeUtil;
 
 /**
  * Created by Surine on 2019/2/26.

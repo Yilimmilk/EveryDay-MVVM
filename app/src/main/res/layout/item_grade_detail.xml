@@ -12,31 +12,52 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dp5"
-        android:padding="@dimen/dp5"
-        android:orientation="vertical"
-        android:background="@drawable/shape_card_with_stroke"
-        android:gravity="center">
+        android:gravity="center_vertical">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textviewName"
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_sheetRow1"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingBottom="@dimen/dp10"
+            android:paddingTop="@dimen/dp10"
             android:text="@{model.itemName}"
+            android:textColor="?android:attr/textColorPrimary"
             tools:text="平时成绩" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textviewPercent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{model.itemPercent}"
-            tools:text="30%" />
+        <View
+            android:layout_width="@dimen/dp2"
+            android:layout_height="@dimen/dp20"
+            android:background="?attr/colorOnSurface" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textviewScore"
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_sheetRow2"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingBottom="@dimen/dp10"
+            android:paddingTop="@dimen/dp10"
+            android:text="@{model.itemPercent}"
+            android:textColor="?android:attr/textColorPrimary"
+            tools:text="30%" />
+
+        <View
+            android:layout_width="@dimen/dp2"
+            android:layout_height="@dimen/dp20"
+            android:background="?attr/colorOnSurface" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_sheetRow3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingBottom="@dimen/dp10"
+            android:paddingTop="@dimen/dp10"
             android:text="@{model.itemScore}"
+            android:textColor="?android:attr/textColorPrimary"
             tools:text="98分" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

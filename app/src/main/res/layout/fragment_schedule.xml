@@ -9,118 +9,20 @@
             type="cn.mapotofu.everydaymvvm.viewmodel.state.ScheduleViewModel" />
     </data>
     
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/root_coordinator"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:layout_height="match_parent">
 
-        <LinearLayout
-            android:id="@+id/rootView"
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewpagerSchedule"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="@dimen/dp10"
-            android:orientation="vertical">
+            android:background="@android:color/transparent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageButton
-                    android:id="@+id/drawerButton"
-                    android:layout_width="23dp"
-                    android:layout_height="43dp"
-                    android:background="?android:attr/selectableItemBackgroundBorderless"
-                    android:paddingEnd="20dp"
-                    android:src="@drawable/ic_menu_32dp"
-                    android:tint="?attr/colorControlNormal"
-                    app:layout_constraintBottom_toBottomOf="@+id/textviewCurrentDate"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textviewCurrentDate" />
-
-                <TextView
-                    android:id="@+id/textviewCurrentDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{viewmodel.nowDate}"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:textColor="?android:attr/textColorPrimary"
-                    app:layout_constraintStart_toEndOf="@+id/drawerButton"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="2月20日" />
-
-                <TextView
-                    android:id="@+id/textviewCurrentWeek"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{viewmodel.teachingWeekText}"
-                    android:textColor="?android:attr/textColorPrimary"
-                    tools:text="第1教学周"
-                    app:layout_constraintStart_toEndOf="@+id/drawerButton"
-                    app:layout_constraintTop_toBottomOf="@+id/textviewCurrentDate" />
-
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/addCourseButton"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:layout_marginEnd="12dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:src="@drawable/ic_add_24dp"
-                    android:tooltipText="添加课程"
-                    android:tint="?attr/colorControlNormal"
-                    app:layout_constraintEnd_toStartOf="@+id/refreshButton"
-                    app:layout_constraintTop_toTopOf="@+id/textviewCurrentDate" />
-
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/refreshButton"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:layout_marginEnd="12dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:src="@drawable/ic_reload_24dp"
-                    android:tooltipText="刷新课程"
-                    android:tint="?attr/colorControlNormal"
-                    app:layout_constraintEnd_toStartOf="@+id/semesterButton"
-                    app:layout_constraintTop_toTopOf="@+id/textviewCurrentDate" />
-
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/semesterButton"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:layout_marginEnd="12dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:src="@drawable/ic_semester_24dp"
-                    android:tooltipText="选择学期"
-                    android:tint="?attr/colorControlNormal"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/refreshButton" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/viewpagerSchedule"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/dp2"
-                android:layout_marginEnd="@dimen/dp2"
-                android:background="@android:color/transparent"
-                android:orientation="vertical"
-                app:layout_constraintTop_toTopOf="@+id/guideline1"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-        </LinearLayout>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabOtherCourse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            android:layout_margin="16dp"
-            android:contentDescription="@string/other_course"
-            app:srcCompat="@drawable/ic_more_32dp"/>
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -3,25 +3,21 @@ package cn.mapotofu.everydaymvvm.ui.fragment.splash
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
-import android.view.Menu
-import android.widget.PopupMenu
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.NavOptions
 import cn.mapotofu.everydaymvvm.BuildConfig
 import cn.mapotofu.everydaymvvm.R
-import cn.mapotofu.everydaymvvm.app.Constants
 import cn.mapotofu.everydaymvvm.app.appViewModel
 import cn.mapotofu.everydaymvvm.app.base.BaseFragment
+import cn.mapotofu.everydaymvvm.app.ext.navigateAction
 import cn.mapotofu.everydaymvvm.app.ext.showMessage
 import cn.mapotofu.everydaymvvm.app.util.CacheUtil
-import cn.mapotofu.everydaymvvm.data.model.entity.ClientConf
+import cn.mapotofu.everydaymvvm.app.util.DataMapsUtil
 import cn.mapotofu.everydaymvvm.databinding.FragmentSplashBinding
+import cn.mapotofu.everydaymvvm.ui.activity.MainActivity
 import cn.mapotofu.everydaymvvm.viewmodel.request.RequestSplashViewModel
 import cn.mapotofu.everydaymvvm.viewmodel.state.SplashViewModel
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_main.*
 import me.hgj.jetpackmvvm.ext.nav
-import me.hgj.jetpackmvvm.ext.navigateAction
 import me.hgj.jetpackmvvm.ext.parseState
 
 /**
@@ -32,11 +28,14 @@ import me.hgj.jetpackmvvm.ext.parseState
  */
 class SplashFragment : BaseFragment<SplashViewModel, FragmentSplashBinding>() {
     private val requestSplashViewModel: RequestSplashViewModel by viewModels()
-    private var isLogin = CacheUtil.getIsLogin()
-    private val localConfData = CacheUtil.getClientConf()
-    private var confUpdateStatus = false
-    private val countdownTimeNavigate: Long = 0
-    private val countdownTimeOfflineMode: Long = 1500
+    private var countdownTimer: CountDownTimer? = null
+    private val timeToOfflineMode: Long = 1500 //1.5秒
+//    private val navOptions = NavOptions.Builder()
+//        .setEnterAnim(R.anim.nav_default_enter_anim) //进入动画
+//        .setExitAnim(R.anim.nav_default_exit_anim) //退出动画
+//        .setPopEnterAnim(R.anim.nav_default_pop_enter_anim) //弹出进入动画
+//        .setPopExitAnim(R.anim.nav_default_pop_exit_anim) //弹出退出动画
+//        .build()
 
     override fun layoutId() = R.layout.fragment_splash
 
@@ -44,118 +43,107 @@ class SplashFragment : BaseFragment<SplashViewModel, FragmentSplashBinding>() {
         addLoadingObserve(requestSplashViewModel)
         mDatabind.viewmodel = mViewModel
 
-        if (localConfData == null) {
+        if (mViewModel.localConfData.value == null) {
             mDatabind.textviewVersion.text = "未获取"
         }else {
-            mDatabind.textviewVersion.text = localConfData.version.toString()
+            mDatabind.textviewVersion.text = mViewModel.localConfData.value!!.version.toString()
         }
 
         //获取配置文件并上报信息
-        if (isLogin){
+        if (mViewModel.isLogin.value == true){
+            Log.d(TAG,"进行带参请求配置文件")
             //若已登陆，则进行带参请求
             requestSplashViewModel.confReq(
                 CacheUtil.getStuInfo()?.studentId!!,
                 CacheUtil.getStuInfo()?.token!!,
-                Constants.CLIENT_TYPE,
                 BuildConfig.VERSION_NAME
             )
         }else {
+            Log.d(TAG,"进行无参请求配置文件")
             //若未登陆，则进行无参请求
             requestSplashViewModel.confReq()
         }
 
-        object : CountDownTimer(countdownTimeOfflineMode, 1000) {
+        countdownTimer = object : CountDownTimer(timeToOfflineMode, 100) {
             override fun onTick(millisUntilFinished: Long) {}
             override fun onFinish() {
-                if (!confUpdateStatus) {
-                    Snackbar.make(requireActivity().rootView,"网络不佳？", Snackbar.LENGTH_LONG)
-                        .setAction("离线模式") {
+                if ((mViewModel.confUpdateStatus.value == false) && (mViewModel.isLogin.value == true)) {
+                    (activity as MainActivity).makeSnackBar(
+                        "网络不佳?",
+                        "离线模式",
+                        listener = {
                             CacheUtil.setIsConfUpdate(false)
-                            Snackbar.make(requireActivity().rootView, "离线模式，部分功能将不可用", Snackbar.LENGTH_LONG)
-                                .show()
-                            Log.e("用户手动进入离线模式", "")
-                            if (isLogin)
-                                countDownNavigate(R.id.action_splashFragment_to_scheduleFragment)
-                            else
-                                countDownNavigate(R.id.action_splashFragment_to_loginFragment)
+                            (activity as MainActivity).makeSnackBar("离线模式，部分功能将不可用")
+                            nav().navigateAction(R.id.action_splashFragment_to_scheduleFragment)
                         }
-                        .show()
+                    )
                 }
             }
         }.start()
     }
 
     override fun createObserver() {
-        //配置回调
-        requestSplashViewModel.confResult.observe(viewLifecycleOwner, { resultState ->
+        requestSplashViewModel.confResult.observe(viewLifecycleOwner) { resultState ->
             parseState(resultState, {
-                confUpdateStatus = true
                 //如果成功
-                val confData = ClientConf(
-                    it.version,
-                    it.chooseSemester,
-                    it.gradeSemester,
-                    it.scheduleSemester,
-                    it.isMaintenance,
-                    it.isVacation,
-                    it.canCourseChoose,
-                    it.termStart,
-                    it.nowWeek
-                )
-                appViewModel.clientConf.value = confData
-                CacheUtil.setIsConfUpdate(true)
-                if (localConfData?.version != confData.version){
+                val confData = DataMapsUtil.dataMappingConfRespToClientConf(it)
+                mViewModel.confUpdateStatus.postValue(true)
+                Log.d(TAG, "配置获取成功，本地版本:${mViewModel.localConfData.value?.version},远程版本:${confData.version}")
+                if (mViewModel.localConfData.value?.version != confData.version) {
                     // 更新配置
-                    CacheUtil.setClientConf(confData)
-                    Snackbar.make(requireActivity().rootView,"配置文件更新完成", Snackbar.LENGTH_LONG).show()
-                    Log.i("获取配置状态","更新成功:${confData.version}")
-                }else {
+                    mViewModel.localConfData.postValue(confData)
+                    //TODO 目测是数据倒灌引起的bug？无法在viewmodel内更新appviewmodel的数据，通过下面这行代码临时解决一下
+                    appViewModel.clientConf.postValue(confData)
+                    (activity as MainActivity).makeSnackBar("配置文件更新完成")
+                    Log.i(TAG, "配置更新成功:${confData.version}")
+                } else {
                     // 不更新配置
-                    Log.i("获取配置状态","成功，无需更新:${confData.version}")
+                    Log.i(TAG, "配置获取成功，但无需更新:${confData.version}")
                 }
                 //上报数据判断部分
                 it.tokenValid?.let { it1 ->
-                    isLogin = it1
+                    mViewModel.isLogin.postValue(it1)
                     if (it1) {
-                        Log.i("上报状态","成功")
-                    }else {
-                        Log.w("上报状态","成功，Token过期")
-                        CacheUtil.setIsLogin(false)
-                        Snackbar.make(requireActivity().rootView,"哦豁登陆过期了，重新登录吧", Snackbar.LENGTH_LONG).show()
-                        nav().navigate(R.id.action_to_loginFragment)
+                        Log.i(TAG, "数据上报成功")
+                    } else {
+                        Log.w(TAG, "数据上报成功，Token过期")
+                        (activity as MainActivity).makeSnackBar("哦豁登录过期了，重新登录吧")
+                        mViewModel.isLogin.postValue(false)
+                        nav().navigateAction(R.id.action_to_loginFragment)
                     }
                 }
-                if (isLogin)
-                    countDownNavigate(R.id.action_splashFragment_to_scheduleFragment)
-                else
-                    countDownNavigate(R.id.action_splashFragment_to_loginFragment)
+                if (mViewModel.isLogin.value!!){
+                    nav().navigateAction(R.id.action_splashFragment_to_scheduleFragment)
+                }else{
+                    nav().navigateAction(R.id.action_splashFragment_to_loginFragment)
+                }
             }, {
                 //失败状态
-                CacheUtil.setIsConfUpdate(false)
-                Snackbar.make(requireActivity().rootView,"配置文件更新失败，将只能使用离线功能", Snackbar.LENGTH_LONG).show()
-                Log.e("获取配置状态","失败:${it.errCode}:${it.errorMsg}:${it.errorLog}")
-                if (isLogin)
-                    countDownNavigate(R.id.action_splashFragment_to_scheduleFragment)
-                else
-                    countDownNavigate(R.id.action_splashFragment_to_loginFragment)
+                mViewModel.confUpdateStatus.postValue(false)
+                if (mViewModel.isLogin.value!!){
+                    (activity as MainActivity).makeSnackBar("配置文件更新失败，将只能使用离线功能")
+                    Log.e(TAG, "获取配置失败:\n${it.errCode}\n${it.errorMsg}\n${it.errorLog}")
+                    nav().navigateAction(R.id.action_splashFragment_to_scheduleFragment)
+                }else {
+                    showMessage("配置文件更新失败，可能是因为网络问题，稍后再试试吧。\n\n" +
+                            "错误代码:${it.errCode}\n" +
+                            "错误消息:${it.errorMsg}\n" +
+                            "错误日志:${it.errorLog}")
+                    Log.e(TAG, "获取配置失败:\n${it.errCode}\n${it.errorMsg}\n${it.errorLog}")
+                }
             })
-        })
-    }
-
-    private fun countDownNavigate(resId:Int){
-        object : CountDownTimer(countdownTimeNavigate, 1000) {
-            override fun onTick(millisUntilFinished: Long) {}
-            override fun onFinish() {
-                nav().navigateAction(resId)
-            }
-        }.start()
+        }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-//        if (countDownTimer != null) {
-//            countDownTimer.cancel();
-//            countDownTimer = null;
-//        }
+        if (countdownTimer != null) {
+            countdownTimer?.cancel();
+            countdownTimer = null;
+        }
+    }
+
+    companion object {
+        val TAG: String = this::class.java.enclosingClass.simpleName
     }
 }

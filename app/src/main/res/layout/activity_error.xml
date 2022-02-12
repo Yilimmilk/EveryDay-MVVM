@@ -50,7 +50,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="图片来源于Pixiv@Yuyin雨吟" />
+                    android:text="图片来源于Pixiv@Yuyin雨吟"
+                    android:visibility="invisible"/>
 
                 <TextView
                     android:layout_width="wrap_content"

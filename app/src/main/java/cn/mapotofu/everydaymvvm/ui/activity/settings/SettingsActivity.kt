@@ -1,7 +1,14 @@
 package cn.mapotofu.everydaymvvm.ui.activity.settings
 
+import android.app.PendingIntent
+import android.appwidget.AppWidgetManager
+import android.content.ComponentName
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.os.Parcelable
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.core.content.edit
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,12 +18,15 @@ import cn.mapotofu.everydaymvvm.app.ext.showMessage
 import cn.mapotofu.everydaymvvm.app.util.CacheUtil
 import cn.mapotofu.everydaymvvm.app.util.Const
 import cn.mapotofu.everydaymvvm.app.util.getPrefer
+import cn.mapotofu.everydaymvvm.app.widget.NormalDailyProvider
 import cn.mapotofu.everydaymvvm.ui.activity.settings.items.*
 import cn.mapotofu.everydaymvvm.ui.adapter.SettingItemAdapter
 import cn.mapotofu.everydaymvvm.viewmodel.state.SettingsViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.tencent.bugly.beta.Beta
+import me.hgj.jetpackmvvm.base.appContext
 import splitties.snackbar.snack
+
 
 /**
  * @description
@@ -71,6 +81,8 @@ class SettingsActivity : BaseListActivity<SettingsViewModel>() {
         items.add(CategoryItem("常规", true))
         items.add(HorizontalItem("校区", campusList[campusListIndex]))
         items.add(HorizontalItem("退出登录", "啪的一下就退出去了"))
+        items.add(CategoryItem("其他", false))
+        items.add(HorizontalItem("添加课表到桌面","添加一个桌面小程序"))
         items.add(CategoryItem("更新相关", false))
         items.add(HorizontalItem("检查更新", "如题"))
     }
@@ -122,6 +134,28 @@ class SettingsActivity : BaseListActivity<SettingsViewModel>() {
                     {}
                 )
             }
+            "添加课表到桌面" -> {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    val mAppWidgetManager = getSystemService(AppWidgetManager::class.java)
+                    val myProvider = ComponentName(appContext, NormalDailyProvider::class.java)
+                    val b = Bundle()
+                    b.putString("app_widget", "朝暮_每日课程")
+                    if (mAppWidgetManager.isRequestPinAppWidgetSupported) {
+                        val pinnedWidgetCallbackIntent =
+                            Intent(appContext, NormalDailyProvider::class.java)
+                        val successCallback = PendingIntent.getBroadcast(
+                            appContext, 0,
+                            pinnedWidgetCallbackIntent, PendingIntent.FLAG_IMMUTABLE
+                        )
+                        mAppWidgetManager.requestPinAppWidget(myProvider, b, successCallback)
+                    }
+                }else {
+                    showMessage(
+                        resources.getString(R.string.android_version_too_low_please_add_widget_manually),
+                        resources.getString(R.string.aha_get_error)
+                    )
+                }
+            }
             "检查更新" -> {
                 /**
                  * @param isManual  用户手动点击检查，非用户点击操作请传false
@@ -130,5 +164,9 @@ class SettingsActivity : BaseListActivity<SettingsViewModel>() {
                 Beta.checkUpgrade(true,false)
             }
         }
+    }
+
+    companion object {
+        val TAG: String = this::class.java.enclosingClass.simpleName
     }
 }

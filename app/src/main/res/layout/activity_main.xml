@@ -9,35 +9,81 @@
             type="cn.mapotofu.everydaymvvm.viewmodel.state.MainViewModel" />
     </data>
 
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/drawer_layout"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/root_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
         tools:openDrawer="start">
 
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:id="@+id/rootView"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/top_app_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.Material3.Toolbar"
+                app:title="标题"
+                app:subtitle="副标题"/>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/coordinator_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:fitsSystemWindows="true">
 
             <fragment
                 android:id="@+id/nav_frag"
                 android:name="androidx.navigation.fragment.NavHostFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="?attr/actionBarSize"
+                android:fitsSystemWindows="true"
                 app:defaultNavHost="false"
                 app:navGraph="@navigation/nav_main" />
 
+            <FrameLayout
+                android:id="@+id/bottom_drawer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="16dp"
+                app:behavior_hideable="true"
+                app:layout_behavior="@string/bottom_sheet_behavior">
+
+                <com.google.android.material.navigation.NavigationView
+                    android:id="@+id/nav_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="?attr/actionBarSize"
+                    app:headerLayout="@layout/nav_drawer_title"
+                    app:menu="@menu/menu_navigation"/>
+            </FrameLayout>
+
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/nav_view"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:fitsSystemWindows="true"
-            app:headerLayout="@layout/nav_drawer_title"
-            app:insetForeground="@null"
-            app:menu="@menu/menu_main" />
-    </androidx.drawerlayout.widget.DrawerLayout>
+            android:layout_height="wrap_content"
+            app:layout_anchor="@id/bottom_app_bar"
+            app:srcCompat="@drawable/ic_more_vert_24dp"/>
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottom_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:navigationIcon="@drawable/ic_menu_24dp"
+            style="@style/Widget.Material3.BottomAppBar" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

@@ -24,6 +24,7 @@ import com.tencent.bugly.beta.ui.UILifecycleListener
 
 import com.tencent.bugly.beta.Beta
 import com.tencent.bugly.beta.ui.BetaActivity
+import me.hgj.jetpackmvvm.base.appContext
 
 
 /**
@@ -40,28 +41,15 @@ val appViewModel: AppViewModel by lazy { App.appViewModelInstance }
 val eventViewModel: EventViewModel by lazy { App.eventViewModelInstance }
 
 class App : BaseApp() {
-    companion object {
-        @SuppressLint("StaticFieldLeak")
-        lateinit var context: Context
-
-        @SuppressLint("StaticFieldLeak")
-        lateinit var instance: App
-        lateinit var eventViewModelInstance: EventViewModel
-        lateinit var appViewModelInstance: AppViewModel
-    }
-
     override fun onCreate() {
         super.onCreate()
         //MMKV初始化
         MMKV.initialize(this)
         instance = this
-        context = applicationContext
         eventViewModelInstance = getAppViewModelProvider().get(EventViewModel::class.java)
         appViewModelInstance = getAppViewModelProvider().get(AppViewModel::class.java)
         jetpackMvvmLog = BuildConfig.DEBUG
 
-        //Bugly相关
-        val context = applicationContext
         //自定义弹窗布局
         Beta.upgradeDialogLayoutId = R.layout.dialog_upgrade
         Beta.upgradeDialogLifecycleListener = object : UILifecycleListener<UpgradeInfo> {
@@ -82,7 +70,7 @@ class App : BaseApp() {
             override fun onStop(context: Context, view: View, upgradeInfo: UpgradeInfo) {}
             override fun onDestroy(context: Context, view: View, upgradeInfo: UpgradeInfo) {}
         }
-        Bugly.init(context, "7a3a48047c", false)
+        Bugly.init(appContext, "7a3a48047c", false)
 
         //防止项目崩溃，崩溃后打开错误界面
         CaocConfig.Builder.create()
@@ -96,5 +84,12 @@ class App : BaseApp() {
             .restartActivity(MainActivity::class.java) // 重启的activity
             .errorActivity(ErrorActivity::class.java) //发生错误跳转的activity
             .apply()
+    }
+
+    companion object {
+        lateinit var instance: App
+        lateinit var eventViewModelInstance: EventViewModel
+        lateinit var appViewModelInstance: AppViewModel
+        val TAG: String = this::class.java.enclosingClass.simpleName
     }
 }

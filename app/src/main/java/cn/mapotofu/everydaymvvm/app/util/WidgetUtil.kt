@@ -1,0 +1,92 @@
+package cn.mapotofu.everydaymvvm.app.util
+
+import android.app.PendingIntent
+import android.appwidget.AppWidgetManager
+import android.content.Context
+import android.content.Intent
+import android.os.Build
+import android.widget.RemoteViews
+import cn.mapotofu.everydaymvvm.app.Constants
+import cn.mapotofu.everydaymvvm.app.widget.Actions
+import cn.mapotofu.everydaymvvm.ui.activity.MainActivity
+
+/**
+ * Intro：
+ *
+ * @author sunliwei
+ * @date 2020/5/30 20:41
+ */
+object WidgetUtil {
+    /**
+     * 获取界面视图
+     */
+    fun getRoot(context: Context, layoutId: Int): RemoteViews {
+        return RemoteViews(context.packageName, layoutId)
+    }
+
+    /**
+     * 打开App
+     */
+    fun toMain(remoteViews: RemoteViews, context: Context?, id: Int) {
+        val intent = Intent(context, MainActivity::class.java)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            remoteViews.setOnClickPendingIntent(id, PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE))
+        } else {
+            remoteViews.setOnClickPendingIntent(id, PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT))
+        }
+    }
+
+    /**
+     * 添加列表
+     */
+    fun addList(cls: Class<*>?, context: Context, appWidgetManager: AppWidgetManager, remoteViews: RemoteViews, listId: Int, appId: Int) {
+        val intent = Intent(context, cls)
+        context.stopService(intent)
+        intent.putExtra(Constants.APP_WIDGET_ID, appId)
+        remoteViews.setRemoteAdapter(listId, intent)
+        appWidgetManager.notifyAppWidgetViewDataChanged(appId, listId)
+    }
+
+    /**
+     * 配置next按钮事假
+     */
+    private var cur = 0
+    fun setDay(target: Class<*>?, context: Context?, remoteViews: RemoteViews, appId: Int, layoutId: Int, icons: IntArray?) {
+        require(!(icons == null || icons.size < 2)) { "icons length is not match, must be two" }
+        val isNextDay = context?.getPrefer()?.getBoolean(Const.NEXT_DAY_STATUS + appId, false)
+        val intent = Intent(context, target)
+        if (!isNextDay!!) {
+            remoteViews.setImageViewResource(layoutId, icons[0])
+            intent.action = Actions.NEXT_DAY
+        } else {
+            remoteViews.setImageViewResource(layoutId, icons[1])
+            intent.action = Actions.PREVIOUS_DAY
+        }
+        intent.putExtra(Constants.APP_WIDGET_ID, appId)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            remoteViews.setOnClickPendingIntent(layoutId, PendingIntent.getBroadcast(context, cur++, intent, PendingIntent.FLAG_IMMUTABLE))
+        } else {
+            remoteViews.setOnClickPendingIntent(layoutId, PendingIntent.getBroadcast(context, cur++, intent, PendingIntent.FLAG_UPDATE_CURRENT))
+        }
+    }
+
+    fun setDay(target: Class<*>?, context: Context?, remoteViews: RemoteViews, appId: Int, layoutId: Int) {
+        val isNextDay = context?.getPrefer()?.getBoolean(Const.NEXT_DAY_STATUS + appId, false)
+        val intent = Intent(context, target)
+        if (!isNextDay!!) {
+            intent.action = Actions.NEXT_DAY
+        } else {
+            intent.action = Actions.PREVIOUS_DAY
+        }
+        intent.putExtra(Constants.APP_WIDGET_ID, appId)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            remoteViews.setOnClickPendingIntent(layoutId, PendingIntent.getBroadcast(context, cur++, intent, PendingIntent.FLAG_IMMUTABLE))
+        } else {
+            remoteViews.setOnClickPendingIntent(layoutId, PendingIntent.getBroadcast(context, cur++, intent, PendingIntent.FLAG_UPDATE_CURRENT))
+        }
+    }
+
+    fun showOrHide(remoteViews: RemoteViews, dayView: Int, status: Int) {
+        remoteViews.setViewVisibility(dayView, status)
+    }
+}

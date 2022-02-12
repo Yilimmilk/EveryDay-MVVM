@@ -6,8 +6,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_LOGS"
-        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.READ_LOGS" tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+
 
     <application
         android:name=".app.App"
@@ -17,8 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.朝暮MVVM"
-        tools:replace="android:theme"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        tools:replace="android:theme">
         <activity
             android:name=".ui.activity.MainActivity"
             android:windowSoftInputMode="adjustPan"
@@ -41,7 +42,7 @@
             android:name=".ui.activity.ErrorActivity"
             android:label="错误界面"
             android:launchMode="standard"
-            android:theme="@style/Theme.MaterialComponents.DayNight"
+            android:theme="@style/Theme.Material3.DayNight"
             android:exported="false">
             <intent-filter>
                 <action android:name="cat.ereza.customactivityoncrash.RESTART" />

@@ -9,4 +9,7 @@ import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
  * @date 2021/8/11
  */
 class SettingsViewModel: BaseViewModel() {
+    companion object {
+        val TAG: String = this::class.java.enclosingClass.simpleName
+    }
 }

@@ -1,6 +1,6 @@
 package cn.mapotofu.everydaymvvm.ui.custom.coursetable;
 
-import static cn.mapotofu.everydaymvvm.ui.custom.coursetable.utils.TimeUtil.getWeekDay;
+import static cn.mapotofu.everydaymvvm.app.util.TimeUtil.getWeekDay;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -32,8 +32,8 @@ import cn.mapotofu.everydaymvvm.ui.custom.coursetable.entity.BTimeTable;
 import cn.mapotofu.everydaymvvm.ui.custom.coursetable.entity.DataConfig;
 import cn.mapotofu.everydaymvvm.ui.custom.coursetable.entity.UIConfig;
 import cn.mapotofu.everydaymvvm.ui.custom.coursetable.interfaces.OnClickCourseItemListener;
-import cn.mapotofu.everydaymvvm.ui.custom.coursetable.utils.DrawablesUtil;
-import cn.mapotofu.everydaymvvm.ui.custom.coursetable.utils.TimeUtil;
+import cn.mapotofu.everydaymvvm.app.util.DrawablesUtil;
+import cn.mapotofu.everydaymvvm.app.util.TimeUtil;
 
 /**
  * @author milk
@@ -268,7 +268,7 @@ public class CourseTableView extends LinearLayout {
 
                 if (isCurrentWeek) {
                     tvWeekName.setPadding(0, 5, 0, 5);
-                    tvWeekName.setBackground(DrawablesUtil.getDrawable(getResources().getColor(R.color.choose_tag), 20, 0, 0));
+                    tvWeekName.setBackground(DrawablesUtil.getDrawable(getResources().getColor(R.color.blue_400), 20, 0, 0));
                     tvWeekName.setTextColor(Color.WHITE);
                 }
 

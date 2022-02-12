@@ -85,4 +85,8 @@ class ColorPicker : BottomSheetDialogFragment() {
     fun show(fragmentManager: FragmentManager) {
         this.show(fragmentManager, "ColorPicker")
     }
+
+    companion object {
+        val TAG: String = this::class.java.enclosingClass.simpleName
+    }
 }

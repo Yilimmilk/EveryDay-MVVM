@@ -15,8 +15,7 @@ interface ApiService {
     @POST("client/client-login/")
     suspend fun getClientToken(
         @Field("stu_num") stuNumber: String,
-        @Field("stu_passwd") stuPassword: String,
-        @Field("client_type") clientType: Int
+        @Field("stu_passwd") stuPassword: String
     ): BaseResponse<LoginTokenResp>
 
     //获取个人信息
@@ -64,7 +63,6 @@ interface ApiService {
     suspend fun getConf(
         @Query("stu_num") stuNumber: String?,
         @Query("cli_token") stuToken: String?,
-        @Query("client_type") clientType: Int?,
         @Query("client_version") clientVersion: String?
     ): BaseResponse<ConfResp>
 

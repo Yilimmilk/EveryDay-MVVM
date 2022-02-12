@@ -9,10 +9,9 @@ import cn.mapotofu.everydaymvvm.data.model.entity.AboutItem
  * @date 2021/6/22
  */
 object Constants {
-    const val URL_REMOTE_API_SERVER = "https://api.mapotofu.cn/v1/"
+    const val URL_REMOTE_API_SERVER = "https://api.mapotofu.cn/v2/"
     const val URL_LOCAL_API_SERVER = "http://192.168.50.173:8000/"
-    const val CLIENT_TYPE = 1
-    const val MAX_WEEK = 24
+    const val MAX_WEEK =25
     const val MAX_SESSION = 12
 
     const val APP_WIDGET_ID = "app_widget_id"
@@ -115,11 +114,6 @@ object Constants {
             "A beautiful, fluid, and extensible dialogs API for Kotlin & Android.",
             "https://github.com/afollestad/material-dialogs"
         ),
-//        AboutItem(
-//            "AndroidAutoSize:JessYan",
-//            "A low-cost Android screen adaptation solution (今日头条屏幕适配方案终极版，一个极低成本的 Android 屏幕适配方案).",
-//            "https://github.com/JessYanCoding/AndroidAutoSize"
-//        ),
         AboutItem(
             "CustomActivityOnCrash:Ereza",
             "Android library that allows launching a custom activity when your app crashes, instead of showing the hated \"Unfortunately, X has stopped\" dialog.",

@@ -9,7 +9,7 @@ import android.net.Uri
 import android.widget.Toast
 import cn.mapotofu.everydaymvvm.BuildConfig
 import cn.mapotofu.everydaymvvm.R
-import cn.mapotofu.everydaymvvm.app.App.Companion.context
+import me.hgj.jetpackmvvm.base.appContext
 import java.lang.Exception
 
 /**
@@ -30,9 +30,9 @@ object OthersUtil {
             val i = Intent(Intent.ACTION_VIEW)
             i.data = Uri.parse(url)
             i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            context.startActivity(i)
+            appContext.startActivity(i)
         } catch (e: Exception) {
-            Toast.makeText(context,"无法打开浏览器", Toast.LENGTH_SHORT).show()
+            Toast.makeText(appContext,"无法打开浏览器", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -69,9 +69,9 @@ object OthersUtil {
             intent.action = "android.intent.action.VIEW"
             intent.data = Uri.parse("coolmarket://u/$str")
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            context.startActivity(intent)
+            appContext.startActivity(intent)
         } catch (e: Exception) {
-            Toast.makeText(context, context.getString(R.string.no_coolapk),Toast.LENGTH_SHORT).show()
+            Toast.makeText(appContext, appContext.getString(R.string.no_coolapk),Toast.LENGTH_SHORT).show()
             e.printStackTrace()
         }
     }
@@ -93,7 +93,7 @@ object OthersUtil {
         //intent.putExtra(Intent.EXTRA_CC, "2510355993@qq.com") // 抄送人
         intent.putExtra(Intent.EXTRA_SUBJECT, "朝暮安卓端BUG反馈") // 主题
         intent.putExtra(Intent.EXTRA_TEXT, msg) // 正文
-        context.startActivity(intent)
+        appContext.startActivity(intent)
     }
 
     /**
