@@ -1,10 +1,10 @@
 package cn.mapotofu.everydaymvvm.app.network
 
 import cn.mapotofu.everydaymvvm.app.Constants
+import cn.mapotofu.everydaymvvm.app.network.persistent.PersistentCookieJar
+import cn.mapotofu.everydaymvvm.app.network.persistent.cache.SetCookieCache
+import cn.mapotofu.everydaymvvm.app.network.persistent.persistence.SharedPrefsCookiePersistor
 import cn.mapotofu.everydaymvvm.app.util.MoshiUtil
-import com.franmontiel.persistentcookiejar.PersistentCookieJar
-import com.franmontiel.persistentcookiejar.cache.SetCookieCache
-import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
 import me.hgj.jetpackmvvm.base.appContext
 import me.hgj.jetpackmvvm.network.BaseNetworkApi
 import me.hgj.jetpackmvvm.network.interceptor.CacheInterceptor
@@ -48,9 +48,9 @@ class NetworkApi : BaseNetworkApi() {
             // 日志拦截器
             addInterceptor(LogInterceptor())
             //超时时间 连接、读、写
-            connectTimeout(6, TimeUnit.SECONDS)
-            readTimeout(6, TimeUnit.SECONDS)
-            writeTimeout(6, TimeUnit.SECONDS)
+            connectTimeout(35, TimeUnit.SECONDS)
+            readTimeout(35, TimeUnit.SECONDS)
+            writeTimeout(35, TimeUnit.SECONDS)
         }
         return builder
     }
@@ -65,10 +65,9 @@ class NetworkApi : BaseNetworkApi() {
         }
     }
 
-    val cookieJar: PersistentCookieJar by lazy {
+    private val cookieJar: PersistentCookieJar by lazy {
         PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(appContext))
     }
-
 }
 
 

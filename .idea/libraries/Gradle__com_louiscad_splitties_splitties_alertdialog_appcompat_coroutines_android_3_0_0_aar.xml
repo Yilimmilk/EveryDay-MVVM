@@ -4,8 +4,11 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9f20cc402e6d2335a238a7b08caef9b4/transformed/jetified-splitties-alertdialog-appcompat-coroutines-debug/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/3bb4ca9e9deb51c7c1b41cd6a739549c/transformed/jetified-splitties-alertdialog-appcompat-coroutines-debug/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/df8f7d876fa6cf7fa3aef7eab9efb38a/transformed/jetified-splitties-alertdialog-appcompat-coroutines-debug/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/df8f7d876fa6cf7fa3aef7eab9efb38a/transformed/jetified-splitties-alertdialog-appcompat-coroutines-debug/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/df8f7d876fa6cf7fa3aef7eab9efb38a/transformed/jetified-splitties-alertdialog-appcompat-coroutines-debug/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d5964e3e7f2f07cfb5dbc22ef7869b4b/transformed/jetified-splitties-alertdialog-appcompat-coroutines-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c4093c80a0e334896eb980a00837b939/transformed/jetified-splitties-alertdialog-appcompat-coroutines-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/511c18cbdd07db21a06e69d38134fa73/transformed/jetified-splitties-alertdialog-appcompat-coroutines-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/511c18cbdd07db21a06e69d38134fa73/transformed/jetified-splitties-alertdialog-appcompat-coroutines-debug/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/511c18cbdd07db21a06e69d38134fa73/transformed/jetified-splitties-alertdialog-appcompat-coroutines-debug/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-alertdialog-appcompat-coroutines-android/3.0.0/a9610a65cd8c2c9af85d8ee555fd10762890012e/splitties-alertdialog-appcompat-coroutines-android-3.0.0-javadoc.jar!/" />

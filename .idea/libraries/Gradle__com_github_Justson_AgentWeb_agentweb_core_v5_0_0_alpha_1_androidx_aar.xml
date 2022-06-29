@@ -4,6 +4,12 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/b491c8e10c8213e7da18eac560b5d766/transformed/jetified-agentweb-core-v5.0.0-alpha.1-androidx/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b491c8e10c8213e7da18eac560b5d766/transformed/jetified-agentweb-core-v5.0.0-alpha.1-androidx/AndroidManifest.xml" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b491c8e10c8213e7da18eac560b5d766/transformed/jetified-agentweb-core-v5.0.0-alpha.1-androidx/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1d5e380b0691a798565990250ff8ca94/transformed/jetified-agentweb-core-v5.0.0-alpha.1-androidx/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/1d5e380b0691a798565990250ff8ca94/transformed/jetified-agentweb-core-v5.0.0-alpha.1-androidx/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1d5e380b0691a798565990250ff8ca94/transformed/jetified-agentweb-core-v5.0.0-alpha.1-androidx/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/398b1310067a83a006f2ff0408c4fd71/transformed/jetified-agentweb-core-v5.0.0-alpha.1-androidx/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/398b1310067a83a006f2ff0408c4fd71/transformed/jetified-agentweb-core-v5.0.0-alpha.1-androidx/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/398b1310067a83a006f2ff0408c4fd71/transformed/jetified-agentweb-core-v5.0.0-alpha.1-androidx/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

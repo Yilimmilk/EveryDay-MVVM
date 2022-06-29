@@ -23,8 +23,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.google.android.material.checkbox.MaterialCheckBox
-                android:id="@+id/checkboxTitle"
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textviewTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="48dp"
@@ -32,8 +32,6 @@
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="38sp"
                 android:textStyle="bold"
-                android:button="@null"
-                android:onCheckedChanged="@{click.onSwitchModeCheckedChangeListener}"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
                 app:layout_constraintTop_toTopOf="@+id/guideline12"
                 app:layout_constraintVertical_chainStyle="packed" />
@@ -47,7 +45,7 @@
                 app:startIconDrawable="@drawable/ic_user_18dp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/checkboxTitle">
+                app:layout_constraintTop_toBottomOf="@+id/textviewTitle">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_height="match_parent"
@@ -122,7 +120,7 @@
                 android:text="@string/login_button_text"
                 android:textSize="@dimen/t17"
                 android:onClick="@{()->click.login()}"
-                android:enabled="@{(viewmodel.stuPasswd.length()>=6)&amp;&amp;(viewmodel.stuId.length()>=11)&amp;&amp;(viewmodel.requestInProgress == false)}"
+                android:enabled="@{(viewmodel.stuPasswd.length()>=6)&amp;&amp;(viewmodel.requestInProgress == false)}"
                 style="@style/Widget.Material3.Button.TonalButton"
                 app:cornerRadius="10dp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"

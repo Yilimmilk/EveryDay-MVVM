@@ -65,7 +65,7 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
                 mViewModel.requestInProgress.postValue(false)
                 mViewModel.isLogin.postValue(false)
                 val errorLog = resources.getString(R.string.message_network_error_log)
-                showMessage("${resources.getString(R.string.login_fail_maybe_jw_system_timeout)}\n\n${String.format(errorLog, it.errCode, it.errorMsg, it.errorLog)}", resources.getString(R.string.login_fail))
+                showMessage("${resources.getString(R.string.login_fail_see_error_message_for_details)}\n\n${String.format(errorLog, it.errCode, it.errorMsg, it.errorLog)}", resources.getString(R.string.login_fail))
             })
         }
     }
@@ -107,30 +107,15 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
         fun login() {
             hideSoftKeyboard(activity)
             when {
-                mViewModel.stuId.value.isNullOrEmpty() -> showMessage("学号咧？")
+                mViewModel.stuId.value.isNullOrEmpty() -> showMessage("密码咧？")
+                mViewModel.stuId.value!!.length != 11 -> showMessage("学号位数不对啊，如果您是老师的话，请微信搜索'乐首义'小程序，本APP暂不支持教师登陆～")
                 mViewModel.stuPasswd.value.isNullOrEmpty() -> showMessage("密码咧？")
                 mViewModel.privacyStatus.value == false -> showMessage("请先同意隐私协议以及用户协议~")
                 else -> {
-                    mViewModel.requestInProgress.postValue(true)
-                    if (mViewModel.tokenMode.value == true) {
-                        val stuInfo = UserInfo(
-                            mViewModel.stuId.value!!,
-                            "测试模式",
-                            "none",
-                            mViewModel.stuPasswd.value!!
-                        )
-                        mViewModel.userInfo.postValue(stuInfo)
-                        mViewModel.isLogin.postValue(true)
-                        appViewModel.studentInfo.value = stuInfo
-                        setTransitionAnimate()
-                        nav().navigateAction(R.id.action_loginFragment_to_loadScheduleFragment)
-                    }else {
-                        requestLoginViewModel.loginReq(
-                            mViewModel.stuId.value!!,
-                            mViewModel.stuPasswd.value!!
-                        )
-                    }
-
+                    requestLoginViewModel.loginReq(
+                        mViewModel.stuId.value!!,
+                        mViewModel.stuPasswd.value!!
+                    )
                 }
             }
         }
@@ -139,19 +124,6 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
             CompoundButton.OnCheckedChangeListener { v, isChecked ->
                 if (isChecked) privacyPolicy()
                 mViewModel.privacyStatus.postValue(isChecked)
-            }
-
-        var onSwitchModeCheckedChangeListener =
-            CompoundButton.OnCheckedChangeListener { v, isChecked ->
-                if (isChecked) {
-                    mViewModel.tokenMode.postValue(true)
-                    v.text = resources.getString(R.string.token_mode_text)
-                    edittextStudentPassword.hint = "客户端Token"
-                } else {
-                    mViewModel.tokenMode.postValue(false)
-                    v.text = resources.getString(R.string.student_number_mode)
-                    edittextStudentPassword.hint = "教务系统密码"
-                }
             }
     }
 

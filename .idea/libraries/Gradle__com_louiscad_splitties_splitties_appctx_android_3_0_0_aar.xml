@@ -3,9 +3,12 @@
     <CLASSES>
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/118da720374bf41101a657f9a9374d44/transformed/jetified-splitties-appctx-debug/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/beb206a1256c263c39bcecb5c2383b35/transformed/jetified-splitties-appctx-debug/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/898211f0a61ceba586a8190bc4b3b734/transformed/jetified-splitties-appctx-debug/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/898211f0a61ceba586a8190bc4b3b734/transformed/jetified-splitties-appctx-debug/AndroidManifest.xml" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/898211f0a61ceba586a8190bc4b3b734/transformed/jetified-splitties-appctx-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c2f78ba95fd8a6bed8e7503a450dbad8/transformed/jetified-splitties-appctx-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/61a597b49696f548dc3310cba060fe34/transformed/jetified-splitties-appctx-debug/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/d4a007dcd2d137247fea2071c47dd992/transformed/jetified-splitties-appctx-debug/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d4a007dcd2d137247fea2071c47dd992/transformed/jetified-splitties-appctx-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d4a007dcd2d137247fea2071c47dd992/transformed/jetified-splitties-appctx-debug/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-appctx-android/3.0.0/23239b3124e8689ef426f34819f5fa748393be19/splitties-appctx-android-3.0.0-javadoc.jar!/" />

@@ -19,7 +19,7 @@
     <string name="get_response_fail_try_again">请求失败,重新试试?</string>
     <string name="try_to_exit_and_login_again">重新登录试试？</string>
     <string name="login_fail">登陆失败</string>
-    <string name="login_fail_maybe_jw_system_timeout">emmm，登陆失败了......\n有时候是教务系统响应超时，重新登陆一下？</string>
+    <string name="login_fail_see_error_message_for_details">emmm，登陆失败了…详见错误消息。</string>
     <string name="android_version_too_low_please_add_widget_manually">emmmm您的系统安卓版本太低了，没办法自动添加到桌面。\n\n你去百度上搜\"你的手机品牌+添加桌面小部件\"，按照网页上的办法，手动添加到桌面吧。</string>
 
     <string name="accept">确定</string>

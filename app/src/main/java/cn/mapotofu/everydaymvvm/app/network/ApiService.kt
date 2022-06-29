@@ -20,49 +20,38 @@ interface ApiService {
 
     //获取个人信息
     @GET("info/get-pinfo/")
-    suspend fun getPersonalInfo(
-        @Query("stu_num") stuNumber: String,
-        @Query("cli_token") cliToken: String
-    ): BaseResponse<PersonalInfoResp>
+    suspend fun getPersonalInfo(): BaseResponse<PersonalInfoResp>
 
     //获取课表
     @GET("info/get-schedule/")
     suspend fun getScheduleList(
-        @Query("stu_num") stuNumber: String,
         @Query("req_year") reqYear: String,
         @Query("req_term") reqTerm: String,
-        @Query("use_cache") useCache: String,
-        @Query("cli_token") cliToken: String
+        @Query("use_cache") useCache: String
     ): BaseResponse<ScheduleResp>
 
     //获取成绩
     @GET("info/get-grade/")
     suspend fun getGradeList(
-        @Query("stu_num") stuNumber: String,
         @Query("req_year") reqYear: String,
         @Query("req_term") reqTerm: String,
-        @Query("use_cache") useCache: String,
-        @Query("cli_token") cliToken: String
+        @Query("use_cache") useCache: String
     ): BaseResponse<GradeResp>
 
     //获取成绩详情
-    @GET("info/get-grade_detail/")
+    @GET("info/get-grade-detail/")
     suspend fun getGradeDetail(
-        @Query("stu_num") stuNumber: String,
         @Query("req_year") reqYear: String,
         @Query("req_term") reqTerm: String,
         @Query("course_name") courseName: String,
         @Query("class_id") classId: String,
-        @Query("use_cache") useCache: String,
-        @Query("cli_token") cliToken: String
+        @Query("use_cache") useCache: String
     ): BaseResponse<GradeDetailResp>
 
     //获取配置清单并上报客户端信息
     //由于不一定有参数传进来，所以为可空类型
     @GET("conf/get-conf/")
     suspend fun getConf(
-        @Query("stu_num") stuNumber: String?,
-        @Query("cli_token") stuToken: String?,
         @Query("client_version") clientVersion: String?
     ): BaseResponse<ConfResp>
 
@@ -80,9 +69,7 @@ interface ApiService {
 
     //获取学期
     @GET("conf/get-semester/")
-    suspend fun getSemesterList(
-        @Query("stu_num") stuNumber: String,
-    ): BaseResponse<SemesterResp>
+    suspend fun getSemesterList(): BaseResponse<SemesterResp>
 
     //获取时间表
     @GET("conf/get-timetable/")

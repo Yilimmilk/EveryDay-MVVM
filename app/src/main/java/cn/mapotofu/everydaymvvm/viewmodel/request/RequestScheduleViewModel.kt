@@ -17,7 +17,7 @@ class RequestScheduleViewModel : BaseViewModel() {
     var semesterResult = MutableLiveData<ResultState<SemesterResp>>()
 
     //请求学期表
-    fun semesterReq(stuId: String) {
-        request({ apiService.getSemesterList(stuId) }, semesterResult, false)
+    fun semesterReq() {
+        request({ apiService.getSemesterList() }, semesterResult, false)
     }
 }

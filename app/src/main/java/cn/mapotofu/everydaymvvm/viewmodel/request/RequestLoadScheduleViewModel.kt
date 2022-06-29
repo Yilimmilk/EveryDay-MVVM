@@ -21,20 +21,16 @@ class RequestLoadScheduleViewModel : BaseViewModel() {
 
     //请求课表
     fun scheduleReq(
-        stuId: String,
         year: String,
         term: String,
-        useCache: Boolean,
-        cliToken: String
+        useCache: Boolean
     ) {
         request(
             {
                 apiService.getScheduleList(
-                    stuId,
                     year,
                     term,
-                    if (useCache) "yes" else "no",
-                    cliToken
+                    if (useCache) "yes" else "no"
                 )
             }, scheduleResult,
             false

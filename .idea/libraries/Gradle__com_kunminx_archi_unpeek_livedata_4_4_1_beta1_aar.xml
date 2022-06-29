@@ -4,8 +4,11 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1455c8ad79a5b6a2cd4ef3abf86b5849/transformed/jetified-unpeek-livedata-4.4.1-beta1/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/2362703c733b0a76bf6b868f74c7668b/transformed/jetified-unpeek-livedata-4.4.1-beta1/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/5f78558d5a5c7baa19e4fdb03ca3c934/transformed/jetified-unpeek-livedata-4.4.1-beta1/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/5f78558d5a5c7baa19e4fdb03ca3c934/transformed/jetified-unpeek-livedata-4.4.1-beta1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/5f78558d5a5c7baa19e4fdb03ca3c934/transformed/jetified-unpeek-livedata-4.4.1-beta1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/4fb56cc91cfbdc007cffdde6b319cb3d/transformed/jetified-unpeek-livedata-4.4.1-beta1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/5a18905d64e3b37977e8647d23ae0b1b/transformed/jetified-unpeek-livedata-4.4.1-beta1/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/98732ac7f42bba86c262dbaf2281002a/transformed/jetified-unpeek-livedata-4.4.1-beta1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/98732ac7f42bba86c262dbaf2281002a/transformed/jetified-unpeek-livedata-4.4.1-beta1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/98732ac7f42bba86c262dbaf2281002a/transformed/jetified-unpeek-livedata-4.4.1-beta1/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.kunminx.archi/unpeek-livedata/4.4.1-beta1/888d46a860fcb4708c989055d89cd6eb94e016b8/unpeek-livedata-4.4.1-beta1-javadoc.jar!/" />

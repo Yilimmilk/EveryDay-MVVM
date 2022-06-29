@@ -9,7 +9,7 @@ import cn.mapotofu.everydaymvvm.data.model.entity.AboutItem
  * @date 2021/6/22
  */
 object Constants {
-    const val URL_REMOTE_API_SERVER = "https://api.mapotofu.cn/v2/"
+    const val URL_REMOTE_API_SERVER = "https://api.mapotofu.cn/v4/"
     const val URL_LOCAL_API_SERVER = "http://192.168.50.173:8000/"
     const val MAX_WEEK =25
     const val MAX_SESSION = 12

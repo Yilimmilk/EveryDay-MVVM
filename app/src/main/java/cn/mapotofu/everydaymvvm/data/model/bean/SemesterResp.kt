@@ -13,7 +13,7 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class SemesterResp(
     @Json(name = "semesterList")
-    val semesterList: MutableList<SemesterList>,
+    val semesterList: MutableList<SemesterList>?,
 ) {
     @JsonClass(generateAdapter = true)
     data class SemesterList(
@@ -28,5 +28,8 @@ data class SemesterResp(
 
         @Json(name = "text")
         val text: String,
+
+        @Json(name = "completeName")
+        val completeName: String,
     )
 }

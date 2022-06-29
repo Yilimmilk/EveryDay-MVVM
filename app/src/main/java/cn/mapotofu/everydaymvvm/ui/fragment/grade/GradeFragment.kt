@@ -54,11 +54,9 @@ class GradeFragment : BaseFragment<GradeViewModel, FragmentGradeBinding>() {
         )
 
         requestGradeViewModel.gradeReq(
-            mViewModel.stuId.value!!,
             mViewModel.reqGradeYear.value!!,
             mViewModel.reqGradeTerm.value!!,
             mViewModel.useCache.value!!,
-            mViewModel.cliToken.value!!
         )
 
         requireActivity().fab.setImageResource(R.drawable.ic_analytics_24dp)
@@ -75,13 +73,11 @@ class GradeFragment : BaseFragment<GradeViewModel, FragmentGradeBinding>() {
                     addType<GradeViewModel.GradeModel>(R.layout.item_grade)
                     R.id.fab_detail.onClick {
                         requestGradeViewModel.gradeDetailReq(
-                            mViewModel.stuId.value!!,
                             mViewModel.reqGradeYear.value!!,
                             mViewModel.reqGradeTerm.value!!,
                             getModel<GradeViewModel.GradeModel>().courseTitle,
                             getModel<GradeViewModel.GradeModel>().classId,
                             false,
-                            mViewModel.cliToken.value!!
                         )
                     }
                 }.models = DataMapsUtil.dataMappingGradeRespToGradeModel(it)
@@ -125,7 +121,7 @@ class GradeFragment : BaseFragment<GradeViewModel, FragmentGradeBinding>() {
             parseState(resultState, { it ->
                 val listPopupSemesterSelector =
                     PopupMenu(requireContext(), requireActivity().bottom_app_bar)
-                it.semesterList.forEach { value ->
+                it.semesterList!!.forEach { value ->
                     listPopupSemesterSelector.menu.add(
                         Menu.NONE,
                         value.id,
@@ -135,12 +131,12 @@ class GradeFragment : BaseFragment<GradeViewModel, FragmentGradeBinding>() {
                 }
                 listPopupSemesterSelector.setOnMenuItemClickListener { item ->
                     it.semesterList[item.itemId].let { it1 ->
+                        mViewModel.reqGradeYear.postValue(it1.year)
+                        mViewModel.reqGradeTerm.postValue(it1.term)
                         requestGradeViewModel.gradeReq(
-                            mViewModel.stuId.value!!,
                             it1.year,
                             it1.term,
-                            true,
-                            mViewModel.cliToken.value!!
+                            false,
                         )
                     }
                     true
@@ -168,12 +164,12 @@ class GradeFragment : BaseFragment<GradeViewModel, FragmentGradeBinding>() {
     override fun onOptionsItemSelected(menuItem: MenuItem): Boolean {
         when (menuItem.itemId) {
             R.id.refresh_grade -> {
+                mViewModel.reqGradeYear.postValue(appViewModel.clientConf.value?.gradeSemester?.substring(IntRange(0,3)))
+                mViewModel.reqGradeTerm.postValue(appViewModel.clientConf.value?.gradeSemester?.substring(IntRange(4,4)))
                 requestGradeViewModel.gradeReq(
-                    mViewModel.stuId.value!!,
                     mViewModel.reqGradeYear.value!!,
                     mViewModel.reqGradeTerm.value!!,
-                    mViewModel.useCache.value!!,
-                    mViewModel.cliToken.value!!
+                    mViewModel.useCache.value!!
                 )
             }
             R.id.switch_semester -> {

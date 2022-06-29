@@ -46,11 +46,9 @@ class LoadScheduleFragment : BaseFragment<LoadScheduleViewModel, FragmentLoadSch
         }
 
         requestLoadScheduleViewModel.scheduleReq(
-            stuId!!,
             reqScheduleYear!!,
             reqScheduleTerm!!,
-            useCache,
-            cliToken!!
+            useCache
         )
         requestLoadScheduleViewModel.timetableReq()
 

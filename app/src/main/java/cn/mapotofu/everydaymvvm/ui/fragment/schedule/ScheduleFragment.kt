@@ -169,7 +169,7 @@ class ScheduleFragment : BaseFragment<ScheduleViewModel, FragmentScheduleBinding
             parseState(resultState, {
                 val listPopupSemesterSelector =
                     PopupMenu(requireContext(), requireActivity().bottom_app_bar)
-                it.semesterList.forEach { value ->
+                it.semesterList!!.forEach { value ->
                     listPopupSemesterSelector.menu.add(
                         Menu.NONE,
                         value.id,
@@ -181,7 +181,7 @@ class ScheduleFragment : BaseFragment<ScheduleViewModel, FragmentScheduleBinding
                     val bundle = Bundle()
                     bundle.putString("req-year", it.semesterList[item.itemId].year)
                     bundle.putString("req-term", it.semesterList[item.itemId].term)
-                    bundle.putBoolean("use-cache", true)
+                    bundle.putBoolean("use-cache", false)
                     nav().navigateAction(
                         R.id.action_scheduleFragment_to_loadScheduleFragment,
                         bundle
@@ -199,8 +199,8 @@ class ScheduleFragment : BaseFragment<ScheduleViewModel, FragmentScheduleBinding
         }
     }
 
-    private fun showSemesterMenu(stuId: String) {
-        requestScheduleViewModel.semesterReq(stuId)
+    private fun showSemesterMenu() {
+        requestScheduleViewModel.semesterReq()
         showLoading("正在请求学期表，等一下咯...")
     }
 
@@ -248,7 +248,7 @@ class ScheduleFragment : BaseFragment<ScheduleViewModel, FragmentScheduleBinding
                 nav().navigateAction(R.id.action_scheduleFragment_to_addCourseFragment)
             }
             R.id.switch_semester -> {
-                appViewModel.studentInfo.value?.let { it1 -> showSemesterMenu(it1.studentId) }
+                showSemesterMenu()
             }
             R.id.back -> {
                 requireActivity().bottom_app_bar.setFabAlignmentModeAndReplaceMenu(

@@ -18,12 +18,10 @@ class RequestSplashViewModel : BaseViewModel() {
 
     //获取配置以及数据上报，由于第一次登录时无参数，所以初始化所有参数为null，再使用可空类型进行传参
     fun confReq(
-        stuNumber: String? = null,
-        stuToken: String? = null,
         clientVersion: String? = null
     ) {
         request(
-            { apiService.getConf(stuNumber, stuToken, clientVersion) },
+            { apiService.getConf(clientVersion) },
             confResult,
             false
         )

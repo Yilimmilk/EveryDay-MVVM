@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import cn.mapotofu.everydaymvvm.app.Constants
 import cn.mapotofu.everydaymvvm.app.network.apiService
 import cn.mapotofu.everydaymvvm.data.model.bean.LoginTokenResp
+import cn.mapotofu.everydaymvvm.data.model.bean.PersonalInfoResp
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.state.ResultState
 import me.hgj.jetpackmvvm.ext.request
@@ -16,6 +17,7 @@ import me.hgj.jetpackmvvm.ext.request
  */
 class RequestLoginViewModel: BaseViewModel() {
     var loginResult = MutableLiveData<ResultState<LoginTokenResp>>()
+    var personalInfoResult = MutableLiveData<ResultState<PersonalInfoResp>>()
 
     fun loginReq(stuId: String, stuPasswd: String) {
         //1.这种是在 Activity/Fragment的监听回调中拿到已脱壳的数据（项目有基类的可以用）
@@ -24,6 +26,15 @@ class RequestLoginViewModel: BaseViewModel() {
             , loginResult,
             true,
             "别急，登陆在..."
+        )
+    }
+
+    fun personalInfoReq() {
+        request(
+            { apiService.getPersonalInfo() }
+            , personalInfoResult,
+            true,
+            "正在获取个人信息..."
         )
     }
 }

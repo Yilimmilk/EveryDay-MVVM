@@ -183,7 +183,7 @@ object DataMapsUtil {
     fun dataMappingSemesterRespToSemester(semesterResp: SemesterResp): MutableList<Semester> {
         val semesterListBeforeParse = semesterResp.semesterList
         val semesterList = mutableListOf<Semester>()
-        semesterListBeforeParse.forEach { it ->
+        semesterListBeforeParse!!.forEach { it ->
             val semester = Semester(it.year, it.term, "${it.year}年第${it.term}学期")
             semesterList.add(semester)
         }

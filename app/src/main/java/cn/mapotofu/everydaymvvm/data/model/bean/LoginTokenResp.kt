@@ -19,4 +19,10 @@ data class LoginTokenResp(
 
     @Json(name = "token")
     var token: String?,
+
+    @Json(name = "iat")
+    var iat: String?,
+
+    @Json(name = "exp")
+    var exp: String?,
 )

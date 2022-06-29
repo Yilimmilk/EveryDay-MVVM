@@ -20,8 +20,6 @@ class LoginViewModel : BaseViewModel() {
     //学号密码
     val stuId = MutableLiveData<String>()
     val stuPasswd = MutableLiveData<String>()
-    //登陆模式
-    val tokenMode = MutableLiveData<Boolean>(false)
     //请求网络状态
     val requestInProgress = MutableLiveData<Boolean>(false)
     //隐私政策状态

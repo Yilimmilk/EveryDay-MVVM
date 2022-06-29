@@ -3,9 +3,12 @@
     <CLASSES>
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/449ce21d2758dd720ebeb9a40338966a/transformed/jetified-splitties-alertdialog-material-debug/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/942b03b29884cb743c3e418328749768/transformed/jetified-splitties-alertdialog-material-debug/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/bc7baa076b2613b06e972c1cdd44dff5/transformed/jetified-splitties-alertdialog-material-debug/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/bc7baa076b2613b06e972c1cdd44dff5/transformed/jetified-splitties-alertdialog-material-debug/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/bc7baa076b2613b06e972c1cdd44dff5/transformed/jetified-splitties-alertdialog-material-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/312368a1bf4effb93b739641c1616a5e/transformed/jetified-splitties-alertdialog-material-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/815b29616a6db01eefac0efd1f018c9e/transformed/jetified-splitties-alertdialog-material-debug/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/a1a3391208c9f350f93ee51a9e59d279/transformed/jetified-splitties-alertdialog-material-debug/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a1a3391208c9f350f93ee51a9e59d279/transformed/jetified-splitties-alertdialog-material-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a1a3391208c9f350f93ee51a9e59d279/transformed/jetified-splitties-alertdialog-material-debug/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-alertdialog-material-android/3.0.0/2cffd5775ddba831a54c0b21cc94791f95fefd18/splitties-alertdialog-material-android-3.0.0-javadoc.jar!/" />

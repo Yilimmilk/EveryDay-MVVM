@@ -70,6 +70,9 @@ data class ScheduleResp(
         @Json(name = "className")
         var className: String,
 
+        @Json(name = "classComposition")
+        var classComposition: String,
+
         @Json(name = "hoursComposition")
         var hoursComposition: String,
 

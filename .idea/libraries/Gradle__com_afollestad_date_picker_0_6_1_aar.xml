@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.afollestad:date-picker:0.6.1@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/486cab49d8c5ea1b918a356796d88ddc/transformed/jetified-date-picker-0.6.1/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/486cab49d8c5ea1b918a356796d88ddc/transformed/jetified-date-picker-0.6.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/486cab49d8c5ea1b918a356796d88ddc/transformed/jetified-date-picker-0.6.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ec715e801b1ee915df914ffe6aa3e64d/transformed/jetified-date-picker-0.6.1/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/ec715e801b1ee915df914ffe6aa3e64d/transformed/jetified-date-picker-0.6.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ec715e801b1ee915df914ffe6aa3e64d/transformed/jetified-date-picker-0.6.1/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.afollestad/date-picker/0.6.1/d247c1865554bb709bd6902c5105891caf57531d/date-picker-0.6.1-javadoc.jar!/" />

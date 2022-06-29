@@ -22,20 +22,16 @@ class RequestGradeViewModel: BaseViewModel() {
 
     //请求成绩
     fun gradeReq(
-        stuId: String,
         year: String,
         term: String,
-        useCache: Boolean,
-        cliToken: String
+        useCache: Boolean
     ) {
         request(
             {
                 apiService.getGradeList(
-                    stuId,
                     year,
                     term,
-                    if (useCache) "yes" else "no",
-                    cliToken
+                    if (useCache) "yes" else "no"
                 )
             }, gradeResult,
             true
@@ -44,24 +40,20 @@ class RequestGradeViewModel: BaseViewModel() {
 
     //请求成绩详情
     fun gradeDetailReq(
-        stuId: String,
         year: String,
         term: String,
         courseName: String,
         classId: String,
-        useCache: Boolean,
-        cliToken: String
+        useCache: Boolean
     ) {
         request(
             {
                 apiService.getGradeDetail(
-                    stuId,
                     year,
                     term,
                     courseName,
                     classId,
-                    if (useCache) "yes" else "no",
-                    cliToken
+                    if (useCache) "yes" else "no"
                 )
             }, gradeDetailResult,
             true
@@ -70,6 +62,6 @@ class RequestGradeViewModel: BaseViewModel() {
 
     //请求学期表
     fun semesterReq(stuId: String) {
-        request({ apiService.getSemesterList(stuId) }, semesterResult, false)
+        request({ apiService.getSemesterList() }, semesterResult, false)
     }
 }

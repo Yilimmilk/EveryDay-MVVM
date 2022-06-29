@@ -54,8 +54,6 @@ class SplashFragment : BaseFragment<SplashViewModel, FragmentSplashBinding>() {
             Log.d(TAG,"进行带参请求配置文件")
             //若已登陆，则进行带参请求
             requestSplashViewModel.confReq(
-                CacheUtil.getStuInfo()?.studentId!!,
-                CacheUtil.getStuInfo()?.token!!,
                 BuildConfig.VERSION_NAME
             )
         }else {
