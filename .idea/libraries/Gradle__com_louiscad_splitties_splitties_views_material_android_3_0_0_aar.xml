@@ -6,9 +6,11 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f8ab3d0100d482a49e91662b36cfdd7b/transformed/jetified-splitties-views-material-debug/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/58403327a45ee09b546aeae61bd99456/transformed/jetified-splitties-views-material-debug/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f7d2f882f17c72c316945dbb923555ea/transformed/jetified-splitties-views-material-debug/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/803e81527e51a40f068421912edbe982/transformed/jetified-splitties-views-material-debug/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/803e81527e51a40f068421912edbe982/transformed/jetified-splitties-views-material-debug/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/803e81527e51a40f068421912edbe982/transformed/jetified-splitties-views-material-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ad23615dffb6945f312136d95b906d21/transformed/jetified-splitties-views-material-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/6cdcfba52c4690e2ff6a12fb371b46fd/transformed/jetified-splitties-views-material-debug/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/6cdcfba52c4690e2ff6a12fb371b46fd/transformed/jetified-splitties-views-material-debug/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/6cdcfba52c4690e2ff6a12fb371b46fd/transformed/jetified-splitties-views-material-debug/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-views-material-android/3.0.0/b06e86f6b3f864952a53235a0c992e470bb91ac4/splitties-views-material-android-3.0.0-javadoc.jar!/" />

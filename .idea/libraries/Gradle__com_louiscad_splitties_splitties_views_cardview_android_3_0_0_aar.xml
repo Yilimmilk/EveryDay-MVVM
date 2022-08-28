@@ -6,9 +6,11 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e71d805d507db3e296b2b460053c7faa/transformed/jetified-splitties-views-cardview-debug/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ae3ae28b35676a11f7a5a6423f4146dd/transformed/jetified-splitties-views-cardview-debug/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9a46d6f36a06a70e0a8510bd64df041b/transformed/jetified-splitties-views-cardview-debug/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/dce033a58354eaf839227290dde38d1c/transformed/jetified-splitties-views-cardview-debug/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/dce033a58354eaf839227290dde38d1c/transformed/jetified-splitties-views-cardview-debug/AndroidManifest.xml" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/dce033a58354eaf839227290dde38d1c/transformed/jetified-splitties-views-cardview-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9b28b1986734b40335ef9dfd7b137564/transformed/jetified-splitties-views-cardview-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ae88dad148638719d4ecb6db10a8ab6c/transformed/jetified-splitties-views-cardview-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ae88dad148638719d4ecb6db10a8ab6c/transformed/jetified-splitties-views-cardview-debug/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/ae88dad148638719d4ecb6db10a8ab6c/transformed/jetified-splitties-views-cardview-debug/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-views-cardview-android/3.0.0/50f17961da2269ca3102f0661c55a2caad47c42b/splitties-views-cardview-android-3.0.0-javadoc.jar!/" />

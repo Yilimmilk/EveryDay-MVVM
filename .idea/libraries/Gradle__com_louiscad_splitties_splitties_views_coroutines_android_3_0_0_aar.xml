@@ -7,8 +7,10 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/aa1df5d8d0888b9b67da0ac00395c539/transformed/jetified-splitties-views-coroutines-debug/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/bb4d40eecdf49b14bf1ee36cba63ac9b/transformed/jetified-splitties-views-coroutines-debug/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b7158adb8d6d2f25c7d55e3933d9713b/transformed/jetified-splitties-views-coroutines-debug/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/b7158adb8d6d2f25c7d55e3933d9713b/transformed/jetified-splitties-views-coroutines-debug/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b7158adb8d6d2f25c7d55e3933d9713b/transformed/jetified-splitties-views-coroutines-debug/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/5e80bd0d628b8efbff1b54a2c87e3b7e/transformed/jetified-splitties-views-coroutines-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0701ee3084cf6775b36f4b52967b86ba/transformed/jetified-splitties-views-coroutines-debug/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/0701ee3084cf6775b36f4b52967b86ba/transformed/jetified-splitties-views-coroutines-debug/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0701ee3084cf6775b36f4b52967b86ba/transformed/jetified-splitties-views-coroutines-debug/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-views-coroutines-android/3.0.0/57dabfcf8a2657ca3c6556dc30e050c76156c01a/splitties-views-coroutines-android-3.0.0-javadoc.jar!/" />

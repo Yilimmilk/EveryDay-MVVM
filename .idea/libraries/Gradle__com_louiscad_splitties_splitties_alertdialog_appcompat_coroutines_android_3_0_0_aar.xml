@@ -7,8 +7,10 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d5964e3e7f2f07cfb5dbc22ef7869b4b/transformed/jetified-splitties-alertdialog-appcompat-coroutines-debug/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c4093c80a0e334896eb980a00837b939/transformed/jetified-splitties-alertdialog-appcompat-coroutines-debug/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/511c18cbdd07db21a06e69d38134fa73/transformed/jetified-splitties-alertdialog-appcompat-coroutines-debug/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/511c18cbdd07db21a06e69d38134fa73/transformed/jetified-splitties-alertdialog-appcompat-coroutines-debug/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/511c18cbdd07db21a06e69d38134fa73/transformed/jetified-splitties-alertdialog-appcompat-coroutines-debug/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/6395361fb386603b63f9e508a61eb6b8/transformed/jetified-splitties-alertdialog-appcompat-coroutines-debug/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/31b03768c23179c7acf8e91310b79969/transformed/jetified-splitties-alertdialog-appcompat-coroutines-debug/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/31b03768c23179c7acf8e91310b79969/transformed/jetified-splitties-alertdialog-appcompat-coroutines-debug/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/31b03768c23179c7acf8e91310b79969/transformed/jetified-splitties-alertdialog-appcompat-coroutines-debug/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-alertdialog-appcompat-coroutines-android/3.0.0/a9610a65cd8c2c9af85d8ee555fd10762890012e/splitties-alertdialog-appcompat-coroutines-android-3.0.0-javadoc.jar!/" />

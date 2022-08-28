@@ -70,15 +70,21 @@ public class SharedPrefsCookiePersistor implements CookiePersistor {
         for (Cookie cookie : cookies) {
             editor.remove(createCookieKey(cookie));
         }
-        editor.commit();
+        //editor.commit();
+        editor.apply();
     }
 
     private static String createCookieKey(Cookie cookie) {
         return (cookie.secure() ? "https" : "http") + "://" + cookie.domain() + cookie.path() + "|" + cookie.name();
     }
 
+//    @Override
+//    public void clear() {
+//        sharedPreferences.edit().clear().commit();
+//    }
+
     @Override
     public void clear() {
-        sharedPreferences.edit().clear().commit();
+        sharedPreferences.edit().clear().apply();
     }
 }

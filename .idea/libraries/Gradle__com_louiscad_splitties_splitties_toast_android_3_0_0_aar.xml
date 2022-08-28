@@ -6,9 +6,11 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/7e5f61007962e13e5c894b252aa6ca23/transformed/jetified-splitties-toast-debug/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/3920b02686a8912f0294213af2856742/transformed/jetified-splitties-toast-debug/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f47c3b5deb1d2f675ffdd1142445a664/transformed/jetified-splitties-toast-debug/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/3c5a1f4ef4cd8aed82e00485728e563b/transformed/jetified-splitties-toast-debug/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/3c5a1f4ef4cd8aed82e00485728e563b/transformed/jetified-splitties-toast-debug/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/3c5a1f4ef4cd8aed82e00485728e563b/transformed/jetified-splitties-toast-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/99e6cc421663ca3fe540593291e80c14/transformed/jetified-splitties-toast-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/afcb53355b31fa16ad3cd72f34ba2a64/transformed/jetified-splitties-toast-debug/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/afcb53355b31fa16ad3cd72f34ba2a64/transformed/jetified-splitties-toast-debug/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/afcb53355b31fa16ad3cd72f34ba2a64/transformed/jetified-splitties-toast-debug/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-toast-android/3.0.0/c58e7f57d5fe7121fd684d2b440bfdc2f156c2b0/splitties-toast-android-3.0.0-javadoc.jar!/" />

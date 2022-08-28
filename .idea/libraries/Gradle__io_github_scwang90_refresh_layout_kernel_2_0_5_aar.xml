@@ -10,6 +10,9 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/6fc41ecaf9ee8775fc9cff3b38d77930/transformed/jetified-refresh-layout-kernel-2.0.5/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/6fc41ecaf9ee8775fc9cff3b38d77930/transformed/jetified-refresh-layout-kernel-2.0.5/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/6fc41ecaf9ee8775fc9cff3b38d77930/transformed/jetified-refresh-layout-kernel-2.0.5/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/9673d4edb24ab66d629077a66d1c8f55/transformed/jetified-refresh-layout-kernel-2.0.5/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9673d4edb24ab66d629077a66d1c8f55/transformed/jetified-refresh-layout-kernel-2.0.5/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9673d4edb24ab66d629077a66d1c8f55/transformed/jetified-refresh-layout-kernel-2.0.5/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

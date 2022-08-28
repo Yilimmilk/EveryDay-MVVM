@@ -7,8 +7,10 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/406566a52d6df509e9f35bd6fa3f9d9d/transformed/jetified-splitties-systemservices-debug/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/af4e8943e9c450365a7d6415bbba5938/transformed/jetified-splitties-systemservices-debug/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a5316875558f7d24bfe323190c65fbbe/transformed/jetified-splitties-systemservices-debug/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a5316875558f7d24bfe323190c65fbbe/transformed/jetified-splitties-systemservices-debug/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/a5316875558f7d24bfe323190c65fbbe/transformed/jetified-splitties-systemservices-debug/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/54df1a9c15465feaf9c55e7d306d1b77/transformed/jetified-splitties-systemservices-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/49901a494a1c8b4db6df744169eeb1e1/transformed/jetified-splitties-systemservices-debug/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/49901a494a1c8b4db6df744169eeb1e1/transformed/jetified-splitties-systemservices-debug/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/49901a494a1c8b4db6df744169eeb1e1/transformed/jetified-splitties-systemservices-debug/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-systemservices-android/3.0.0/4d95d1303dd6bec051ab239f39d8189e966634a8/splitties-systemservices-android-3.0.0-javadoc.jar!/" />

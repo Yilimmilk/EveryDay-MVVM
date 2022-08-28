@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.liangjingkanji:StateLayout:1.2.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/172bcb60e4ecad61ea28a445da8e0792/transformed/jetified-StateLayout-1.2.0/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/172bcb60e4ecad61ea28a445da8e0792/transformed/jetified-StateLayout-1.2.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/172bcb60e4ecad61ea28a445da8e0792/transformed/jetified-StateLayout-1.2.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/0997d5c368fa493bf1906df55d07ddfc/transformed/jetified-StateLayout-1.2.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0997d5c368fa493bf1906df55d07ddfc/transformed/jetified-StateLayout-1.2.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0997d5c368fa493bf1906df55d07ddfc/transformed/jetified-StateLayout-1.2.0/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

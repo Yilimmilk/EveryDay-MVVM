@@ -6,9 +6,11 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/40e7bbb5272545f1f3d4a89511267de4/transformed/jetified-splitties-fun-pack-android-appcompat-debug/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c06bed740b850fea12c5437cc6b9a238/transformed/jetified-splitties-fun-pack-android-appcompat-debug/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/6b637743be8588f360971a1483b12ee8/transformed/jetified-splitties-fun-pack-android-appcompat-debug/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/df19b2ffadf384487cbbb8320d4797fe/transformed/jetified-splitties-fun-pack-android-appcompat-debug/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/df19b2ffadf384487cbbb8320d4797fe/transformed/jetified-splitties-fun-pack-android-appcompat-debug/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/df19b2ffadf384487cbbb8320d4797fe/transformed/jetified-splitties-fun-pack-android-appcompat-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/eaae85e00cc1c2896cf85eaa0ed7b468/transformed/jetified-splitties-fun-pack-android-appcompat-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0ac82bd5c85c0eb31e175fd5b45916f4/transformed/jetified-splitties-fun-pack-android-appcompat-debug/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0ac82bd5c85c0eb31e175fd5b45916f4/transformed/jetified-splitties-fun-pack-android-appcompat-debug/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/0ac82bd5c85c0eb31e175fd5b45916f4/transformed/jetified-splitties-fun-pack-android-appcompat-debug/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-fun-pack-android-appcompat-android/3.0.0/c5aebc3ae496f6655c2ac14d0d44d304e7bb8b88/splitties-fun-pack-android-appcompat-android-3.0.0-javadoc.jar!/" />

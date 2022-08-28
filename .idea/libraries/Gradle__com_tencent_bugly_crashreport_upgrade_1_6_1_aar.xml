@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="Gradle: com.tencent.bugly:crashreport_upgrade:1.6.1@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/651b309bb4f774ce3c4bb4f63380edf1/transformed/jetified-crashreport_upgrade-1.6.1/jars/libs/r-classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/651b309bb4f774ce3c4bb4f63380edf1/transformed/jetified-crashreport_upgrade-1.6.1/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/651b309bb4f774ce3c4bb4f63380edf1/transformed/jetified-crashreport_upgrade-1.6.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/651b309bb4f774ce3c4bb4f63380edf1/transformed/jetified-crashreport_upgrade-1.6.1/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.tencent.bugly/crashreport_upgrade/1.6.1/1bc41814079ef19bc0036b859980cf10ce8d9ccc/crashreport_upgrade-1.6.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.tencent.bugly/crashreport_upgrade/1.6.1/1bc41814079ef19bc0036b859980cf10ce8d9ccc/crashreport_upgrade-1.6.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

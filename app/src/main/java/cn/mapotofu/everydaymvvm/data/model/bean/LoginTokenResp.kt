@@ -17,6 +17,9 @@ data class LoginTokenResp(
     @Json(name = "name")
     var name: String?,
 
+    @Json(name = "loginType")
+    var loginType: Int?,
+
     @Json(name = "token")
     var token: String?,
 
